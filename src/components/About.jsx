@@ -1,14 +1,14 @@
 import React from 'react';
+import { generatePDF } from '../utils/pdfGenerator';
 
 const About = () => {
   const downloadCV = () => {
-    // Create a temporary link to download CV
-    const link = document.createElement('a');
-    link.href = '/cv-muhammad-quways-al-qarany.pdf'; // You'll need to add this file to public folder
-    link.download = 'CV-Muhammad-Quways-Al-Qarany.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      generatePDF();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Sorry, there was an error generating the PDF. Please try again.');
+    }
   };
 
   return (
