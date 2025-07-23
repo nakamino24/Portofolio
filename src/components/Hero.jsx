@@ -10,9 +10,9 @@ const Hero = () => {
   ];
 
   const stats = [
-    { label: "Years Experience", value: "2+", icon: "💻" },
-    { label: "Projects Completed", value: "15+", icon: "🚀" },
-    { label: "Technologies Mastered", value: "10+", icon: "⚡" },
+    { label: "Programming Experience", value: "1+", icon: "💻" },
+    { label: "Projects Completed", value: "10+", icon: "🚀" },
+    { label: "Technologies Learned", value: "8+", icon: "⚡" },
     { label: "Certifications", value: "8", icon: "🏆" }
   ];
 
@@ -30,6 +30,20 @@ const Hero = () => {
         <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div className="absolute top-0 right-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg animate-float opacity-30 transform rotate-45"></div>
+        <div className="absolute top-1/3 right-1/4 w-6 h-6 bg-gradient-to-r from-pink-400 to-red-500 rounded-full animate-bounce opacity-40"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse opacity-30"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-12 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-float opacity-40"></div>
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="h-full w-full" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.5) 1px, transparent 0)',
+            backgroundSize: '50px 50px'
+          }}></div>
+        </div>
       </div>
 
       <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 min-h-screen">
@@ -56,7 +70,7 @@ const Hero = () => {
             </div>
             
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              2+ Years of Programming Excellence | Computer Engineering Graduate with Full-Stack Development Expertise
+              Computer Engineering Graduate | Aspiring Full-Stack Developer with Growing Expertise
               <span className="block mt-2 text-base text-gray-500 dark:text-gray-400">
                 Transforming ideas into powerful digital solutions with modern web technologies
               </span>
