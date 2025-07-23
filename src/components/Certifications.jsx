@@ -24,13 +24,6 @@ const Certifications = () => {
       category: 'Development'
     },
     {
-      title: 'Web Programming',
-      issuer: 'Digital Talent Scholarship',
-      description: 'Government-sponsored certification program in web programming with focus on practical skills.',
-      skills: ['Web Programming', 'Database Integration', 'Modern Frameworks', 'Best Practices'],
-      category: 'Development'
-    },
-    {
       title: 'CyberOps Associate',
       issuer: 'Cisco Networking Academy',
       description: 'Certification focused on cybersecurity operations, monitoring, and threat detection in enterprise environments.',
@@ -88,7 +81,7 @@ const Certifications = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
-            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">9</div>
+            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">8</div>
             <div className="text-gray-600 dark:text-gray-300">Total Certifications</div>
           </div>
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
@@ -96,7 +89,7 @@ const Certifications = () => {
             <div className="text-gray-600 dark:text-gray-300">Cisco Certifications</div>
           </div>
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
-            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">4</div>
+            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">3</div>
             <div className="text-gray-600 dark:text-gray-300">Development Certifications</div>
           </div>
         </div>

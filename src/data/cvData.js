@@ -162,10 +162,6 @@ export const cvData = {
       issuer: "MySkill"
     },
     {
-      title: "Web Programming",
-      issuer: "Digital Talent Scholarship"
-    },
-    {
       title: "CyberOps Associate",
       issuer: "Cisco Networking Academy"
     },
