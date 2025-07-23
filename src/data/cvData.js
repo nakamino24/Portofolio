@@ -6,7 +6,7 @@ export const cvData = {
     email: "faiz.quways@gmail.com",
     phone: "0895-0327-9320",
     location: "Pondok Gede, Bekasi",
-    linkedin: "linkedin.com/in/muhammad-quways-al-qarany",
+    linkedin: "linkedin.com/in/muhammadquways",
     github: "github.com/nakamino24"
   },
 
