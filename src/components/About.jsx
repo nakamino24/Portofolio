@@ -69,7 +69,7 @@ const About = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">GPA:</span>
-                <span className="text-gray-900 dark:text-white font-medium">3.69</span>
+                <span className="text-gray-900 dark:text-white font-medium">3.69/4.00</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Location:</span>
