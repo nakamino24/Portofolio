@@ -51,7 +51,7 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</p>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-white">alexandrucotofan8@gmail.com</p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">faiz.quways@gmail.com</p>
                   </div>
                 </div>
 
@@ -61,7 +61,7 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</p>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-white">+40 123 456 789</p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">+6289503279320</p>
                   </div>
                 </div>
 
@@ -71,7 +71,7 @@ const Contact = () => {
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Location</p>
-                    <p className="text-lg font-semibold text-gray-900 dark:text-white">Bucharest, Romania</p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">Bekasi, West Java</p>
                   </div>
                 </div>
               </div>
