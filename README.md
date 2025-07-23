@@ -49,7 +49,7 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 ## Contact
 
 - Email: faiz.quways@gmail.com
-- LinkedIn: [muhammad-quways-al-qarany]([https://www.linkedin.com/in/muhammadquways/])
+- LinkedIn: [[muhammad-quways-al-qarany](https://www.linkedin.com/in/muhammadquways/)]
 
 ---
 
