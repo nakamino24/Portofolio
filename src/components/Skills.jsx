@@ -134,7 +134,7 @@ const Skills = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="text-3xl animate-bounce">{getSkillIcon(skill.name)}</div>
+                  <div className="text-3xl">{getSkillIcon(skill.name)}</div>
                   <div>
                     <h4 className="font-semibold text-gray-900 dark:text-white text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {skill.name}
@@ -190,7 +190,7 @@ const Skills = () => {
                 key={index}
                 className="group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 dark:hover:from-indigo-900/20 dark:hover:to-purple-900/20"
               >
-                <div className="text-2xl mb-2 group-hover:animate-bounce">💡</div>
+                <div className="text-2xl mb-2">💡</div>
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {skill}
                 </span>
