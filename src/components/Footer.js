@@ -40,16 +40,17 @@ const Footer = () => {
               Connect With Me
             </h3>
             <div className="space-y-2 text-sm">
-              <p>📧 quways.alqarany@example.com</p>
+              <p>📧 faiz.quways@gmail.com</p>
+              <p>📱 0895-0327-9320</p>
               <p>🎓 Computer Engineering Graduate</p>
               <p>🏢 IPB University</p>
-              <p>📍 Indonesia</p>
+              <p>📍 Pondok Gede, Bekasi</p>
             </div>
             
             {/* Social Links */}
             <div className="flex space-x-4 mt-4">
               <a
-                href="www.linkedin.com/in/muhammadquways"
+                href="https://www.linkedin.com/in/muhammadquways"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"

@@ -21,18 +21,18 @@ const About = () => {
               Computer Engineering Graduate
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              I'm Muhammad Quways Al-Qarany, a dedicated Computer Engineering graduate from IPB University 
-              with a GPA of 3.69. I have a passion for technology and software development, with extensive 
-              experience in both technical and administrative roles.
+              I'm Muhammad Quways Al-Qarany, a recent graduate from IPB University with a Diploma in Computer Engineering 
+              (GPA 3.69). I have a passion for technology and administration, with extensive experience in helpdesk support, 
+              software development, and administrative roles.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-              My journey in technology has taken me through various roles including Software Engineer at 
-              PT Wijaya Karya, Teaching Assistant and Research Staff at IPB University, and Helpdesk support 
-              for prestigious programs like Cisco Networking Academy and Python Professional Academy.
+              My journey has taken me through various roles including Software Engineer at PT Wijaya Karya, 
+              Assistant Lecturer and Research Staff at IPB University, and Helpdesk support for Cisco Networking Academy 
+              and Python Professional Academy. I'm skilled in Microsoft Office, databases, and front-end web technologies.
             </p>
             <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              I believe in continuous learning and staying updated with the latest technologies to deliver 
-              innovative solutions that make a real impact.
+              As a fast learner and team player with strong problem-solving skills, I believe in continuous learning 
+              and staying updated with the latest technologies to deliver innovative solutions.
             </p>
             <button
               onClick={downloadCV}
@@ -65,19 +65,23 @@ const About = () => {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Degree:</span>
-                <span className="text-gray-900 dark:text-white font-medium">Computer Engineering</span>
+                <span className="text-gray-900 dark:text-white font-medium">Diploma Computer Engineering</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">GPA:</span>
                 <span className="text-gray-900 dark:text-white font-medium">3.69</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Experience:</span>
-                <span className="text-gray-900 dark:text-white font-medium">3+ Years</span>
+                <span className="text-gray-600 dark:text-gray-400">Location:</span>
+                <span className="text-gray-900 dark:text-white font-medium">Pondok Gede, Bekasi</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Specialization:</span>
-                <span className="text-gray-900 dark:text-white font-medium">Software Engineering</span>
+                <span className="text-gray-600 dark:text-gray-400">Email:</span>
+                <span className="text-gray-900 dark:text-white font-medium">faiz.quways@gmail.com</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600 dark:text-gray-400">Phone:</span>
+                <span className="text-gray-900 dark:text-white font-medium">0895-0327-9320</span>
               </div>
             </div>
           </div>

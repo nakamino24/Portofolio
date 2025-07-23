@@ -3,45 +3,9 @@ import React from 'react';
 const Experience = () => {
   const experiences = [
     {
-      title: 'Software Engineer',
-      company: 'PT Wijaya Karya',
-      period: '2023 - Present',
-      description: [
-        'Developed and maintained web applications using modern technologies',
-        'Collaborated with cross-functional teams to deliver high-quality software solutions',
-        'Implemented responsive web designs and optimized application performance',
-        'Contributed to the development of Web Admin Portal systems'
-      ],
-      technologies: ['JavaScript', 'PHP', 'SQL', 'HTML/CSS']
-    },
-    {
-      title: 'Teaching Assistant & Research Staff',
-      company: 'IPB University',
-      period: '2022 - 2023',
-      description: [
-        'Assisted in teaching computer engineering courses to undergraduate students',
-        'Conducted research in software engineering and computer systems',
-        'Mentored students in programming and technical problem-solving',
-        'Contributed to academic research projects and publications'
-      ],
-      technologies: ['Python', 'Research Methodologies', 'Academic Writing', 'Mentoring']
-    },
-    {
-      title: 'Helpdesk Support',
-      company: 'Cisco Networking Academy & Python Professional Academy',
-      period: '2021 - 2022',
-      description: [
-        'Provided technical support for Cisco Networking Academy students',
-        'Assisted students with Python Professional Academy coursework',
-        'Troubleshot network configuration issues and programming challenges',
-        'Created documentation and tutorials for common technical problems'
-      ],
-      technologies: ['Cisco Networking', 'Python', 'Network Troubleshooting', 'Documentation']
-    },
-    {
       title: 'Administrative Intern',
       company: 'PT Compotec International',
-      period: '2020 - 2021',
+      period: 'May - June 2025',
       description: [
         'Managed administrative tasks and office operations',
         'Supported various departments with data entry and documentation',
@@ -49,6 +13,66 @@ const Experience = () => {
         'Gained experience in corporate environment and business processes'
       ],
       technologies: ['Microsoft Office', 'Data Management', 'Project Coordination']
+    },
+    {
+      title: 'Software Engineer',
+      company: 'PT Wijaya Karya',
+      period: 'August 2024 - January 2025',
+      description: [
+        'Developed a web-based internal system using JavaScript, SQL, and HTML/CSS',
+        'Created and maintained Web Admin Portal for internal operations',
+        'Collaborated with cross-functional teams to deliver software solutions',
+        'Implemented responsive web designs and optimized application performance'
+      ],
+      technologies: ['JavaScript', 'SQL', 'HTML/CSS', 'Web Development']
+    },
+    {
+      title: 'Assistant Lecturer',
+      company: 'IPB University',
+      period: 'January - July 2024',
+      description: [
+        'Assisted in teaching computer engineering courses to students',
+        'Mentored students in programming and technical problem-solving',
+        'Supported academic activities and course administration',
+        'Helped students understand complex technical concepts'
+      ],
+      technologies: ['Teaching', 'Mentoring', 'Academic Support', 'Computer Engineering']
+    },
+    {
+      title: 'Helpdesk Support',
+      company: 'Cisco Networking Academy',
+      period: 'May - June 2024',
+      description: [
+        'Provided technical support for Cisco Networking Academy students',
+        'Troubleshot network configuration issues and technical challenges',
+        'Created documentation and tutorials for common problems',
+        'Assisted students with CCNA course materials and lab exercises'
+      ],
+      technologies: ['Cisco Networking', 'Network Troubleshooting', 'Documentation', 'Student Support']
+    },
+    {
+      title: 'Helpdesk Support',
+      company: 'Python Professional Academy',
+      period: 'February - March 2024',
+      description: [
+        'Assisted students with Python Professional Academy coursework',
+        'Provided technical support for programming challenges',
+        'Created user support documentation and training materials',
+        'Helped students understand Python programming concepts'
+      ],
+      technologies: ['Python', 'Programming Support', 'Documentation', 'Student Assistance']
+    },
+    {
+      title: 'Research Staff',
+      company: 'IPB University',
+      period: 'July - December 2023',
+      description: [
+        'Conducted research in computer engineering and technology',
+        'Supported academic research projects and data collection',
+        'Assisted in research documentation and analysis',
+        'Contributed to research publications and presentations'
+      ],
+      technologies: ['Research Methodologies', 'Data Analysis', 'Academic Writing', 'Technology Research']
     }
   ];
 

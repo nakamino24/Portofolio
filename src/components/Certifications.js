@@ -3,51 +3,67 @@ import React from 'react';
 const Certifications = () => {
   const certifications = [
     {
-      title: 'CCNA (Complete Modules)',
+      title: 'CCNA - Introduction to Networks',
       issuer: 'Cisco Networking Academy',
-      year: '2023',
-      description: 'Comprehensive networking certification covering routing, switching, network security, and network troubleshooting.',
-      skills: ['Network Configuration', 'Routing & Switching', 'Network Security', 'Troubleshooting'],
+      year: '2024',
+      description: 'Fundamental networking concepts including network protocols, network models, and basic network configuration.',
+      skills: ['Network Fundamentals', 'OSI Model', 'TCP/IP', 'Basic Configuration'],
       category: 'Networking'
     },
     {
-      title: 'Cybersecurity Certification',
+      title: 'CCNA - Switching, Routing',
       issuer: 'Cisco Networking Academy',
-      year: '2023',
-      description: 'Advanced certification in cybersecurity principles, threat analysis, and security implementation strategies.',
-      skills: ['Threat Analysis', 'Security Implementation', 'Risk Assessment', 'Incident Response'],
+      year: '2024',
+      description: 'Advanced networking certification covering switching and routing technologies for enterprise networks.',
+      skills: ['Switching Technologies', 'Routing Protocols', 'VLAN Configuration', 'Network Troubleshooting'],
+      category: 'Networking'
+    },
+    {
+      title: 'CCNA - Enterprise Networking',
+      issuer: 'Cisco Networking Academy',
+      year: '2024',
+      description: 'Enterprise-level networking concepts including network security, QoS, and network management.',
+      skills: ['Enterprise Networks', 'Network Security', 'QoS', 'Network Management'],
+      category: 'Networking'
+    },
+    {
+      title: 'Cybersecurity Essentials',
+      issuer: 'Cisco Networking Academy',
+      year: '2024',
+      description: 'Essential cybersecurity principles, threat analysis, and security implementation strategies.',
+      skills: ['Threat Analysis', 'Security Implementation', 'Risk Assessment', 'Security Fundamentals'],
       category: 'Security'
     },
     {
       title: 'CyberOps Associate',
       issuer: 'Cisco Networking Academy',
-      year: '2022',
+      year: '2024',
       description: 'Certification focused on cybersecurity operations, monitoring, and threat detection in enterprise environments.',
       skills: ['Security Monitoring', 'Threat Detection', 'Log Analysis', 'Security Tools'],
       category: 'Security'
     },
     {
-      title: 'Fullstack Development',
+      title: 'Fullstack Developer',
       issuer: 'ITBox',
-      year: '2022',
+      year: '2023',
       description: 'Comprehensive fullstack development certification covering both frontend and backend technologies.',
       skills: ['Frontend Development', 'Backend Development', 'Database Design', 'API Development'],
       category: 'Development'
     },
     {
-      title: 'Web Programming',
-      issuer: 'Digital Talent',
-      year: '2021',
-      description: 'Professional certification in modern web programming technologies and best practices.',
+      title: 'Web Development',
+      issuer: 'MySkill',
+      year: '2023',
+      description: 'Professional certification in modern web development technologies and best practices.',
       skills: ['HTML/CSS', 'JavaScript', 'Responsive Design', 'Web Standards'],
       category: 'Development'
     },
     {
       title: 'Web Programming',
-      issuer: 'MySkill',
-      year: '2021',
-      description: 'Advanced web programming certification with focus on modern frameworks and development methodologies.',
-      skills: ['Modern Frameworks', 'Development Methodologies', 'Code Quality', 'Testing'],
+      issuer: 'Digital Talent Scholarship',
+      year: '2023',
+      description: 'Government-sponsored certification program in web programming with focus on practical skills.',
+      skills: ['Web Programming', 'Database Integration', 'Modern Frameworks', 'Best Practices'],
       category: 'Development'
     }
   ];
@@ -73,11 +89,11 @@ const Certifications = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
-            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">6</div>
+            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">8</div>
             <div className="text-gray-600 dark:text-gray-300">Total Certifications</div>
           </div>
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
-            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">3</div>
+            <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">5</div>
             <div className="text-gray-600 dark:text-gray-300">Cisco Certifications</div>
           </div>
           <div className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
