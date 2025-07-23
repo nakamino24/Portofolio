@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
   const roles = [
-    "Full-Stack Developer",
-    "Software Engineer", 
-    "System Administrator",
-    "Network Specialist"
+    "Software Engineer",
+    "Administration Staff"
   ];
 
   const stats = [
