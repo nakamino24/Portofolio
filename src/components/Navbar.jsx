@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { useDarkMode } from '../App';
+import { generatePDF } from '../utils/pdfGenerator';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { darkMode, toggleDarkMode } = useDarkMode();
+
+  const downloadCV = () => {
+    try {
+      generatePDF();
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Sorry, there was an error generating the PDF. Please try again.');
+    }
+  };
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -20,9 +30,26 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              Muhammad Quways Al-Qarany
-            </span>
+            <button
+              onClick={downloadCV}
+              className="group relative inline-flex items-center px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <svg
+                className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              Download CV
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
