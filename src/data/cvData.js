@@ -150,44 +150,40 @@ export const cvData = {
 
   certifications: [
     {
-      title: "CCNA - Introduction to Networks",
-      issuer: "Cisco Networking Academy",
-      year: "2024"
-    },
-    {
-      title: "CCNA - Switching, Routing",
-      issuer: "Cisco Networking Academy", 
-      year: "2024"
-    },
-    {
-      title: "CCNA - Enterprise Networking",
-      issuer: "Cisco Networking Academy",
-      year: "2024"
-    },
-    {
-      title: "Cybersecurity Essentials",
-      issuer: "Cisco Networking Academy",
-      year: "2024"
-    },
-    {
-      title: "CyberOps Associate",
-      issuer: "Cisco Networking Academy",
-      year: "2024"
+      title: "Junior Web Developer",
+      issuer: "Digital Talent Scholarship"
     },
     {
       title: "Fullstack Developer",
-      issuer: "ITBox",
-      year: "2023"
+      issuer: "ITBox"
     },
     {
       title: "Web Development",
-      issuer: "MySkill",
-      year: "2023"
+      issuer: "MySkill"
     },
     {
       title: "Web Programming",
-      issuer: "Digital Talent Scholarship",
-      year: "2023"
+      issuer: "Digital Talent Scholarship"
+    },
+    {
+      title: "CyberOps Associate",
+      issuer: "Cisco Networking Academy"
+    },
+    {
+      title: "Cybersecurity Essentials",
+      issuer: "Cisco Networking Academy"
+    },
+    {
+      title: "CCNA - Enterprise Networking",
+      issuer: "Cisco Networking Academy"
+    },
+    {
+      title: "CCNA - Switching, Routing",
+      issuer: "Cisco Networking Academy"
+    },
+    {
+      title: "CCNA - Introduction to Networks",
+      issuer: "Cisco Networking Academy"
     }
   ]
 };

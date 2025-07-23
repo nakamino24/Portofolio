@@ -204,7 +204,6 @@ export const generatePDF = () => {
     checkNewPage(6);
     doc.setFontSize(10);
     doc.text(`• ${cert.title}`, margin, currentY);
-    doc.text(cert.year, pageWidth + margin - 10, currentY, { align: "right" });
     currentY += 4;
     doc.setFontSize(9);
     doc.setFont(undefined, 'italic');
