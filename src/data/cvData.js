@@ -103,6 +103,23 @@ export const cvData = {
     }
   ],
 
+  organizationalExperience: [
+    {
+      title: "Staff of Public Relation",
+      organization: "Louder N Louder",
+      period: "Apr 2021 - Sep 2021",
+      location: "Online",
+      responsibilities: [
+        "Coordinated with various media outlets to secure partnerships and media coverage for the event",
+        "Developed and implemented strategies to enhance the event's visibility and reach through social media and other media platforms",
+        "Created and managed content for promotional materials, including social media posts, press releases, and event advertisements",
+        "Collaborated with the marketing team to ensure consistent messaging and branding across all media channels",
+        "Assisted in negotiating sponsorship deals and managing relationships with media partners",
+        "Monitored and analyzed media coverage to measure the effectiveness of media partnerships and promotional efforts"
+      ]
+    }
+  ],
+
   technicalSkills: [
     {
       category: "Programming Languages",

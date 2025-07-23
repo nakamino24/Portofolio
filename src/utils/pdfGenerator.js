@@ -138,6 +138,39 @@ export const generatePDF = () => {
     currentY += 3;
   });
 
+  // ORGANIZATIONAL EXPERIENCE
+  if (cvData.organizationalExperience && cvData.organizationalExperience.length > 0) {
+    addSectionHeader('Organizational Experience');
+    cvData.organizationalExperience.forEach((orgExp, index) => {
+      checkNewPage(25);
+      
+      // Position title and organization
+      doc.setFontSize(11);
+      doc.setFont(undefined, 'bold');
+      doc.text(`${orgExp.title}`, margin, currentY);
+      doc.text(orgExp.period, pageWidth + margin - 10, currentY, { align: "right" });
+      currentY += 5;
+      
+      doc.setFont(undefined, 'normal');
+      doc.text(`${orgExp.organization}, ${orgExp.location}`, margin, currentY);
+      currentY += 5;
+      
+      // Responsibilities
+      doc.setFontSize(10);
+      orgExp.responsibilities.forEach(resp => {
+        checkNewPage(8);
+        const bulletText = `• ${resp}`;
+        const wrappedResp = doc.splitTextToSize(bulletText, pageWidth - 10);
+        wrappedResp.forEach(line => {
+          doc.text(line, margin + 5, currentY);
+          currentY += 4;
+        });
+      });
+      
+      currentY += 3;
+    });
+  }
+
   // TECHNICAL SKILLS
   addSectionHeader('Technical Skills');
   cvData.technicalSkills.forEach(skillGroup => {
