@@ -8,6 +8,7 @@ import Projects from './components/Projects.jsx';
 import Certifications from './components/Certifications.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import WorkTracker from './components/WorkTracker.jsx';
 
 // Dark Mode Context
 const DarkModeContext = createContext();
@@ -45,15 +46,33 @@ function App() {
 
   return (
     <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
-      <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
         <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Certifications />
-        <Contact />
+        <main>
+          {/* Hero Section with Profile */}
+          <Hero />
+          
+          {/* About Section */}
+          <About />
+          
+          {/* Skills Section */}
+          <Skills />
+
+          {/* Experience Section */}
+          <Experience />
+
+          {/* Work Tracker Section */}
+          <WorkTracker />
+
+          {/* Projects Section */}
+          <Projects />
+          
+          {/* Certifications Section */}
+          <Certifications />
+          
+          {/* Contact Section */}
+          <Contact />
+        </main>
         <Footer />
       </div>
     </DarkModeContext.Provider>
