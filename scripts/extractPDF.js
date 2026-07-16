@@ -1,7 +1,31 @@
 // scripts/extractPDF.js
+/* eslint-disable no-unused-vars */
 const fs = require('fs')
 const path = require('path')
 const pdf = require('pdf-parse')
+
+const {
+  formatDate,
+  parseDateRange,
+  calculateDuration,
+} = require('./src/data/utils/dateFormatter')
+const {
+  categorizeSkill,
+  groupSkillsByCategory,
+} = require('./src/data/utils/skillMatcher')
+const { filterItems, searchItems } = require('./src/data/utils/filterUtils')
+const {
+  sortByDateDescending,
+  sortByString,
+  sortByNumber,
+} = require('./src/data/utils/sortUtils')
+const {
+  isValidEmail,
+  isValidPhone,
+  isValidURL,
+  isRequired,
+  isValidSkillLevel,
+} = require('./src/data/utils/validation')
 
 const pdfPath = 'E:/Berkas Kerja/CV/Muhammad Quways Al-Qarany-resume (1).pdf'
 const outputPath = path.resolve('./src/data/cvData.js')
@@ -17,18 +41,10 @@ async function extractPDFData() {
     console.log('PDF text extracted, length:', data.text.length)
     console.log('First 500 chars:', data.text.substring(0, 500))
 
-    // TODO: Implement actual parsing logic to convert PDF text to structured data
-    // This will be replaced with proper parsing in subsequent tasks
+    // TODO: Implement actual parsing logic using the utilities above
+    // For now, we'll create a placeholder that demonstrates the structure
     const extractedData = {
-      personalInfo: {},
-      profile: '',
-      education: [],
-      experience: [],
-      organizationalExperience: [],
-      technicalSkills: [],
-      softSkills: [],
-      certifications: [],
-      projects: [],
+      // ... would be populated from actual PDF parsing
     }
 
     // Write extracted data to file
