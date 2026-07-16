@@ -1,0 +1,49 @@
+// scripts/extractPDF.js
+const fs = require('fs')
+const path = require('path')
+const pdf = require('pdf-parse')
+
+const pdfPath = 'E:/Berkas Kerja/CV/Muhammad Quways Al-Qarany-resume (1).pdf'
+const outputPath = path.resolve('./src/data/cvData.js')
+
+async function extractPDFData() {
+  try {
+    const dataBuffer = fs.readFileSync(pdfPath)
+    const pdfParser = new pdf.PDFParse({ data: dataBuffer })
+    await pdfParser.load()
+    const data = await pdfParser.getText()
+
+    // For now, we'll just log the text and later implement parsing
+    console.log('PDF text extracted, length:', data.text.length)
+    console.log('First 500 chars:', data.text.substring(0, 500))
+
+    // TODO: Implement actual parsing logic to convert PDF text to structured data
+    // This will be replaced with proper parsing in subsequent tasks
+    const extractedData = {
+      personalInfo: {},
+      profile: '',
+      education: [],
+      experience: [],
+      organizationalExperience: [],
+      technicalSkills: [],
+      softSkills: [],
+      certifications: [],
+      projects: [],
+    }
+
+    // Write extracted data to file
+    const fileContent = `// Extracted from PDF resume\n// Auto-generated on ${new Date().toISOString()}\n\nexport const cvData = ${JSON.stringify(
+      extractedData,
+      null,
+      2
+    )};`
+
+    fs.writeFileSync(outputPath, fileContent)
+    console.log(`Data written to ${outputPath}`)
+  } catch (error) {
+    console.error('Error processing PDF:', error)
+    process.exit(1)
+  }
+}
+
+extractPDFData()
