@@ -8,7 +8,6 @@ import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
 import Certifications from './components/Certifications.jsx'
 import Contact from './components/Contact.jsx'
-import WorkTracker from './components/WorkTracker.jsx'
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <About />
         <Skills />
         <Experience />
-        <WorkTracker />
         <Projects />
         <Certifications />
         <Contact />
