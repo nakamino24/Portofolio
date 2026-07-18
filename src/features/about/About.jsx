@@ -244,24 +244,24 @@ const About = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24 md:py-32">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* ── Section header ── */}
-        <div className="mb-14">
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400 mb-3">
+        <div className="mb-10">
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400 mb-2">
             About
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-5">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
             My journey
           </h2>
 
           {/* Short bio */}
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {showFullBio ? profile : profileHighlight}
           </p>
           {profile.includes('.') && profile.split('.').length > 2 && (
             <button
               onClick={() => setShowFullBio(!showFullBio)}
-              className="inline-block mt-1 text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
+              className="inline-block mt-2 text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline"
             >
               {showFullBio ? 'Show less' : 'Read full bio'}
             </button>
@@ -269,10 +269,10 @@ const About = () => {
         </div>
 
         {/* ── Quick stats row ── */}
-        <div className="flex flex-wrap gap-6 sm:gap-10 mb-14 pb-10 border-b border-gray-100 dark:border-gray-800">
+        <div className="flex flex-wrap gap-4 sm:gap-6 mb-10 pb-6 border-b border-gray-200 dark:border-gray-700">
           {stats.map((s, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <span className="text-2xl font-bold text-gray-900 dark:text-white">
+            <div key={i} className="flex items-center gap-2">
+              <span className="text-lg font-bold text-gray-900 dark:text-white">
                 {s.value}
               </span>
               <span className="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-gray-500">
@@ -284,7 +284,7 @@ const About = () => {
 
         {/* ── Timeline ── */}
         <div>
-          <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-8">
+          <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-6">
             Career timeline
           </h3>
 
@@ -302,8 +302,8 @@ const About = () => {
 
         {/* ── Community involvement ── */}
         {orgExp.length > 0 && (
-          <div className="mt-16 pt-10 border-t border-gray-100 dark:border-gray-800">
-            <div className="flex items-center gap-2 mb-6">
+          <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-2 mb-4">
               <span className="text-gray-400 dark:text-gray-500">
                 <IconCommunity />
               </span>
@@ -315,9 +315,9 @@ const About = () => {
             {orgExp.map((org, i) => (
               <div
                 key={i}
-                className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl px-5 py-4 shadow-sm"
+                className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl px-4 py-3 shadow-sm"
               >
-                <div className="flex items-start justify-between gap-4 mb-2">
+                <div className="flex items-start justify-between gap-3 mb-2">
                   <div className="min-w-0">
                     <h4 className="text-base font-semibold text-gray-900 dark:text-white">
                       {org.title}
@@ -326,11 +326,11 @@ const About = () => {
                       {org.organization}
                     </p>
                   </div>
-                  <span className="shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2.5 py-1 rounded-full">
+                  <span className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2 py-0.5 rounded-full">
                     {org.period}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
                   {org.responsibilities?.[0]}
                 </p>
               </div>

@@ -5,7 +5,7 @@ import { Card, Badge } from '../../shared/ui'
 import { cvData } from '../../shared/data/index'
 
 /**
- * Skills section — premium redesign.
+ * Skills section — redesigned for consistency.
  *
  * Hierarchy:
  *   1. Header + meta strip (years, certs, projects) — credibility at a glance.
@@ -131,7 +131,7 @@ KindChip.propTypes = {
 
 const MetaStat = ({ value, label }) => (
   <div className="flex flex-col">
-    <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl">
+    <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-lg font-semibold text-transparent">
       {value}
     </span>
     <span className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-400">
@@ -166,20 +166,20 @@ const CategoryPanel = ({ category, items, evidence }) => {
     description: category,
   }
   return (
-    <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-indigo-500/40 hover:bg-slate-900/60 sm:p-6">
-      <div className="mb-4 flex items-start justify-between gap-3">
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-lg text-indigo-300">
+    <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-4 transition hover:border-indigo-500/40 hover:bg-slate-900/60">
+      <div className="mb-3 flex items-start justify-between gap-2">
+        <div className="flex items-start gap-2">
+          <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-indigo-500/30 bg-indigo-500/10 text-lg text-indigo-300">
             {meta.icon}
           </span>
           <div>
-            <h4 className="text-base font-semibold text-white">{category}</h4>
+            <h3 className="text-lg font-semibold text-white">{category}</h3>
             <p className="mt-0.5 text-xs leading-relaxed text-slate-400">
               {meta.description}
             </p>
           </div>
         </div>
-        <span className="shrink-0 rounded-md bg-slate-800/80 px-2 py-1 text-[11px] font-medium text-slate-400">
+        <span className="shrink-0 rounded-md bg-slate-800/80 px-2 py-0.5 text-[11px] font-medium text-slate-400">
           {items.length} {items.length === 1 ? 'item' : 'items'}
         </span>
       </div>
@@ -191,7 +191,7 @@ const CategoryPanel = ({ category, items, evidence }) => {
       </div>
 
       {evidence ? (
-        <div className="mt-4 border-t border-slate-800 pt-3 text-xs text-slate-400">
+        <div className="mt-3 border-t border-slate-800 pt-2 text-xs text-slate-400">
           <span className="font-semibold text-slate-300">Used in:</span>{' '}
           {evidence}
         </div>
@@ -239,7 +239,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-slate-950 py-20 text-slate-100 transition-colors duration-300 sm:py-24"
+      className="relative overflow-hidden bg-slate-950 py-16 text-slate-100"
     >
       {/* Ambient gradient — keeps the dark theme + purple/blue branding. */}
       <div
@@ -253,13 +253,13 @@ const Skills = () => {
           <span className="inline-block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-xs font-semibold uppercase tracking-[0.28em] text-transparent">
             Skills & Expertise
           </span>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
             Built through{' '}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               real projects, real roles, real certifications.
             </span>
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-slate-300">
             A Computer Engineering graduate with a dual profile: production web
             engineering on one side, enterprise networking and operational
             administration on the other. Below is what I&apos;ve shipped and
@@ -268,7 +268,7 @@ const Skills = () => {
         </div>
 
         {/* ---------- Meta strip ---------- */}
-        <div className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-6 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:grid-cols-4 sm:gap-10">
+        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
           <MetaStat value={stats.techCount} label="Technologies" />
           <MetaStat value={stats.certCount} label="Certifications" />
           <MetaStat value={stats.projectCount} label="Portfolio projects" />
@@ -276,9 +276,9 @@ const Skills = () => {
         </div>
 
         {/* ---------- Featured pillars ---------- */}
-        <div className="mt-16 sm:mt-20">
-          <div className="mb-6 flex items-baseline justify-between">
-            <h3 className="text-xl font-semibold text-white sm:text-2xl">
+        <div className="mt-12">
+          <div className="mb-4 flex items-baseline justify-between">
+            <h3 className="text-lg font-semibold text-white">
               Featured expertise
             </h3>
             <span className="hidden text-xs uppercase tracking-[0.18em] text-slate-500 sm:block">
@@ -297,7 +297,7 @@ const Skills = () => {
                   onClick={() => setOpenId(p.id)}
                   aria-pressed={active}
                   className={cn(
-                    'rounded-full border px-4 py-2 text-sm font-medium transition',
+                    'rounded-full border px-3 py-1 text-sm font-medium transition',
                     active
                       ? 'border-transparent bg-gradient-to-r text-white shadow-lg shadow-indigo-500/20 ' +
                           p.tone
@@ -315,19 +315,17 @@ const Skills = () => {
             <Card
               key={p.id}
               className={cn(
-                'mt-5 overflow-hidden border-slate-800 bg-slate-900/60 p-0 ring-1',
+                'mt-4 overflow-hidden border-slate-800 bg-slate-900/60 p-0 ring-1',
                 p.ring
               )}
             >
-              <div className={cn('bg-gradient-to-r p-6 sm:p-8', p.tone)}>
-                <h4 className="text-xl font-semibold text-white sm:text-2xl">
-                  {p.label}
-                </h4>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base">
+              <div className={cn('bg-gradient-to-r p-4', p.tone)}>
+                <h3 className="text-lg font-semibold text-white">{p.label}</h3>
+                <p className="mt-2 text-base leading-relaxed text-white/85">
                   {p.summary}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-2 p-6 sm:p-8">
+              <div className="flex flex-wrap gap-2 p-4">
                 {p.anchors.map((a, i) => (
                   <KindChip
                     key={`${a.kind}-${i}`}
@@ -341,9 +339,9 @@ const Skills = () => {
         </div>
 
         {/* ---------- Skill categories ---------- */}
-        <div className="mt-16 sm:mt-20">
-          <div className="mb-6 flex items-baseline justify-between">
-            <h3 className="text-xl font-semibold text-white sm:text-2xl">
+        <div className="mt-12">
+          <div className="mb-4 flex items-baseline justify-between">
+            <h3 className="text-lg font-semibold text-white">
               Technical stack — grouped
             </h3>
             <span className="hidden text-xs text-slate-500 sm:block">
@@ -352,7 +350,7 @@ const Skills = () => {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             {cvData.technicalSkills.map((cat) => (
               <CategoryPanel
                 key={cat.category}
@@ -365,10 +363,10 @@ const Skills = () => {
         </div>
 
         {/* ---------- Administration + soft skills (quiet row) ---------- */}
-        <div className="mt-16 rounded-2xl border border-slate-800 bg-slate-900/30 p-6 sm:mt-20 sm:p-8">
-          <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-12 rounded-2xl border border-slate-800 bg-slate-900/30 p-4">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-white sm:text-xl">
+              <h3 className="text-lg font-semibold text-white">
                 Administration & professional skills
               </h3>
               <p className="mt-1 text-sm text-slate-400">
@@ -404,10 +402,10 @@ const Skills = () => {
             ))}
           </div>
 
-          <div className="mt-6 border-t border-slate-800 pt-5">
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+          <div className="mt-4 border-t border-slate-800 pt-3">
+            <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
               Soft skills
-            </h4>
+            </h3>
             <div className="flex flex-wrap gap-2">
               {cvData.softSkills.map((s) => (
                 <span
@@ -422,11 +420,11 @@ const Skills = () => {
         </div>
 
         {/* ---------- Tools & platforms (dense cloud) ---------- */}
-        <div className="mt-16 sm:mt-20">
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
+        <div className="mt-12">
+          <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
             Tools & platforms I work with
           </h3>
-          <div className="flex flex-wrap gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+          <div className="flex flex-wrap gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-3">
             {[
               'React.js',
               'Node.js',
