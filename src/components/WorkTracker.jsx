@@ -1,37 +1,35 @@
-import React from 'react';
+import React from 'react'
 const WorkTracker = () => {
-
-  const [entries, setEntries] = React.useState([]);
+  const [entries, setEntries] = React.useState([])
   const [form, setForm] = React.useState({
     title: '',
     description: '',
     category: '',
     hours: 0,
     date: new Date().toISOString().split('T')[0],
-    status: 'pending'
-  });
+    status: 'pending',
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!form.title.trim()) return;
-    
+    e.preventDefault()
+    if (!form.title.trim()) return
+
     const newEntry = {
       ...form,
       id: Date.now(),
-      date: new Date(form.date).toISOString()
-    };
-    
-    setEntries([newEntry, ...entries]);
+      date: new Date(form.date).toISOString(),
+    }
+
+    setEntries([newEntry, ...entries])
     setForm({
       title: '',
       description: '',
       category: '',
       hours: 0,
       date: new Date().toISOString().split('T')[0],
-      status: 'pending'
-    });
-  };
-
+      status: 'pending',
+    })
+  }
 
   return (
     <div className="p-6">
@@ -41,35 +39,40 @@ const WorkTracker = () => {
           type="text"
           placeholder="Enter task title"
           value={form.title}
-          onChange={(e) => setForm({...form, title: e.target.value})}
+          onChange={(e) => setForm({ ...form, title: e.target.value })}
           className="border p-2 w-full mb-2"
         />
         <input
           type="number"
           placeholder="Hours spent"
           value={form.hours}
-          onChange={(e) => setForm({...form, hours: parseFloat(e.target.value) || 0})}
+          onChange={(e) =>
+            setForm({ ...form, hours: parseFloat(e.target.value) || 0 })
+          }
           className="border p-2 w-full mb-2"
           min="0"
           step="0.5"
         />
         <select
           value={form.status}
-          onChange={(e) => setForm({...form, status: e.target.value})}
+          onChange={(e) => setForm({ ...form, status: e.target.value })}
           className="border p-2 w-full mb-2"
         >
           <option value="pending">Pending</option>
           <option value="in-progress">In Progress</option>
           <option value="completed">Completed</option>
         </select>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        >
           Add Entry
         </button>
       </form>
       <div>
         <h3 className="text-xl mb-2">Entries:</h3>
         <ul>
-          {entries.map((entry, index) => (
+          {entries.map((entry) => (
             <li key={entry.id} className="p-3 mb-2 border rounded">
               <div className="flex justify-between">
                 <div>
@@ -83,9 +86,13 @@ const WorkTracker = () => {
                   <span className="block mb-1">{entry.hours}h</span>
                   <span className="px-2 py-1 rounded text-sm">
                     {entry.status === 'completed' ? (
-                      <span className="bg-green-100 text-green-800">Completed</span>
+                      <span className="bg-green-100 text-green-800">
+                        Completed
+                      </span>
                     ) : (
-                      <span className="bg-blue-100 text-blue-800">In Progress</span>
+                      <span className="bg-blue-100 text-blue-800">
+                        In Progress
+                      </span>
                     )}
                   </span>
                 </div>
@@ -95,8 +102,7 @@ const WorkTracker = () => {
         </ul>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default WorkTracker;
-
+export default WorkTracker

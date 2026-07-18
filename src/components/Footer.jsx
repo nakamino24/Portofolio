@@ -1,7 +1,9 @@
-import React from 'react';
+/* eslint-disable-next-line no-unused-vars */
+/* eslint-disable-next-line no-unused-vars */
+import React from 'react'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-8 transition-colors duration-300">
@@ -13,8 +15,8 @@ const Footer = () => {
               Muhammad Quways Al-Qarany
             </h3>
             <p className="text-sm leading-relaxed">
-              Computer Engineering Graduate passionate about creating innovative software solutions 
-              and contributing to technological advancement.
+              Computer Engineering Graduate passionate about creating innovative
+              software solutions and contributing to technological advancement.
             </p>
           </div>
 
@@ -24,13 +26,62 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#home" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a></li>
-              <li><a href="#skills" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a></li>
-              <li><a href="#experience" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a></li>
-              <li><a href="#projects" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Projects</a></li>
-              <li><a href="#certifications" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Certifications</a></li>
-              <li><a href="#contact" className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a></li>
+              <li>
+                <a
+                  href="#home"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Experience
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#certifications"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Certifications
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -46,7 +97,7 @@ const Footer = () => {
               <p>🏢 IPB University</p>
               <p>📍 Pondok Gede, Bekasi</p>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4 mt-4">
               <a
@@ -79,7 +130,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

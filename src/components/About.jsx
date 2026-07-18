@@ -1,5 +1,7 @@
+/* eslint-disable-next-line no-unused-vars */
 import React from 'react'
-import cvData from '../data/cvData'
+import { cvData } from '../data/index'
+import { Card } from '../components/ui'
 
 const About = () => {
   return (
@@ -37,36 +39,38 @@ const About = () => {
               </div>
               Education
             </h3>
-            {cvData.education.map((edu, index) => (
-              <div
-                key={index}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {edu.degree}
-                    </h4>
-                    <h5 className="text-lg font-medium text-blue-600 dark:text-blue-400">
-                      {edu.institution}
-                    </h5>
+            <div className="space-y-4">
+              {cvData.education.map((edu, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        {edu.degree}
+                      </h4>
+                      <h5 className="text-lg font-medium text-blue-600 dark:text-blue-400">
+                        {edu.institution}
+                      </h5>
+                    </div>
+                    <span className="bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
+                      {edu.gpa}
+                    </span>
                   </div>
-                  <span className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-semibold">
-                    {edu.gpa}
-                  </span>
-                </div>
-                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-1"></div>
-                    <span>{edu.period}</span>
+                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-1"></div>
+                      <span>{edu.period}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-1"></div>
+                      <span>{edu.location}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mt-1"></div>
-                    <span>{edu.location}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+                </Card>
+              ))}
+            </div>
           </div>
 
           {/* Experience Section */}
@@ -77,63 +81,65 @@ const About = () => {
               </div>
               Professional Experience
             </h3>
-            {cvData.experience.map((exp, index) => (
-              <div
-                key={index}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {exp.title}
-                    </h4>
-                    <h5 className="text-lg font-medium text-green-600 dark:text-green-400">
-                      {exp.company}
-                    </h5>
-                  </div>
-                  <span className="inline-block bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-semibold">
-                    {exp.period}
-                  </span>
-                </div>
-                {exp.location && (
-                  <div className="mb-3 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
-                    <span>{exp.location}</span>
-                  </div>
-                )}
-                {exp.responsibilities && (
-                  <div className="space-y-2">
-                    <h5 className="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
-                      Key Responsibilities:
-                    </h5>
-                    <ul className="list-disc list-inside pl-4 space-y-1 text-sm text-gray-600 dark:text-gray-300">
-                      {exp.responsibilities.map((resp, idx) => (
-                        <li key={idx}>{resp}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {exp.technologies && (
-                  <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
-                    <h5 className="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
-                      Technologies:
-                    </h5>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+            <div className="space-y-4">
+              {cvData.experience.map((exp, index) => (
+                <Card
+                  key={index}
+                  className="hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        {exp.title}
+                      </h4>
+                      <h5 className="text-lg font-medium text-green-600 dark:text-green-400">
+                        {exp.company}
+                      </h5>
                     </div>
+                    <span className="bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm font-semibold">
+                      {exp.period}
+                    </span>
                   </div>
-                )}
-              </div>
-            ))}
+                  {exp.location && (
+                    <div className="mb-3 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                      <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
+                      <span>{exp.location}</span>
+                    </div>
+                  )}
+                  {exp.responsibilities && (
+                    <div className="space-y-2">
+                      <h5 className="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
+                        Key Responsibilities:
+                      </h5>
+                      <ul className="list-disc list-inside pl-4 space-y-1 text-sm text-gray-600 dark:text-gray-300">
+                        {exp.responsibilities.map((resp, idx) => (
+                          <li key={idx}>{resp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {exp.technologies && (
+                    <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
+                      <h5 className="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mt-1"></div>
+                        Technologies:
+                      </h5>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 px-3 py-1.5 rounded-full text-xs font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>

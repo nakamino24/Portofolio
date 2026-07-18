@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { useDarkMode } from '../App';
-import { generatePDF } from '../utils/pdfGenerator';
+/* eslint-disable-next-line no-unused-vars */
+import React, { useState } from 'react'
+import { useDarkMode } from '../App'
+import { generatePDF } from '../utils/pdfGenerator'
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { darkMode, toggleDarkMode } = useDarkMode();
+  const [isOpen, setIsOpen] = useState(false)
+  const { darkMode, toggleDarkMode } = useDarkMode()
 
   const downloadCV = () => {
     try {
-      generatePDF();
+      generatePDF()
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Sorry, there was an error generating the PDF. Please try again.');
+      console.error('Error generating PDF:', error)
+      alert('Sorry, there was an error generating the PDF. Please try again.')
     }
-  };
+  }
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -24,7 +25,7 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },
-  ];
+  ]
 
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-lg fixed w-full z-50 transition-colors duration-300">
@@ -129,7 +130,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

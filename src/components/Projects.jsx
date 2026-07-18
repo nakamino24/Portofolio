@@ -1,5 +1,6 @@
+/* eslint-disable-next-line no-unused-vars */
 import React, { useState } from 'react'
-import cvData from '../data/cvData'
+import { cvData } from '../data/cvData'
 
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState(null)

@@ -1,18 +1,20 @@
+/* eslint-disable-next-line no-unused-vars */
 import React from 'react'
 import './index.css'
-import MainLayout from './layout/MainLayout'
-import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
-import Skills from './components/Skills.jsx'
-import Experience from './components/Experience.jsx'
-import Projects from './components/Projects.jsx'
-import Certifications from './components/Certifications.jsx'
-import Contact from './components/Contact.jsx'
+import { ThemeProvider } from './context/ThemeContext'
+import { Hero } from './components/Hero'
+import { About } from './components/About'
+import { Skills } from './components/Skills'
+import { Experience } from './components/Experience'
+import { Projects } from './components/Projects'
+import { Certifications } from './components/Certifications'
+import { Contact } from './components/Contact'
+import Footer from './layout/Footer'
 
 function App() {
   return (
-    <MainLayout>
-      <div className="p-4">
+    <ThemeProvider>
+      <div className="min-w-0">
         <Hero />
         <About />
         <Skills />
@@ -20,8 +22,9 @@ function App() {
         <Projects />
         <Certifications />
         <Contact />
+        <Footer />
       </div>
-    </MainLayout>
+    </ThemeProvider>
   )
 }
 

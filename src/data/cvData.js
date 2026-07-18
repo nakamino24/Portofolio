@@ -1,19 +1,9 @@
-// This will be replaced with actual parsed data from PDF
+// Extracted from PDF resume
+// Auto-generated on 2026-07-17T23:31:46.227Z
+
 export const cvData = {
-  personalInfo: {
-    name: 'Muhammad Quways Al-Qarany',
-    title: 'Computer Engineering Graduate & Software Engineer',
-    email: 'faiz.quways@gmail.com',
-    phone: '0895-0327-9320',
-    location: 'Pondok Gede, Bekasi',
-    linkedin: 'linkedin.com/in/muhammadquways',
-    github: 'github.com/nakamino24',
-    portfolio: 'https://myporto-lime.vercel.app/',
-  },
-
   profile:
-    'Recent Computer Engineering graduate from IPB University with a strong passion for technology and administration. Experienced in helpdesk support, software development, and administrative roles. Skilled in Microsoft Office, databases, and front-end web technologies. Fast learner and team player with excellent problem-solving skills and commitment to continuous learning.',
-
+    'Computer Engineering graduate from IPB University (GPA: 3.69/4.00) with strong organizational, administrative, and technical skills. Experienced in data entry, document management, helpdesk support, and academic administration. Detail- oriented, fast learner, and capable of working effectively both independently and in teams. Proficient in Microsoft Office, file management systems, communication tools, and basic web development technologies.',
   education: [
     {
       degree: 'Diploma in Computer Engineering',
@@ -23,7 +13,6 @@ export const cvData = {
       location: 'Bogor, West Java',
     },
   ],
-
   experience: [
     {
       title: 'Administrative Intern',
@@ -55,9 +44,7 @@ export const cvData = {
       ],
       technologies: ['JavaScript', 'SQL', 'HTML/CSS', 'Web Development'],
     },
-    // More experiences will be added from PDF parsing
   ],
-
   organizationalExperience: [
     {
       title: 'Staff of Public Relation',
@@ -74,7 +61,6 @@ export const cvData = {
       ],
     },
   ],
-
   technicalSkills: [
     {
       category: 'Programming Languages',
@@ -102,7 +88,6 @@ export const cvData = {
       ],
     },
   ],
-
   softSkills: [
     'Communication',
     'Teamwork',
@@ -113,7 +98,6 @@ export const cvData = {
     'Leadership',
     'Project Management',
   ],
-
   certifications: [
     {
       title: 'Junior Web Developer',
@@ -143,11 +127,8 @@ export const cvData = {
       ],
       category: 'Development',
     },
-    // More certifications will be added from PDF parsing
   ],
-
   projects: [
-    // Projects will be added from PDF or created based on experience
     {
       title: 'Manpower Management Center',
       company: 'PT Wijaya Karya',
@@ -168,4 +149,15 @@ export const cvData = {
       },
     },
   ],
+  personalInfo: {
+    name: 'MUHAMMAD QUWAYS AL-QARANY',
+    title: '',
+    email: 'faiz.quways@gmail.com',
+    phone: '0895-0327-9320',
+    location:
+      'JALAN CURUG JAYA E NO.101/A RT 008 RW 001, JATICEMPAKA, PONDOK GEDE',
+    linkedin: 'linkedin.com/in/muhammadquways',
+    github: 'https://myporto-lime.vercel.app/',
+    portfolio: 'https://myporto-lime.vercel.app/',
+  },
 }
