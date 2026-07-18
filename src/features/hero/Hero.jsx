@@ -1,122 +1,75 @@
 /* eslint-disable-next-line no-unused-vars */
 import React from 'react'
-import { Button } from '../../shared/ui'
 import { cvData } from '../../shared/data/index'
 
 const Hero = () => {
-  const { personalInfo, profile, technicalSkills } = cvData
+  const { personalInfo, profile } = cvData
 
-  // Flatten technical skills for display
-  const allSkills = technicalSkills
-    .map((category) => category.skills)
-    .flat()
-    .filter(Boolean)
+  const projectsCount = cvData.projects?.length || 0
+  const skillsCount =
+    cvData.technicalSkills?.reduce(
+      (sum, r) => sum + (r.skills?.length || 0),
+      0
+    ) || 0
+  const certificationsCount = cvData.certifications?.length || 0
+  const experienceYears = '5+'
 
   return (
-    <div
+    <section
       id="home"
-      className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 overflow-hidden"
+      className="relative overflow-hidden bg-white dark:bg-gray-950"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 right-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      {/* Ambient background grid */}
+      <div
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06]"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 1px 1px, #3b82f6 1px, transparent 0)',
+          backgroundSize: '44px 44px',
+        }}
+      />
 
-        {/* Floating geometric shapes */}
-        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg animate-float opacity-30 transform rotate-45"></div>
-        <div className="absolute top-1/3 right-1/4 w-6 h-6 bg-gradient-to-r from-pink-400 to-red-500 rounded-full animate-bounce opacity-40"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full animate-pulse opacity-30"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-12 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-float opacity-40"></div>
+      {/* Two subtle large blobs for depth — muted, not competing */}
+      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[120px]" />
+      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-purple-400/10 blur-[100px]" />
 
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="h-full w-full"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.5) 1px, transparent 0)',
-              backgroundSize: '50px 50px',
-            }}
-          ></div>
-        </div>
-      </div>
-
-      <div className="relative z-10 flex flex-col justify-center items-center text-center px-4 min-h-screen">
-        <div className="max-w-5xl mx-auto">
-          {/* Main Hero Content */}
-          <div className="mb-8">
-            <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-sm font-semibold tracking-wide uppercase">
-                👋 Welcome to my digital space
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 md:py-32 lg:py-36">
+        {/* ── Two-column grid ── */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          {/* ── Left: Content ── */}
+          <div className="max-w-xl">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/40 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-xs font-medium tracking-wide text-blue-700 dark:text-blue-300 uppercase">
+                Available for opportunities
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            {/* Name */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.05] mb-5">
               {personalInfo.name}
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                {personalInfo.title || 'Software Engineer'}
-              </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            {/* Title — gradient accent */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-7 leading-snug">
+              {personalInfo.title || 'Software Engineer'}
+            </h2>
+
+            {/* Profile — shorter, scannable, maximum ~65 char line */}
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-10 max-w-lg">
               {profile}
             </p>
-          </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            {/* Example stats - you can make these dynamic if needed */}
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="text-3xl mb-2">💼</div>
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                {professionalExperience}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Years Experience
-              </div>
-            </div>
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="text-3xl mb-2">🚀</div>
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                {projectsCount}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Projects
-              </div>
-            </div>
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="text-3xl mb-2">🛠️</div>
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                {skillsCount}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Skills
-              </div>
-            </div>
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              <div className="text-3xl mb-2">🏆</div>
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                {certificationsCount}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                Certifications
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              variant="default"
-              size="lg"
-              asChild
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            >
-              <a href="#projects">
-                View My Work
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-4 mb-12">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              >
+                View my work
                 <svg
-                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -129,63 +82,136 @@ const Hero = () => {
                   />
                 </svg>
               </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="group bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-8 py-4 rounded-full font-semibold text-lg border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            >
-              <a href="#contact">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-                Let&apos;s Talk
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+              >
+                Get in touch
               </a>
-            </Button>
+            </div>
+
+            {/* Stats row — small inline badges, supporting role */}
+            <div className="flex flex-wrap gap-x-10 gap-y-5">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-sm">
+                  💼
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">
+                    {experienceYears}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    Years
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 dark:text-purple-400 text-sm">
+                  🚀
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">
+                    {projectsCount}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    Projects
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-sm">
+                  🛠️
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">
+                    {skillsCount}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    Skills
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400 text-sm">
+                  🏆
+                </div>
+                <div>
+                  <div className="text-lg font-bold text-gray-900 dark:text-white">
+                    {certificationsCount}
+                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                    Certs
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Tech Stack Preview */}
-          <div className="mt-16">
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wide">
-              Tech Stack
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              {allSkills.map((skill, index) => (
-                <span
-                  key={index}
-                  className="text-gray-400 dark:text-gray-500 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-default"
-                >
-                  {skill}
-                </span>
-              ))}
+          {/* ── Right: Geometric focal point ── */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="relative">
+              {/* Outer ring */}
+              <div className="w-80 h-80 rounded-full border border-blue-200/30 dark:border-blue-800/20 flex items-center justify-center">
+                {/* Middle ring */}
+                <div className="w-60 h-60 rounded-full border border-purple-200/30 dark:border-purple-800/20 flex items-center justify-center">
+                  {/* Inner solid gradient circle */}
+                  <div className="w-40 h-40 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-400/15 dark:to-purple-400/15 flex items-center justify-center backdrop-blur-sm">
+                    {/* Monogram initials */}
+                    <span className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                      {(
+                        (personalInfo.name || 'M Q')
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')
+                          .slice(0, 2) || 'MQ'
+                      ).toUpperCase()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating tech icons orbiting — subtle */}
+              <div className="absolute -top-6 -right-4 w-14 h-14 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-xl animate-[float_6s_ease-in-out_infinite]">
+                ⚛️
+              </div>
+              <div className="absolute bottom-0 -left-6 w-12 h-12 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-lg animate-[float_5s_ease-in-out_infinite_1s]">
+                🐍
+              </div>
+              <div className="absolute top-1/2 -right-10 w-11 h-11 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-lg animate-[float_7s_ease-in-out_infinite_2s]">
+                ☁️
+              </div>
+              <div className="absolute -bottom-4 right-2 w-10 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-base animate-[float_5.5s_ease-in-out_infinite_0.5s]">
+                🗄️
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Scroll hint — subtle, at bottom */}
+        <div className="mt-20 text-center">
+          <a
+            href="#about"
+            className="inline-flex flex-col items-center gap-2 text-xs font-medium text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+          >
+            <span className="uppercase tracking-widest">Scroll</span>
+            <svg
+              className="w-4 h-4 animate-bounce"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
-
-// Helper counts (could be computed from cvData, but for simplicity we'll use placeholders)
-// In a real app, you would compute these from the data.
-const professionalExperience = '5+' // placeholder
-const projectsCount = cvData.projects?.length || 0
-const skillsCount =
-  cvData.technicalSkills?.reduce(
-    (sum, r) => sum + (r.skills?.length || 0),
-    0
-  ) || 0
-const certificationsCount = cvData.certifications?.length || 0
 
 export default Hero
