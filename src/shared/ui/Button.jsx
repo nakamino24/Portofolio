@@ -8,12 +8,17 @@ const cn = (...classes) => {
 
 const Button = ({
   children,
-  variant = 'default',
-  size = 'default',
-  asChild = false,
+  variant,
+  size,
+  asChild,
   className = '',
   ...props
 }) => {
+  // Set default values
+  variant = variant || 'default'
+  size = size || 'default'
+  asChild = asChild || false
+
   // Variants
   const variantVariants = {
     default: 'bg-primary text-primary-foreground hover:bg-primary/90',
@@ -68,12 +73,6 @@ Button.propTypes = {
   size: PropTypes.oneOf(['default', 'sm', 'lg', 'icon']),
   asChild: PropTypes.bool,
   className: PropTypes.string,
-}
-
-Button.defaultProps = {
-  variant: 'default',
-  size: 'default',
-  asChild: false,
 }
 
 export default Button

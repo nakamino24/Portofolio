@@ -1,11 +1,11 @@
 /* eslint-disable-next-line no-unused-vars */
 import React, { useState } from 'react'
-import { useDarkMode } from '../App'
-import { generatePDF } from '../utils/pdfGenerator'
+import { useTheme } from '../shared/hooks/useTheme'
+import { generatePDF } from '../shared/utils/pdfGenerator'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { darkMode, toggleDarkMode } = useDarkMode()
+  const { darkMode, toggleDarkMode } = useTheme()
 
   const downloadCV = () => {
     try {
@@ -21,7 +21,6 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Work Tracker', href: '#work-tracker' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Contact', href: '#contact' },

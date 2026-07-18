@@ -1,31 +1,44 @@
 /* eslint-disable-next-line no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, Badge } from './ui'
-import cvData from '../data/cvData'
+import { Card, Button, Badge } from '../../shared/ui'
+import { cvData } from '../../shared/data/index'
 
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [activeCategory, setActiveCategory] = useState('all')
   const skillsRef = useRef(null)
 
-  // Extract skills data from cvData
-  const technicalSkillsData = cvData.skills.technical
-  const administrativeSkillsData = [
-    // Extract from organizational experience and work experience
-    { name: 'Project Coordination', level: 92 },
-    { name: 'Data Management', level: 88 },
-    { name: 'Office Operations', level: 95 },
-    { name: 'Documentation', level: 90 },
-    { name: 'Process Optimization', level: 85 },
-    { name: 'Team Support', level: 88 },
-    { name: 'Client Relations', level: 87 },
-    { name: 'Administrative Planning', level: 89 },
-    { name: 'Vendor Management', level: 85 },
-    { name: 'Meeting Coordination', level: 90 },
-    { name: 'Document Preparation', level: 92 },
-    { name: 'Record Keeping', level: 88 },
+  // Process technical skills from cvData (flatten and add default level and type)
+  const technicalSkills = cvData.technicalSkills.flatMap((category) =>
+    category.skills.map((skill) => ({
+      name: skill,
+      level: 85, // Default proficiency level for technical skills from CV
+      type: 'technical',
+    }))
+  )
+
+  // Administrative skills (hardcoded from experience)
+  const administrativeSkills = [
+    { name: 'Project Coordination', level: 92, type: 'administrative' },
+    { name: 'Data Management', level: 88, type: 'administrative' },
+    { name: 'Office Operations', level: 95, type: 'administrative' },
+    { name: 'Documentation', level: 90, type: 'administrative' },
+    { name: 'Process Optimization', level: 85, type: 'administrative' },
+    { name: 'Team Support', level: 88, type: 'administrative' },
+    { name: 'Client Relations', level: 87, type: 'administrative' },
+    { name: 'Administrative Planning', level: 89, type: 'administrative' },
+    { name: 'Vendor Management', level: 85, type: 'administrative' },
+    { name: 'Meeting Coordination', level: 90, type: 'administrative' },
+    { name: 'Document Preparation', level: 92, type: 'administrative' },
+    { name: 'Record Keeping', level: 88, type: 'administrative' },
   ]
-  const softSkillsData = cvData.skills.soft
+
+  // Process soft skills from cvData (add default level and type)
+  const softSkills = cvData.softSkills.map((skill) => ({
+    name: skill,
+    level: 75, // Default proficiency level for soft skills
+    type: 'soft',
+  }))
 
   const getSkillIcon = (skillName) => {
     const icons = {
@@ -79,20 +92,29 @@ const Skills = () => {
     {
       id: 'all',
       name: 'All Skills',
-      count: technicalSkillsData.length + administrativeSkillsData.length,
+      count:
+        technicalSkills.length +
+        administrativeSkills.length +
+        softSkills.length,
     },
-    { id: 'technical', name: 'Technical', count: technicalSkillsData.length },
+    { id: 'technical', name: 'Technical', count: technicalSkills.length },
     {
       id: 'administration',
       name: 'Administration',
-      count: administrativeSkillsData.length,
+      count: administrativeSkills.length,
+    },
+    {
+      id: 'soft',
+      name: 'Soft Skills',
+      count: softSkills.length,
     },
   ]
 
   const filteredSkills = () => {
-    if (activeCategory === 'technical') return technicalSkillsData
-    if (activeCategory === 'administration') return administrativeSkillsData
-    return [...technicalSkillsData, ...administrativeSkillsData]
+    if (activeCategory === 'technical') return technicalSkills
+    if (activeCategory === 'administration') return administrativeSkills
+    if (activeCategory === 'soft') return softSkills
+    return [...technicalSkills, ...administrativeSkills, ...softSkills]
   }
 
   useEffect(() => {
@@ -164,15 +186,15 @@ const Skills = () => {
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">{getSkillIcon(skill.name)}</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {skill.name}
                     </h4>
                     <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      {technicalSkillsData.some(
-                        (t) => t.category === skill.category
-                      )
+                      {skill.type === 'technical'
                         ? 'Technical'
-                        : 'Administration'}
+                        : skill.type === 'administration'
+                          ? 'Administration'
+                          : 'Soft Skill'}
                     </div>
                   </div>
                 </div>
@@ -225,14 +247,14 @@ const Skills = () => {
             Professional Skills
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {softSkillsData.map((skill, index) => (
+            {softSkills.map((skill, index) => (
               <Card
                 key={index}
                 className="group hover:shadow-xl transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 dark:hover:from-indigo-900/20 dark:hover:to-purple-900/20"
               >
                 <div className="text-2xl mb-2">💡</div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                  {skill}
+                <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {skill.name}
                 </span>
               </Card>
             ))}

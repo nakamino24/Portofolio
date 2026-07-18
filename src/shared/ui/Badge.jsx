@@ -37,9 +37,4 @@ Badge.propTypes = {
   children: PropTypes.node,
 }
 
-Badge.defaultProps = {
-  variant: 'default',
-  className: '',
-}
-
 export default Badge

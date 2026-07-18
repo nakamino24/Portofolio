@@ -1,7 +1,7 @@
 /* eslint-disable-next-line no-unused-vars */
 import React from 'react'
-import { Button } from './ui'
-import { cvData } from '../data/index'
+import { Button } from '../../shared/ui'
+import { cvData } from '../../shared/data/index'
 
 const Hero = () => {
   const { personalInfo, profile, technicalSkills } = cvData

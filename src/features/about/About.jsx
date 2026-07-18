@@ -1,7 +1,7 @@
 /* eslint-disable-next-line no-unused-vars */
 import React from 'react'
-import { cvData } from '../data/index'
-import { Card } from '../components/ui'
+import { cvData } from '../../shared/data/index'
+import { Card } from '../../shared/ui'
 
 const About = () => {
   return (

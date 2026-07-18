@@ -42,13 +42,4 @@ Input.propTypes = {
   className: PropTypes.string,
 }
 
-Input.defaultProps = {
-  type: 'text',
-  placeholder: '',
-  value: '',
-  onChange: () => {},
-  disabled: false,
-  className: '',
-}
-
 export default Input

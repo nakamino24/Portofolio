@@ -1,6 +1,6 @@
 /* eslint-disable-next-line no-unused-vars */
 import React from 'react'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme } from '../shared/hooks/useTheme'
 
 const Header = () => {
   const { darkMode, toggleDarkMode } = useTheme()

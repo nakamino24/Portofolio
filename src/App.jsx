@@ -1,20 +1,20 @@
 /* eslint-disable-next-line no-unused-vars */
 import React from 'react'
 import './index.css'
-import { ThemeProvider } from './context/ThemeContext'
-import { Hero } from './components/Hero'
-import { About } from './components/About'
-import { Skills } from './components/Skills'
-import { Experience } from './components/Experience'
-import { Projects } from './components/Projects'
-import { Certifications } from './components/Certifications'
-import { Contact } from './components/Contact'
-import Footer from './layout/Footer'
+import { ThemeProvider } from './shared/context/ThemeContext'
+import MainLayout from './layout/MainLayout'
+import Hero from './features/hero/Hero'
+import About from './features/about/About'
+import Skills from './features/skills/Skills'
+import Experience from './features/experience/Experience'
+import Projects from './features/projects/Projects'
+import Certifications from './features/certifications/Certifications'
+import Contact from './features/contact/Contact'
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-w-0">
+      <MainLayout>
         <Hero />
         <About />
         <Skills />
@@ -22,8 +22,7 @@ function App() {
         <Projects />
         <Certifications />
         <Contact />
-        <Footer />
-      </div>
+      </MainLayout>
     </ThemeProvider>
   )
 }
