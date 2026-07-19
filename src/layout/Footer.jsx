@@ -1,4 +1,3 @@
-import React from 'react'
 import { cvData } from '../shared/data'
 
 export default function Footer() {

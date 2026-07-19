@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { cvData } from '../../shared/data'
-import { Card, Badge, Button } from '../../shared/ui'
+import { Card, Badge } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
 
 const FeaturedProjects = () => {
@@ -31,7 +31,7 @@ const FeaturedProjects = () => {
     </button>
   )
 
-  const TabPanel = ({ id, label, children }) => (
+  const TabPanel = ({ id, children }) => (
     <div
       role="tabpanel"
       id={`panel-${id}`}
@@ -67,44 +67,124 @@ const FeaturedProjects = () => {
           </p>
         </div>
 
+        {/* Browser Mockup Gallery */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <div className="mx-auto max-w-5xl mb-16 px-4">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 shadow-2xl overflow-hidden">
+                {/* Browser Header */}
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  </div>
+                  <div className="mx-auto px-4 py-1 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-[10px] text-gray-400 font-mono truncate max-w-[200px] sm:max-w-xs">
+                    {project.liveUrl || 'https://stokku.app'}
+                  </div>
+                </div>
+
+                {/* Scrollable Content */}
+                <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                  {(project.screenshots || []).map((src, index) => (
+                    <div key={index} className="flex-none w-full snap-center">
+                      <img
+                        src={src}
+                        alt={`${project.title} view ${index + 1}`}
+                        className="w-full h-auto object-cover"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Navigation Indicators */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                {(project.screenshots || []).map((_, i) => (
+                  <div
+                    key={i}
+                    className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700"
+                  ></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="mx-auto max-w-6xl">
           <Card className="mb-8">
             <div className="grid lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    Problem Statement
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {project.problemStatement}
-                  </p>
+              <div className="lg:col-span-2 space-y-8">
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <span className="p-1.5 rounded-md bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                          />
+                        </svg>
+                      </span>
+                      Problem
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                      {project.problemStatement}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <span className="p-1.5 rounded-md bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </span>
+                      Solution
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                      {project.solution}
+                    </p>
+                  </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    Solution
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                    Key Demonstrations
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {project.solution}
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                    What This Demonstrates
-                  </h3>
-                  <ul className="space-y-2" role="list">
+                  <ul
+                    className="grid sm:grid-cols-2 gap-x-6 gap-y-3"
+                    role="list"
+                  >
                     {(project.whatThisDemonstrates ?? []).map((item, i) => (
                       <li
                         key={i}
-                        className="text-gray-600 dark:text-gray-400 flex items-start gap-2"
+
+                        className="text-gray-600 dark:text-gray-400 flex items-start gap-3 text-sm"
                       >
                         <svg
                           className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
-                          aria-hidden="true"
                         >
                           <path
                             strokeLinecap="round"

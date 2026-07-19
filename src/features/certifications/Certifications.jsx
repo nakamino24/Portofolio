@@ -1,6 +1,5 @@
-import React from 'react'
 import { cvData } from '../../shared/data'
-import { Card, Badge } from '../../shared/ui'
+import { Badge, Card } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
 
 const Certifications = () => {

@@ -1,4 +1,3 @@
-import React from 'react'
 import { cvData } from '../../shared/data'
 import { formatPeriod } from '../../shared/data/utils/dateFormatter'
 import { Card, Badge } from '../../shared/ui'

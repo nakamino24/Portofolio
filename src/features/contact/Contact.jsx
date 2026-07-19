@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { cvData } from '../../shared/data'
 import { Input, Textarea, Button } from '../../shared/ui'
 import { validateContactForm } from '../../shared/data/utils/validation'
@@ -59,12 +59,12 @@ const Contact = () => {
             id="contact-heading"
             className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4"
           >
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-            I'm actively seeking Software Engineering opportunities. Whether you
-            have a role to discuss, a project in mind, or just want to connect —
-            I'd love to hear from you.
+            I&apos;m actively seeking Software Engineering opportunities.
+            Whether you have a role to discuss, a project in mind, or just want
+            to connect — I&apos;d love to hear from you.
           </p>
         </div>
 
@@ -177,8 +177,8 @@ const Contact = () => {
                     Ready to Connect?
                   </h3>
                   <p className="text-blue-100 text-sm mb-4">
-                    I typically respond within 24 hours. Let's discuss how I can
-                    contribute to your team.
+                    I typically respond within 24 hours. Let&apos;s discuss how
+                    I can contribute to your team.
                   </p>
                   <a
                     href={`mailto:${personalInfo.email}?subject=Software Engineering Opportunity&body=Hi Muhammad,%0D%0A%0D%0A...`}
@@ -266,7 +266,7 @@ const Contact = () => {
                       className="mt-4 text-center text-green-600 dark:text-green-400 text-sm"
                       role="alert"
                     >
-                      Message sent successfully! I'll get back to you soon.
+                      Message sent successfully! I&apos;ll get back to you soon.
                     </p>
                   )}
 

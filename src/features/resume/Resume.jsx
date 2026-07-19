@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { cvData } from '../../shared/data'
 import { formatPeriod } from '../../shared/data/utils/dateFormatter'
 import {
   filterEngineeringRoles,
   filterNonEngineeringRoles,
 } from '../../shared/data/utils/filterUtils'
-import { Button } from '../../shared/ui/Button'
+import { Button } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
 
 const Resume = () => {
@@ -26,13 +26,13 @@ const Resume = () => {
 
   const {
     personalInfo,
-    profile,
     experience,
     education,
     technicalSkills,
     certifications,
-    softSkills,
     projects,
+    technicalTraining,
+    additionalExperience,
   } = cvData
   const engineeringRoles = filterEngineeringRoles(experience)
   const otherRoles = filterNonEngineeringRoles(experience)
@@ -68,8 +68,8 @@ const Resume = () => {
             .bullets { list-style: none; }
             .bullets li { position: relative; padding-left: 14pt; margin-bottom: 3pt; font-size: 10pt; }
             .bullets li::before { content: "•"; position: absolute; left: 0; font-weight: bold; }
-            .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6pt; font-size: 10pt; }
-            .skill-category { font-weight: bold; }
+            .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6pt; font-size: 10pt; }
+            .skill-category { font-weight: bold; margin-top: 6pt; }
             .education-item { margin-bottom: 12pt; page-break-inside: avoid; }
             .education-degree { font-weight: bold; }
             .education-school { font-weight: normal; }
@@ -78,10 +78,13 @@ const Resume = () => {
             .cert-title { font-weight: bold; }
             .cert-issuer { font-weight: normal; }
             .cert-meta { color: #333; }
-            .projects-list { font-size: 10pt; }
-            .project-item { margin-bottom: 6pt; page-break-inside: avoid; }
-            .project-title { font-weight: bold; }
-            .project-desc { margin-top: 2pt; }
+            .project-item { margin-bottom: 12pt; page-break-inside: avoid; }
+            .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2pt; }
+            .project-title { font-weight: bold; font-size: 11pt; }
+            .project-tagline { font-size: 10pt; font-style: italic; color: #333; margin-bottom: 6pt; }
+            .project-links { font-size: 9pt; }
+            .project-links a { color: #000; text-decoration: none; margin-left: 12pt; }
+            .additional-item { margin-bottom: 6pt; font-size: 10pt; page-break-inside: avoid; }
             @media print { body { padding: 0.75in; } .no-print { display: none !important; } }
           </style>
         </head>
@@ -96,12 +99,12 @@ const Resume = () => {
   return (
     <section
       id="resume"
-      className="relative bg-white dark:bg-gray-950 py-16 lg:py-20"
+      className="relative bg-white dark:bg-gray-950 py-12 lg:py-16"
       aria-labelledby="resume-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
             <div>
               <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400 mb-2">
                 Resume
@@ -163,261 +166,283 @@ const Resume = () => {
                 Download PDF
               </Button>
             </div>
+          </div>
 
-            <div
-              id="resume-content"
-              className="bg-white text-black dark:bg-gray-900 dark:text-white p-8 sm:p-12 print:p-0 max-w-3xl mx-auto"
-              style={{
-                fontFamily: "'Helvetica Neue', Arial, sans-serif",
-                fontSize: '11pt',
-                lineHeight: 1.5,
-              }}
-            >
-              <div className="header mb-6 pb-6 border-b-2 border-black dark:border-white">
-                <h1 className="name text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-2">
-                  {personalInfo.name}
-                </h1>
-                <p className="title text-lg font-normal mb-4">
-                  {personalInfo.title}
-                </p>
-                <div className="contact text-sm space-y-1">
-                  <div className="flex flex-wrap justify-center gap-4 text-gray-700 dark:text-gray-300">
-                    <a
-                      href={`mailto:${personalInfo.email}`}
-                      className="hover:underline"
-                    >
-                      {personalInfo.email}
-                    </a>
-                    <span>{personalInfo.phone}</span>
-                    <span>{personalInfo.location}</span>
-                    <a
-                      href={personalInfo.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                    >
-                      LinkedIn
-                    </a>
-                    <a
-                      href={personalInfo.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                    >
-                      GitHub
-                    </a>
-                  </div>
+          <div
+            id="resume-content"
+            className="bg-white text-black dark:bg-gray-900 dark:text-white print:p-0 max-w-3xl mx-auto space-y-6"
+            style={{
+              fontFamily: "'Helvetica Neue', Arial, sans-serif",
+              fontSize: '11pt',
+              lineHeight: 1.7,
+            }}
+          >
+            {/* Header */}
+            <div className="header mb-6 pb-6 border-b-2 border-black dark:border-white">
+              <h1 className="name text-2xl sm:text-3xl font-bold uppercase tracking-wider mb-2">
+                {personalInfo.name}
+              </h1>
+              <p className="title text-lg font-normal mb-4">
+                {personalInfo.title}
+              </p>
+              <div className="contact text-sm space-y-1">
+                <div className="flex flex-wrap justify-center gap-4 text-gray-700 dark:text-gray-300">
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="hover:underline"
+                  >
+                    {personalInfo.email}
+                  </a>
+                  <span>{personalInfo.phone}</span>
+                  <a
+                    href={personalInfo.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href={personalInfo.portfolio}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Portfolio
+                  </a>
                 </div>
               </div>
+            </div>
 
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Professional Summary
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
-                  {profile}
-                </p>
-              </div>
+            {/* Summary */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Summary
+              </h3>
+              <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                {personalInfo.summary}
+              </p>
+            </div>
 
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Technical Skills
-                </h3>
-                <div className="skills-grid grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
-                  {Object.entries(technicalSkills || {})
-                    .flatMap(([category, skills]) =>
-                      Array.isArray(skills)
-                        ? skills.map((s) =>
-                            typeof s === 'object' ? s.name : s
-                          )
-                        : skills?.map((s) => s.name) || []
-                    )
-                    .map((skill, i) => (
-                      <span
-                        key={i}
-                        className="text-gray-700 dark:text-gray-300"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                </div>
-              </div>
-
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Professional Experience
-                </h3>
-                <div className="space-y-6">
-                  {[...engineeringRoles, ...otherRoles].map((role, index) => (
-                    <div key={index} className="role">
-                      <div className="role-header flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-                        <div>
-                          <p className="role-title font-bold text-base">
-                            {role.title}
-                          </p>
-                          <p className="role-company text-sm">{role.company}</p>
-                        </div>
-                        <div className="text-right sm:text-right">
-                          <p className="role-meta text-xs text-gray-600 dark:text-gray-400">
-                            {formatPeriod(
-                              role.startDate,
-                              role.endDate,
-                              role.current
-                            )}
-                          </p>
-                          {role.location && (
-                            <p className="role-meta text-xs text-gray-600 dark:text-gray-400">
-                              {role.location}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      {role.focus && (
-                        <p className="role-focus text-xs italic text-gray-600 dark:text-gray-400 mb-3">
-                          {role.focus}
+            {/* Featured Project — right after Summary, before Work Experience */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Featured Project
+              </h3>
+              <div className="space-y-4">
+                {projects
+                  .filter((p) => p.isFeatured)
+                  .map((project, index) => (
+                    <div key={index} className="project-item">
+                      <div className="flex justify-between items-baseline mb-1">
+                        <p className="project-title font-bold text-base">
+                          {project.title}
                         </p>
-                      )}
-                      <ul className="bullets space-y-2">
-                        {role.responsibilities.map((resp, i) => (
+                        <p className="project-tagline text-xs italic text-gray-600 dark:text-gray-400">
+                          {project.tagline}
+                        </p>
+                      </div>
+                      <div className="flex gap-3 text-xs mb-2">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                          >
+                            Live Demo
+                          </a>
+                        )}
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                          >
+                            Source Code
+                          </a>
+                        )}
+                      </div>
+                      <ul className="bullets space-y-1.5">
+                        {(project.resumeBullets || []).map((bullet, i) => (
                           <li
                             key={i}
                             className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"
                           >
-                            {resp}
+                            {bullet}
                           </li>
                         ))}
                       </ul>
-                      {role.technologies && role.technologies.length > 0 && (
-                        <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                          <span className="font-medium">Technologies: </span>
-                          {role.technologies.join(', ')}
-                        </p>
-                      )}
                     </div>
                   ))}
-                </div>
-              </div>
-
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Education
-                </h3>
-                <div className="space-y-4">
-                  {education.map((edu, index) => (
-                    <div key={index} className="education-item">
-                      <p className="education-degree font-bold text-sm">
-                        {edu.degree}
-                      </p>
-                      <p className="education-school text-sm">
-                        {edu.institution}
-                      </p>
-                      <p className="education-meta text-xs text-gray-600 dark:text-gray-400">
-                        {edu.location} ·{' '}
-                        {formatPeriod(edu.startDate, edu.endDate)} · GPA:{' '}
-                        {edu.gpa}
-                      </p>
-                      {edu.highlights && (
-                        <ul className="mt-2 space-y-1 text-sm text-gray-700 dark:text-gray-300">
-                          {edu.highlights.map((h, i) => (
-                            <li key={i} className="pl-4 relative">
-                              <span className="absolute left-0">•</span> {h}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Certifications
-                </h3>
-                <div className="space-y-3">
-                  {certifications.map((cert, index) => (
-                    <div key={index} className="cert-item">
-                      <p className="cert-title font-bold text-sm">
-                        {cert.title}
-                      </p>
-                      <p className="cert-issuer text-sm">{cert.issuer}</p>
-                      <p className="cert-meta text-xs text-gray-600 dark:text-gray-400">
-                        {cert.date} · {cert.category}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="section mb-8">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Featured Projects
-                </h3>
-                <div className="space-y-4">
-                  {projects
-                    .filter((p) => p.isFeatured)
-                    .map((project, index) => (
-                      <div key={index} className="project-item">
-                        <p className="project-title font-bold text-sm">
-                          {project.title}
-                        </p>
-                        <p className="project-desc text-sm text-gray-700 dark:text-gray-300">
-                          {project.description}
-                        </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {project.techStack?.frontend?.slice(0, 5).join(', ')}
-                          {project.techStack?.backend &&
-                            project.techStack.backend.length > 0 &&
-                            ` | Backend: ${project.techStack.backend.slice(0, 3).join(', ')}`}
-                        </p>
-                        <div className="mt-2 flex gap-4 text-xs">
-                          {project.githubUrl && (
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 hover:underline"
-                            >
-                              GitHub
-                            </a>
-                          )}
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 hover:underline"
-                            >
-                              Live Demo
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </div>
-
-              <div className="section">
-                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-4">
-                  Soft Skills
-                </h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300">
-                  {softSkills.join(', ')}
-                </p>
               </div>
             </div>
 
-            <div className="no-print mt-8 text-center">
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                This resume is optimized for ATS parsing. Use the Print button
-                above for a clean PDF.
-              </p>
-              <div className="flex justify-center gap-3">
-                <Button variant="secondary" onClick={printResume}>
-                  Print Resume
-                </Button>
-                <Button onClick={downloadPDF}>Download PDF</Button>
+            {/* Work Experience */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Work Experience
+              </h3>
+              <div className="space-y-4">
+                {[...engineeringRoles, ...otherRoles].map((role, index) => (
+                  <div key={index} className="role">
+                    <div className="role-header flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                      <div>
+                        <p className="role-title font-bold text-base">
+                          {role.title}
+                        </p>
+                        <p className="role-company text-sm">{role.company}</p>
+                      </div>
+                      <div className="text-right sm:text-right">
+                        <p className="role-meta text-xs text-gray-600 dark:text-gray-400">
+                          {formatPeriod(
+                            role.startDate,
+                            role.endDate,
+                            role.current
+                          )}
+                        </p>
+                        {role.location && (
+                          <p className="role-meta text-xs text-gray-600 dark:text-gray-400">
+                            {role.location}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    {role.focus && (
+                      <p className="role-focus text-xs italic text-gray-600 dark:text-gray-400 mb-2">
+                        {role.focus}
+                      </p>
+                    )}
+                    <ul className="bullets space-y-2">
+                      {role.responsibilities.map((resp, i) => (
+                        <li
+                          key={i}
+                          className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"
+                        >
+                          {resp}
+                        </li>
+                      ))}
+                    </ul>
+                    {role.technologies && role.technologies.length > 0 && (
+                      <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                        <span className="font-medium">Technologies: </span>
+                        {role.technologies.join(', ')}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
+            </div>
+
+            {/* Education */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Education
+              </h3>
+              <div className="space-y-3">
+                {education.map((edu, index) => (
+                  <div key={index} className="education-item">
+                    <p className="education-degree font-bold text-sm">
+                      {edu.degree}
+                    </p>
+                    <p className="education-school text-sm">
+                      {edu.institution}
+                    </p>
+                    <p className="education-meta text-xs text-gray-600 dark:text-gray-400">
+                      {edu.location} ·{' '}
+                      {formatPeriod(edu.startDate, edu.endDate)} · GPA:{' '}
+                      {edu.gpa}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technical Skills */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Technical Skills
+              </h3>
+              <div className="skills-grid grid grid-cols-2 gap-3 text-sm">
+                {Object.entries(technicalSkills || {}).map(
+                  ([category, skills]) => (
+                    <div key={category}>
+                      <p className="font-medium text-gray-800 dark:text-gray-200 capitalize mb-1">
+                        {category.replace(/([A-Z])/g, ' $1').trim()}:
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-300">
+                        {skills.map((s) => s.name).join(', ')}
+                      </p>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Certifications / Technical Training */}
+            <div className="section mb-6">
+              <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                Certifications
+              </h3>
+              <div className="space-y-2">
+                {technicalTraining && technicalTraining.length > 0 && (
+                  <div className="text-sm text-gray-700 dark:text-gray-300">
+                    {technicalTraining.map((item, i) => (
+                      <p key={i}>{item}</p>
+                    ))}
+                  </div>
+                )}
+                {certifications && certifications.length > 0 && (
+                  <div className="space-y-1 mt-2">
+                    {certifications.slice(0, 5).map((cert, index) => (
+                      <div key={index} className="cert-item">
+                        <p className="cert-title font-bold text-sm">
+                          {cert.title}
+                        </p>
+                        <p className="cert-issuer text-sm">{cert.issuer}</p>
+                        <p className="cert-meta text-xs text-gray-600 dark:text-gray-400">
+                          {cert.date} · {cert.category}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Additional Experience */}
+            {additionalExperience && additionalExperience.length > 0 && (
+              <div className="section">
+                <h3 className="section-title text-base font-bold uppercase tracking-wider border-b border-black dark:border-white pb-1 mb-2">
+                  Additional Experience
+                </h3>
+                <div className="space-y-2">
+                  {additionalExperience.map((item, index) => (
+                    <div key={index} className="additional-item text-sm">
+                      <p className="font-medium text-gray-800 dark:text-gray-200">
+                        {item.title} — {item.company}
+                      </p>
+                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                        {item.period} · {item.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="no-print mt-6 text-center">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              This resume is optimized for ATS parsing. Use the Print button
+              above for a clean PDF.
+            </p>
+            <div className="flex justify-center gap-3">
+              <Button variant="secondary" onClick={printResume}>
+                Print Resume
+              </Button>
+              <Button onClick={downloadPDF}>Download PDF</Button>
             </div>
           </div>
         </div>

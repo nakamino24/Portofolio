@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { cvData } from '../../shared/data'
 import { Card, Badge } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
@@ -178,7 +178,6 @@ export default function Skills() {
   const [openId, setOpenId] = useState(FEATURED_PILLARS[0].id)
 
   const stats = useMemo(() => {
-    const techItems = cvData.technicalSkills?.frontend?.length || 0
     return {
       techCount: Object.values(cvData.technicalSkills || {}).flat().length,
       certCount: (cvData.certifications || []).length,
@@ -416,7 +415,7 @@ export default function Skills() {
               Soft Skills
             </h3>
             <div className="flex flex-wrap gap-2">
-              {cvData.softSkills.map((s) => (
+              {(cvData.softSkills || []).map((s) => (
                 <span
                   key={s}
                   className="inline-flex items-center rounded-full border border-slate-800 bg-transparent px-3 py-1.5 text-sm text-slate-300 hover:text-white"

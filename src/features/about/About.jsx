@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { cvData } from '../../shared/data'
 import { formatPeriod } from '../../shared/data/utils/dateFormatter'
 import { cn } from '../../shared/utils/cn'

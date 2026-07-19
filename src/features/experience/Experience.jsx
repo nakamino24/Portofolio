@@ -1,4 +1,3 @@
-import React from 'react'
 import { cvData } from '../../shared/data'
 import { formatPeriod } from '../../shared/data/utils/dateFormatter'
 import {
@@ -243,7 +242,7 @@ const Experience = () => {
               <p className="text-blue-100 mb-6">
                 With diverse experience across engineering, operations, and
                 security domains, I bring a unique full-stack perspective to
-                every project. Let's build something great together.
+                every project. Let&apos;s build something great together.
               </p>
               <a
                 href="#contact"
