@@ -1,53 +1,54 @@
-/**
- * Validate email format
- * @param {string} email - Email address
- * @returns {boolean} Is valid email
- */
-export function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
+export const validateEmail = (email) => {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return re.test(email)
 }
 
-/**
- * Validate phone number (Indonesian format)
- * @param {string} phone - Phone number
- * @returns {boolean} Is valid phone number
- */
-export function isValidPhone(phone) {
-  // Remove all non-digits
-  const digitsOnly = phone.replace(/\D/g, '')
-  // Indonesian phone numbers typically start with 08 and are 10-13 digits
-  return /^08[0-9]{8,11}$/.test(digitsOnly)
+export const validatePhone = (phone) => {
+  const re =
+    /^[\+]?[(]?[0-9]{1,3}[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?[-\s\.]?[0-9]{4,6}$/
+  return re.test(phone)
 }
 
-/**
- * Validate URL
- * @param {string} url - URL to validate
- * @returns {boolean} Is valid URL
- */
-export function isValidURL(url) {
+export const validateUrl = (url) => {
   try {
     new URL(url)
     return true
-  } catch (_) {
+  } catch {
     return false
   }
 }
 
-/**
- * Validate required field
- * @param {any} value - Value to check
- * @returns {boolean} Is not empty
- */
-export function isRequired(value) {
-  return value !== null && value !== undefined && value !== ''
+export const validateRequired = (value) => {
+  return value !== undefined && value !== null && value !== ''
 }
 
-/**
- * Validate skill level (0-100)
- * @param {number} level - Skill level
- * @returns {boolean} Is valid level
- */
-export function isValidSkillLevel(level) {
-  return Number.isInteger(level) && level >= 0 && level <= 100
+export const validateMinLength = (value, minLength) => {
+  return value && value.length >= minLength
+}
+
+export const validateContactForm = (formData) => {
+  const errors = {}
+
+  if (!validateRequired(formData.name)) {
+    errors.name = 'Name is required'
+  } else if (!validateMinLength(formData.name, 2)) {
+    errors.name = 'Name must be at least 2 characters'
+  }
+
+  if (!validateRequired(formData.email)) {
+    errors.email = 'Email is required'
+  } else if (!validateEmail(formData.email)) {
+    errors.email = 'Please enter a valid email address'
+  }
+
+  if (!validateRequired(formData.message)) {
+    errors.message = 'Message is required'
+  } else if (!validateMinLength(formData.message, 10)) {
+    errors.message = 'Message must be at least 10 characters'
+  }
+
+  return {
+    isValid: Object.keys(errors).length === 0,
+    errors,
+  }
 }

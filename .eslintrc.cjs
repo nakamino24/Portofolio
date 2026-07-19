@@ -12,7 +12,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.js'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -23,10 +23,14 @@ module.exports = {
   plugins: ['react'],
   settings: {
     react: {
-      version: 'detect',
+      version: '18.2',
     },
   },
   rules: {
-    // Add any custom rules here
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    'no-useless-escape': 'warn',
+    'react/no-unescaped-entities': 'warn',
   },
-}
+};

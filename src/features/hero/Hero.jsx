@@ -1,78 +1,65 @@
-/* eslint-disable-next-line no-unused-vars */
-import React from 'react'
-import { cvData } from '../../shared/data/index'
+import { cvData } from '../../shared/data'
+import { Button } from '../../shared/ui/Button'
 
 const Hero = () => {
   const { personalInfo, profile } = cvData
 
-  const projectsCount = cvData.projects?.length || 0
-  const skillsCount =
-    cvData.technicalSkills?.reduce(
-      (sum, r) => sum + (r.skills?.length || 0),
-      0
-    ) || 0
-  const certificationsCount = cvData.certifications?.length || 0
-  const experienceYears = '5+'
+  const primaryCTA = 'View My Work'
+  const secondaryCTA = 'Get In Touch'
 
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-white dark:bg-gray-950"
+      className="relative min-h-screen flex items-center justify-center bg-white dark:bg-gray-950 overflow-hidden"
+      aria-labelledby="hero-heading"
     >
-      {/* Ambient background grid */}
       <div
-        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+        aria-hidden="true"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 1px 1px, #3b82f6 1px, transparent 0)',
-          backgroundSize: '44px 44px',
+            'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
+          backgroundSize: '40px 40px',
         }}
       />
 
-      {/* Two subtle large blobs for depth — muted, not competing */}
-      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-blue-400/10 blur-[120px]" />
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-purple-400/10 blur-[100px]" />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-200/50 dark:border-blue-800/30">
+            <span
+              className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
+              aria-hidden="true"
+            />
+            <span className="text-xs font-semibold tracking-wider uppercase text-blue-700 dark:text-blue-300">
+              Open to Software Engineering Opportunities
+            </span>
+          </div>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* ── Two-column grid ── */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* ── Left: Content ── */}
-          <div className="max-w-2xl">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 bg-blue-50 dark:bg-blue-950/60 border border-blue-200/60 dark:border-blue-800/40 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              <span className="text-xs font-medium tracking-wide text-blue-700 dark:text-blue-300 uppercase">
-                Available for opportunities
-              </span>
-            </div>
+          <h1
+            id="hero-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-none mb-6"
+          >
+            {personalInfo.name}
+          </h1>
 
-            {/* Name */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-none mb-4">
-              {personalInfo.name}
-            </h1>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent mb-8 leading-snug">
+            {personalInfo.title || 'Software Engineer'}
+          </h2>
 
-            {/* Title — gradient accent */}
-            <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6 leading-snug">
-              {personalInfo.title || 'Software Engineer'}
-            </h2>
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-2xl mx-auto">
+            {profile}
+          </p>
 
-            {/* Profile — shorter, scannable, maximum ~65 char line */}
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              {profile}
-            </p>
-
-            {/* CTA buttons */}
-            <div className="flex flex-wrap gap-3 mb-8">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold rounded-full hover:bg-gray-900/90 dark:hover:bg-white/90 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-              >
-                View my work
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button
+              size="lg"
+              leftIcon={
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -81,124 +68,98 @@ const Hero = () => {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm font-semibold rounded-full border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-              >
-                Get in touch
-              </a>
-            </div>
-
-            {/* Stats row — small inline badges, supporting role */}
-            <div className="flex flex-wrap gap-4 mb-6">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                  💼
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {experienceYears}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Years
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 dark:text-purple-400">
-                  🚀
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {projectsCount}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Projects
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                  🛠️
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {skillsCount}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Skills
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-950/50 flex items-center justify-center text-amber-600 dark:text-amber-400">
-                  🏆
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">
-                    {certificationsCount}
-                  </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
-                    Certs
-                  </div>
-                </div>
-              </div>
-            </div>
+              }
+              onClick={() =>
+                document
+                  .getElementById('projects')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              {primaryCTA}
+            </Button>
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={() =>
+                document
+                  .getElementById('contact')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              {secondaryCTA}
+            </Button>
           </div>
 
-          {/* ── Right: Geometric focal point ── */}
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative">
-              {/* Outer ring */}
-              <div className="w-64 h-64 rounded-full border border-blue-200/30 dark:border-blue-800/20 flex items-center justify-center">
-                {/* Middle ring */}
-                <div className="w-40 h-40 rounded-full border border-purple-200/30 dark:border-purple-800/20 flex items-center justify-center">
-                  {/* Inner solid gradient circle */}
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 dark:from-blue-400/15 dark:to-purple-400/15 flex items-center justify-center backdrop-blur-sm">
-                    {/* Monogram initials */}
-                    <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                      {(
-                        (personalInfo.name || 'M Q')
-                          .split(' ')
-                          .map((n) => n[0])
-                          .join('')
-                          .slice(0, 2) || 'MQ'
-                      ).toUpperCase()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating tech icons orbiting — subtle */}
-              <div className="absolute -top-4 -right-2 w-10 h-10 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-lg animate-[float_4s_ease-in-out_infinite]">
-                ⚛️
-              </div>
-              <div className="absolute bottom-0 -left-4 w-8 h-8 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-sm animate-[float_3s_ease-in-out_infinite_1s]">
-                🐍
-              </div>
-              <div className="absolute top-1/2 -right-6 w-6 h-6 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-xs animate-[float_5s_ease-in-out_infinite_2s]">
-                ☁️
-              </div>
-              <div className="absolute -bottom-2 right-1 w-4 h-4 rounded-lg bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-md flex items-center justify-center text-xs animate-[float_2s_ease-in-out_infinite_0.5s]">
-                🗄️
-              </div>
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm">
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <span>IT Procurement @ BRI</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+              <span>Full Stack • React • Node.js • PostgreSQL</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>8× Cisco Certified (CCNA, CyberOps)</span>
             </div>
           </div>
         </div>
 
-        {/* Scroll hint — subtle, at bottom */}
-        <div className="mt-12 text-center">
+        <div className="mt-16 hidden lg:block">
           <a
             href="#about"
-            className="inline-flex flex-col items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            className="inline-flex flex-col items-center gap-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            aria-label="Scroll down to learn more"
           >
-            <span className="uppercase tracking-widest">Scroll</span>
+            <span className="uppercase tracking-widest text-xs font-medium">
+              Scroll
+            </span>
             <svg
-              className="w-3 h-3 animate-bounce"
+              className="w-5 h-5 animate-bounce"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"

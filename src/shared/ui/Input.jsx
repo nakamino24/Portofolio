@@ -1,45 +1,230 @@
-/* eslint-disable-next-line no-unused-vars */
-import React from 'react'
-import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
 
-const cn = (...classes) => {
-  return classes.filter(Boolean).join(' ')
-}
+const Input = forwardRef(
+  ({ label, error, hint, className = '', id, ...props }, ref) => {
+    const inputId = id || label?.toLowerCase().replace(/\s+/g, '-')
+    const errorId = error ? `${inputId}-error` : undefined
+    const hintId = hint ? `${inputId}-hint` : undefined
 
-const Input = ({
-  type = 'text',
-  placeholder = '',
-  value,
-  onChange,
-  disabled = false,
-  className = '',
-  ...props
-}) => {
-  const classes = cn(
-    'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-    className
-  )
+    return (
+      <div className="w-full">
+        {label && (
+          <label
+            htmlFor={inputId}
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+          >
+            {label}
+            {props.required && (
+              <span className="text-red-500 ml-1" aria-hidden="true">
+                *
+              </span>
+            )}
+          </label>
+        )}
+        <input
+          ref={ref}
+          id={inputId}
+          className={`
+          w-full px-4 py-2.5 rounded-lg border transition-colors duration-200
+          bg-white dark:bg-gray-800
+          text-gray-900 dark:text-white
+          placeholder:text-gray-400 dark:placeholder:text-gray-500
+          focus:outline-none focus:ring-2 focus:ring-offset-0
+          disabled:opacity-50 disabled:cursor-not-allowed
+          ${
+            error
+              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+              : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+          }
+          ${className}
+        `}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={
+            [errorId, hintId].filter(Boolean).join(' ') || undefined
+          }
+          {...props}
+        />
+        {error && (
+          <p
+            id={errorId}
+            className="mt-1.5 text-sm text-red-600 dark:text-red-400"
+            role="alert"
+          >
+            {error}
+          </p>
+        )}
+        {hint && !error && (
+          <p
+            id={hintId}
+            className="mt-1.5 text-sm text-gray-500 dark:text-gray-400"
+          >
+            {hint}
+          </p>
+        )}
+      </div>
+    )
+  }
+)
 
-  return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      disabled={disabled}
-      className={classes}
-      {...props}
-    />
-  )
-}
+Input.displayName = 'Input'
 
-Input.propTypes = {
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onChange: PropTypes.func,
-  disabled: PropTypes.bool,
-  className: PropTypes.string,
-}
+const Textarea = forwardRef(
+  ({ label, error, hint, className = '', id, rows = 4, ...props }, ref) => {
+    const inputId = id || label?.toLowerCase().replace(/\s+/g, '-')
+    const errorId = error ? `${inputId}-error` : undefined
+    const hintId = hint ? `${inputId}-hint` : undefined
 
-export default Input
+    return (
+      <div className="w-full">
+        {label && (
+          <label
+            htmlFor={inputId}
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+          >
+            {label}
+            {props.required && (
+              <span className="text-red-500 ml-1" aria-hidden="true">
+                *
+              </span>
+            )}
+          </label>
+        )}
+        <textarea
+          ref={ref}
+          id={inputId}
+          rows={rows}
+          className={`
+          w-full px-4 py-2.5 rounded-lg border transition-colors duration-200 resize-none
+          bg-white dark:bg-gray-800
+          text-gray-900 dark:text-white
+          placeholder:text-gray-400 dark:placeholder:text-gray-500
+          focus:outline-none focus:ring-2 focus:ring-offset-0
+          disabled:opacity-50 disabled:cursor-not-allowed
+          ${
+            error
+              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+              : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+          }
+          ${className}
+        `}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={
+            [errorId, hintId].filter(Boolean).join(' ') || undefined
+          }
+          {...props}
+        />
+        {error && (
+          <p
+            id={errorId}
+            className="mt-1.5 text-sm text-red-600 dark:text-red-400"
+            role="alert"
+          >
+            {error}
+          </p>
+        )}
+        {hint && !error && (
+          <p
+            id={hintId}
+            className="mt-1.5 text-sm text-gray-500 dark:text-gray-400"
+          >
+            {hint}
+          </p>
+        )}
+      </div>
+    )
+  }
+)
+
+Textarea.displayName = 'Textarea'
+
+const Select = forwardRef(
+  (
+    {
+      label,
+      error,
+      hint,
+      options = [],
+      placeholder,
+      className = '',
+      id,
+      ...props
+    },
+    ref
+  ) => {
+    const selectId = id || label?.toLowerCase().replace(/\s+/g, '-')
+    const errorId = error ? `${selectId}-error` : undefined
+    const hintId = hint ? `${selectId}-hint` : undefined
+
+    return (
+      <div className="w-full">
+        {label && (
+          <label
+            htmlFor={selectId}
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5"
+          >
+            {label}
+            {props.required && (
+              <span className="text-red-500 ml-1" aria-hidden="true">
+                *
+              </span>
+            )}
+          </label>
+        )}
+        <select
+          ref={ref}
+          id={selectId}
+          className={`
+          w-full px-4 py-2.5 rounded-lg border transition-colors duration-200 appearance-none
+          bg-white dark:bg-gray-800
+          text-gray-900 dark:text-white
+          focus:outline-none focus:ring-2 focus:ring-offset-0
+          disabled:opacity-50 disabled:cursor-not-allowed
+          ${
+            error
+              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+              : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
+          }
+          ${className}
+        `}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={
+            [errorId, hintId].filter(Boolean).join(' ') || undefined
+          }
+          {...props}
+        >
+          {placeholder && (
+            <option value="" disabled selected>
+              {placeholder}
+            </option>
+          )}
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {error && (
+          <p
+            id={errorId}
+            className="mt-1.5 text-sm text-red-600 dark:text-red-400"
+            role="alert"
+          >
+            {error}
+          </p>
+        )}
+        {hint && !error && (
+          <p
+            id={hintId}
+            className="mt-1.5 text-sm text-gray-500 dark:text-gray-400"
+          >
+            {hint}
+          </p>
+        )}
+      </div>
+    )
+  }
+)
+
+Select.displayName = 'Select'
+
+export { Input, Textarea, Select }

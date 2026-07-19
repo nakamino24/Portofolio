@@ -1,4 +1,4 @@
-// src/data/index.js
+// src/shared/data/index.js
 export { cvData } from './cvData'
 export * from './utils/dateFormatter'
 export * from './utils/skillMatcher'

@@ -1,15 +1,15 @@
-/* eslint-disable-next-line no-unused-vars */
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { cvData } from '../../shared/data/index'
+import { cvData } from '../../shared/data'
+import { formatPeriod } from '../../shared/data/utils/dateFormatter'
+import { cn } from '../../shared/utils/cn'
 
-/* ── Tiny inline icons (SVG) — no emoji dependency ── */
 const IconWork = () => (
   <svg
-    className="w-3.5 h-3.5"
+    className="w-4 h-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -22,13 +22,24 @@ const IconWork = () => (
 
 const IconSchool = () => (
   <svg
-    className="w-3.5 h-3.5"
+    className="w-4 h-4"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    aria-hidden="true"
   >
-    <path d="M12 14l9-5-9-5-9 5 9 5z" />
-    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 14l9-5-9-5-9 5 9 5z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+    />
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -40,10 +51,14 @@ const IconSchool = () => (
 
 const IconChevron = ({ open }) => (
   <svg
-    className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+    className={cn(
+      'w-4 h-4 transition-transform duration-200',
+      open && 'rotate-180'
+    )}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -54,44 +69,14 @@ const IconChevron = ({ open }) => (
   </svg>
 )
 
-IconChevron.propTypes = {
-  open: PropTypes.bool,
-}
-
-const IconCommunity = () => (
-  <svg
-    className="w-4 h-4"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-    />
-  </svg>
-)
-
-/* ── Extract data ── */
-const experience = cvData.experience || []
-const education = cvData.education || []
-const orgExp = cvData.organizationalExperience || []
-const profile = cvData.profile || ''
-
-/* ── Distill profile into a one-liner (first sentence) ── */
-const profileHighlight = profile.split('.')[0] + '.'
-
-/* ── Single milestone shape ── */
 const Milestone = ({ item, type = 'work', isLast }) => {
   const [expanded, setExpanded] = useState(false)
   const hasDetails = item.responsibilities && item.responsibilities.length > 0
 
   const iconBg =
     type === 'education'
-      ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800/30'
-      : 'bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800/30'
+      ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-800/30'
+      : 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800/30'
 
   const accentText =
     type === 'education'
@@ -100,58 +85,98 @@ const Milestone = ({ item, type = 'work', isLast }) => {
 
   return (
     <div className="relative pl-10 pb-10 group">
-      {/* Timeline dot */}
       <div
-        className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 ${iconBg} flex items-center justify-center z-10 ring-4 ring-white dark:ring-gray-950`}
+        className={cn(
+          'absolute left-0 top-1 w-6 h-6 rounded-full border-2 flex items-center justify-center z-10 ring-4',
+          iconBg,
+          'ring-white dark:ring-gray-950'
+        )}
+        aria-hidden="true"
       >
         {type === 'education' ? <IconSchool /> : <IconWork />}
       </div>
 
-      {/* Connector line from dot downward — except last item */}
       {!isLast && (
-        <div className="absolute left-[11px] top-7 bottom-0 w-[2px] bg-gray-200 dark:bg-gray-800" />
+        <div
+          className="absolute left-[11px] top-7 bottom-0 w-[2px] bg-gray-200 dark:bg-gray-800"
+          aria-hidden="true"
+        />
       )}
 
-      {/* Card */}
       <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl px-5 py-4 shadow-sm hover:shadow-md transition-shadow duration-200">
-        {/* Header row */}
         <div className="flex items-start justify-between gap-4 mb-2">
           <div className="min-w-0">
             <h3 className="text-base font-semibold text-gray-900 dark:text-white truncate">
               {item.title}
             </h3>
-            <p className={`text-sm font-medium ${accentText}`}>
+            <p className={cn('text-sm font-medium', accentText)}>
               {item.company || item.institution}
             </p>
           </div>
           <span className="shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2.5 py-1 rounded-full">
-            {item.period}
+            {formatPeriod(item.startDate, item.endDate, item.current)}
           </span>
         </div>
 
-        {/* Impact highlight — single line extracted from first responsibility */}
-        {item.responsibilities && item.responsibilities[0] && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-2 line-clamp-1">
-            {item.responsibilities[0]}
-          </p>
-        )}
-
-        {/* Location / GPA for education */}
         {item.location && type !== 'education' && (
-          <span className="inline-block text-xs text-gray-400 dark:text-gray-500 mb-2">
+          <span className="inline-block text-xs text-gray-400 dark:text-gray-500 mb-2 flex items-center gap-1">
+            <svg
+              className="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
             {item.location}
           </span>
         )}
+
         {type === 'education' && item.gpa && (
           <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 mb-2">
-            <span>📍 {item.location}</span>
+            {item.location && (
+              <span className="flex items-center gap-1">
+                <svg
+                  className="w-3 h-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                {item.location}
+              </span>
+            )}
             <span className="font-semibold text-gray-700 dark:text-gray-300">
               GPA {item.gpa}
             </span>
           </div>
         )}
 
-        {/* Tech tags */}
         {item.technologies && item.technologies.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-2">
             {item.technologies.map((tech, i) => (
@@ -165,12 +190,12 @@ const Milestone = ({ item, type = 'work', isLast }) => {
           </div>
         )}
 
-        {/* Expand trigger */}
         {hasDetails && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="inline-flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mt-1"
             aria-expanded={expanded}
+            aria-controls={`details-${item.id || Math.random()}`}
           >
             {expanded
               ? 'Hide details'
@@ -179,15 +204,21 @@ const Milestone = ({ item, type = 'work', isLast }) => {
           </button>
         )}
 
-        {/* Expanded detail list */}
         {expanded && hasDetails && (
-          <ul className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800 space-y-1.5">
+          <ul
+            id={`details-${item.id || Math.random()}`}
+            className="mt-3 pt-3 border-t border-gray-100 dark:border-gray-800 space-y-1.5"
+            role="list"
+          >
             {item.responsibilities.map((resp, i) => (
               <li
                 key={i}
                 className="flex items-start gap-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed"
               >
-                <span className="mt-1.5 w-1 h-1 shrink-0 rounded-full bg-blue-400 dark:bg-blue-600" />
+                <span
+                  className="mt-1.5 w-1 h-1 shrink-0 rounded-full bg-blue-400 dark:bg-blue-600"
+                  aria-hidden="true"
+                />
                 <span>{resp}</span>
               </li>
             ))}
@@ -198,43 +229,36 @@ const Milestone = ({ item, type = 'work', isLast }) => {
   )
 }
 
-/* ── Main component ── */
-const About = () => {
-  Milestone.propTypes = {
-    item: PropTypes.shape({
-      title: PropTypes.string,
-      company: PropTypes.string,
-      institution: PropTypes.string,
-      period: PropTypes.string,
-      responsibilities: PropTypes.arrayOf(PropTypes.string),
-      location: PropTypes.string,
-      gpa: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      technologies: PropTypes.arrayOf(PropTypes.string),
-    }).isRequired,
-    type: PropTypes.string,
-    isLast: PropTypes.bool,
-  }
-
+export default function About() {
+  const { profile, experience, education } = cvData
+  const profileHighlight = profile.split('.')[0] + '.'
   const [showFullBio, setShowFullBio] = useState(false)
 
   const stats = [
-    { value: cvData.education?.[0]?.gpa || '—', label: 'GPA' },
-    { value: '5+', label: 'Years' },
-    { value: experience.length, label: 'Roles' },
-    { value: orgExp.length, label: 'Orgs' },
+    { value: education[0]?.gpa || '—', label: 'GPA' },
+    {
+      value: experience.filter((e) => e.isEngineeringRole).length,
+      label: 'Engineering Roles',
+    },
+    { value: experience.length, label: 'Total Roles' },
+    { value: education.length, label: 'Education' },
   ]
 
   const allMilestones = [
-    ...experience.map((e) => ({ ...e, type: 'work' })),
-    ...education.map((e) => ({ ...e, type: 'education' })),
-  ]
+    ...experience.map((e, i) => ({ ...e, type: 'work', id: `work-${i}` })),
+    ...education.map((e, i) => ({ ...e, type: 'education', id: `edu-${i}` })),
+  ].sort(
+    (a, b) =>
+      new Date(b.startDate || b.period?.split('–')[1] || 0) -
+      new Date(a.startDate || a.period?.split('–')[1] || 0)
+  )
 
   return (
     <section
       id="about"
       className="relative overflow-hidden bg-white dark:bg-gray-950"
+      aria-labelledby="about-heading"
     >
-      {/* Ambient background — matching Hero */}
       <div
         className="absolute inset-0 opacity-[0.025] dark:opacity-[0.05]"
         style={{
@@ -242,19 +266,20 @@ const About = () => {
             'radial-gradient(circle at 1px 1px, #3b82f6 1px, transparent 0)',
           backgroundSize: '44px 44px',
         }}
+        aria-hidden="true"
       />
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* ── Section header ── */}
-        <div className="mb-10">
+      <div className="relative z-10 container mx-auto px-6 lg:px-8 py-16 lg:py-20">
+        <div className="mb-12 max-w-3xl">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400 mb-2">
             About
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">
-            My journey
+          <h2
+            id="about-heading"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-4"
+          >
+            My Journey
           </h2>
-
-          {/* Short bio */}
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {showFullBio ? profile : profileHighlight}
           </p>
@@ -268,7 +293,6 @@ const About = () => {
           )}
         </div>
 
-        {/* ── Quick stats row ── */}
         <div className="flex flex-wrap gap-4 sm:gap-6 mb-10 pb-6 border-b border-gray-200 dark:border-gray-700">
           {stats.map((s, i) => (
             <div key={i} className="flex items-center gap-2">
@@ -282,16 +306,14 @@ const About = () => {
           ))}
         </div>
 
-        {/* ── Timeline ── */}
         <div>
           <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 mb-6">
-            Career timeline
+            Career Timeline
           </h3>
-
-          <div className="relative">
+          <div className="relative" role="list" aria-label="Career timeline">
             {allMilestones.map((item, i) => (
               <Milestone
-                key={`${item.type}-${i}`}
+                key={item.id}
                 item={item}
                 type={item.type}
                 isLast={i === allMilestones.length - 1}
@@ -299,47 +321,7 @@ const About = () => {
             ))}
           </div>
         </div>
-
-        {/* ── Community involvement ── */}
-        {orgExp.length > 0 && (
-          <div className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-gray-400 dark:text-gray-500">
-                <IconCommunity />
-              </span>
-              <h3 className="text-xs font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500">
-                Community
-              </h3>
-            </div>
-
-            {orgExp.map((org, i) => (
-              <div
-                key={i}
-                className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl px-4 py-3 shadow-sm"
-              >
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="min-w-0">
-                    <h4 className="text-base font-semibold text-gray-900 dark:text-white">
-                      {org.title}
-                    </h4>
-                    <p className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                      {org.organization}
-                    </p>
-                  </div>
-                  <span className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2 py-0.5 rounded-full">
-                    {org.period}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
-                  {org.responsibilities?.[0]}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   )
 }
-
-export default About

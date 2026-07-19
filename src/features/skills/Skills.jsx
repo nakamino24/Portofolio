@@ -1,27 +1,8 @@
-/* eslint-disable-next-line no-unused-vars */
 import React, { useMemo, useState } from 'react'
-import PropTypes from 'prop-types'
+import { cvData } from '../../shared/data'
 import { Card, Badge } from '../../shared/ui'
-import { cvData } from '../../shared/data/index'
+import { cn } from '../../shared/utils/cn'
 
-/**
- * Skills section — redesigned for consistency.
- *
- * Hierarchy:
- *   1. Header + meta strip (years, certs, projects) — credibility at a glance.
- *   2. Featured expertise pillars — three dominant competencies with
- *      project / certification / role anchors instead of proficiency bars.
- *   3. Skill categories — grouped panels (Programming, Web, Data, Ops,
- *      Networking & Security) with inline pills, NOT repeated cards.
- *   4. Administration + soft skills — quiet, low-emphasis strip.
- *   5. Tools & platforms — dense inline badge cloud.
- */
-
-const cn = (...classes) => classes.filter(Boolean).join(' ')
-
-/* ---------- Static taxonomies ---------- */
-// Which technical categories collapse into which featured pillars.
-// Each pillar lists real anchors drawn from cvData (projects, certs, roles).
 const FEATURED_PILLARS = [
   {
     id: 'web',
@@ -30,10 +11,14 @@ const FEATURED_PILLARS = [
     accent: 'text-blue-400',
     ring: 'ring-blue-500/30',
     summary:
-      'Built production full-stack systems during a 6-month engineering role at PT Wijaya Karya.',
+      'Built production full-stack systems during engineering role at PT Wijaya Karya. Designed REST APIs, implemented JWT auth, optimized PostgreSQL queries, and deployed to cloud infrastructure.',
     anchors: [
-      { kind: 'project', label: 'Manpower Management Center' },
-      { kind: 'cert', label: 'Junior Web Developer · Digital Talent' },
+      { kind: 'project', label: 'Manpower Management Center (500+ users)' },
+      { kind: 'project', label: 'Stokku Inventory System (Personal)' },
+      {
+        kind: 'cert',
+        label: 'Junior Web Developer · Digital Talent Scholarship',
+      },
       { kind: 'cert', label: 'Fullstack Developer · ITBox' },
     ],
   },
@@ -44,15 +29,12 @@ const FEATURED_PILLARS = [
     accent: 'text-purple-400',
     ring: 'ring-purple-500/30',
     summary:
-      'Four Cisco certifications plus a CCNA-vetted helpdesk rotation. Comfortable on the operations side of the stack.',
+      'Four Cisco certifications (CCNA Enterprise, Switching/Routing, Intro to Networks) plus CyberOps Associate. Hands-on helpdesk experience troubleshooting Cisco IOS, VLANs, OSPF/EIGRP, and security monitoring.',
     anchors: [
-      {
-        kind: 'cert',
-        label: 'CCNA — Enterprise, Switching/Routing, Intro to Networks',
-      },
+      { kind: 'cert', label: 'CCNA — Enterprise, Switching/Routing, Intro' },
       { kind: 'cert', label: 'CyberOps Associate' },
       { kind: 'cert', label: 'Cybersecurity Essentials' },
-      { kind: 'role', label: 'Helpdesk Support · Cisco Networking Academy' },
+      { kind: 'role', label: 'Helpdesk · Cisco Networking Academy' },
     ],
   },
   {
@@ -62,43 +44,53 @@ const FEATURED_PILLARS = [
     accent: 'text-cyan-400',
     ring: 'ring-cyan-500/30',
     summary:
-      'Administrative internship at PT Compotec + lecturer-mentoring work. Strong at turning messy inputs into reliable records.',
+      'IT Procurement at BRI (enterprise vendor coordination), Administrative Intern at PT Compotec, plus academic roles (Lecturer, Research Staff). Strong at translating requirements into reliable systems and documentation.',
     anchors: [
-      {
-        kind: 'role',
-        label: 'Administrative Intern · PT Compotec International',
-      },
+      { kind: 'role', label: 'IT Procurement Admin · BRI (Current)' },
+      { kind: 'role', label: 'Admin Intern · PT Compotec International' },
       { kind: 'role', label: 'Assistant Lecturer · IPB University' },
       { kind: 'role', label: 'Research Staff · IPB University' },
     ],
   },
 ]
 
-// Map each technical-skill category to a panel icon + description.
 const CATEGORY_META = {
-  'Programming Languages': {
-    icon: '◈',
-    description: 'Languages I reach for first when solving problems.',
+  Frontend: {
+    icon: '⚛',
+    description: 'Frameworks and patterns for shipping modern user interfaces.',
   },
-  Databases: {
-    icon: '▤',
-    description: 'Relational stores, schema design, and querying.',
+  Backend: {
+    icon: '⚙',
+    description: 'Server-side logic, API design, and system architecture.',
   },
-  'Web Technologies': {
-    icon: '◇',
-    description: 'Frameworks and patterns for shipping the front end.',
+  Database: {
+    icon: '🗄',
+    description:
+      'Relational stores, schema design, querying, and optimization.',
   },
-  'Tools & Software': {
-    icon: '◉',
-    description: 'Day-to-day tooling — editors, version control, OS.',
+  'DevOps & Tools': {
+    icon: '🔧',
+    description: 'Deployment, CI/CD, containerization, and developer tooling.',
   },
   'Networking & Security': {
-    icon: '◊',
-    description: 'Cisco-stack networking and operational security.',
+    icon: '🔐',
+    description:
+      'Cisco-stack networking, operational security, and threat detection.',
   },
 }
 
-/* ---------- Helper components ---------- */
+const EVIDENCE = {
+  Frontend:
+    'Stokku (React 18, TypeScript, Tailwind, Vite) · Manpower Management Center (React, JS) at PT Wijaya Karya.',
+  Backend:
+    'Stokku API (Express.js, JWT, bcrypt) · Production REST APIs at PT Wijaya Karya (Node.js, Express).',
+  Database:
+    'Stokku schema on Neon PostgreSQL (normalized, indexed, FK constraints) · Production SQL at PT Wijaya Karya.',
+  'DevOps & Tools':
+    'Vercel (serverless functions, CI/CD) · GitHub Actions · Docker · Postman · VS Code across all projects.',
+  'Networking & Security':
+    'Cisco Networking Academy helpdesk · CCNA ×3 + CyberOps certs · Cisco IOS, OSPF, EIGRP, VLAN, threat detection.',
+}
 
 const KindChip = ({ kind, label }) => {
   const styles = {
@@ -106,11 +98,7 @@ const KindChip = ({ kind, label }) => {
     cert: 'border-purple-500/40 bg-purple-500/10 text-purple-300',
     role: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300',
   }
-  const prefix = {
-    project: 'Project',
-    cert: 'Cert',
-    role: 'Role',
-  }
+  const prefix = { project: 'Project', cert: 'Cert', role: 'Role' }
   return (
     <span
       className={cn(
@@ -124,10 +112,7 @@ const KindChip = ({ kind, label }) => {
   )
 }
 
-KindChip.propTypes = {
-  kind: PropTypes.oneOf(['project', 'cert', 'role']).isRequired,
-  label: PropTypes.string.isRequired,
-}
+KindChip.displayName = 'KindChip'
 
 const MetaStat = ({ value, label }) => (
   <div className="flex flex-col">
@@ -140,10 +125,7 @@ const MetaStat = ({ value, label }) => (
   </div>
 )
 
-MetaStat.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  label: PropTypes.string.isRequired,
-}
+MetaStat.displayName = 'MetaStat'
 
 const SkillPill = ({ name }) => (
   <span className="inline-flex items-center rounded-full border border-slate-700/70 bg-slate-900/60 px-3 py-1.5 text-sm text-slate-200 transition hover:border-indigo-400/60 hover:bg-indigo-500/10 hover:text-white">
@@ -151,20 +133,10 @@ const SkillPill = ({ name }) => (
   </span>
 )
 
-SkillPill.propTypes = {
-  name: PropTypes.string.isRequired,
-}
+SkillPill.displayName = 'SkillPill'
 
-/**
- * Renders one technical-skill category as a panel. Items are pills, not cards —
- * eliminates the per-skill card repetition from the old layout.
- * Includes an "evidence" line: which project / cert used this stack.
- */
 const CategoryPanel = ({ category, items, evidence }) => {
-  const meta = CATEGORY_META[category] || {
-    icon: '◇',
-    description: category,
-  }
+  const meta = CATEGORY_META[category] || { icon: '◇', description: category }
   return (
     <div className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-4 transition hover:border-indigo-500/40 hover:bg-slate-900/60">
       <div className="mb-3 flex items-start justify-between gap-2">
@@ -200,60 +172,95 @@ const CategoryPanel = ({ category, items, evidence }) => {
   )
 }
 
-CategoryPanel.propTypes = {
-  category: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  evidence: PropTypes.string,
-}
+CategoryPanel.displayName = 'CategoryPanel'
 
-/* ---------- Main component ---------- */
-
-const Skills = () => {
+export default function Skills() {
   const [openId, setOpenId] = useState(FEATURED_PILLARS[0].id)
 
-  // Resume-derived counts (no fake proficiency %).
   const stats = useMemo(() => {
-    const techItems = cvData.technicalSkills.flatMap((c) => c.skills)
+    const techItems = cvData.technicalSkills?.frontend?.length || 0
     return {
-      techCount: techItems.length,
+      techCount: Object.values(cvData.technicalSkills || {}).flat().length,
       certCount: (cvData.certifications || []).length,
       projectCount: (cvData.projects || []).length,
-      softCount: (cvData.softSkills || []).length,
     }
   }, [])
 
-  // Anchor text per category — short, factual, references real CV lines.
-  const EVIDENCE = {
-    'Programming Languages':
-      'Manpower Management Center (PT Wijaya Karya) · Helpdesk support for Python Professional Academy.',
-    Databases:
-      'Schema + queries in the Manpower Management Center admin portal.',
-    'Web Technologies':
-      'Production build of the Web Admin Portal during the PT Wijaya Karya engineering rotation.',
-    'Tools & Software':
-      'Daily across teaching, research, and engineering roles.',
-    'Networking & Security':
-      'Cisco Networking Academy helpdesk · CCNA + CyberOps certifications.',
-  }
+  const skillCategories = [
+    {
+      category: 'Frontend',
+      items: cvData.technicalSkills?.frontend?.map((s) => s.name) || [
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'Tailwind CSS',
+        'HTML5',
+        'CSS3',
+        'Vite',
+      ],
+    },
+    {
+      category: 'Backend',
+      items: cvData.technicalSkills?.backend?.map((s) => s.name) || [
+        'Node.js',
+        'Express.js',
+        'REST API Design',
+        'JWT Authentication',
+        'bcrypt',
+      ],
+    },
+    {
+      category: 'Database',
+      items: cvData.technicalSkills?.database?.map((s) => s.name) || [
+        'PostgreSQL',
+        'Neon PostgreSQL',
+        'MySQL',
+        'Database Design',
+      ],
+    },
+    {
+      category: 'DevOps & Tools',
+      items: cvData.technicalSkills?.devops?.map((s) => s.name) || [
+        'Vercel',
+        'Docker',
+        'Git/GitHub',
+        'GitHub Actions',
+        'Postman',
+        'VS Code',
+      ],
+    },
+    {
+      category: 'Networking & Security',
+      items: cvData.technicalSkills?.networkingSecurity?.map((s) => s.name) || [
+        'Cisco IOS',
+        'Routing Protocols (OSPF, EIGRP)',
+        'Switching (VLAN, STP)',
+        'Network Security',
+        'Threat Detection',
+      ],
+    },
+  ]
 
   return (
     <section
       id="skills"
-      className="relative overflow-hidden bg-slate-950 py-16 text-slate-100"
+      className="relative overflow-hidden bg-slate-950 py-16 lg:py-20 text-slate-100"
+      aria-labelledby="skills-heading"
     >
-      {/* Ambient gradient — keeps the dark theme + purple/blue branding. */}
       <div
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.18),transparent_55%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15),transparent_60%)]"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* ---------- Header ---------- */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-xs font-semibold uppercase tracking-[0.28em] text-transparent">
             Skills & Expertise
           </span>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+          <h2
+            id="skills-heading"
+            className="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight text-white"
+          >
             Built through{' '}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               real projects, real roles, real certifications.
@@ -267,27 +274,28 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* ---------- Meta strip ---------- */}
         <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 rounded-2xl border border-slate-800 bg-slate-900/50 p-4">
           <MetaStat value={stats.techCount} label="Technologies" />
           <MetaStat value={stats.certCount} label="Certifications" />
           <MetaStat value={stats.projectCount} label="Portfolio projects" />
-          <MetaStat value={stats.softCount} label="Soft-skill areas" />
+          <MetaStat value={8} label="Cisco Certifications" />
         </div>
 
-        {/* ---------- Featured pillars ---------- */}
         <div className="mt-12">
           <div className="mb-4 flex items-baseline justify-between">
             <h3 className="text-lg font-semibold text-white">
-              Featured expertise
+              Featured Expertise
             </h3>
             <span className="hidden text-xs uppercase tracking-[0.18em] text-slate-500 sm:block">
               Click a pillar to focus
             </span>
           </div>
 
-          {/* Pillar toggles */}
-          <div className="flex flex-wrap gap-2">
+          <div
+            className="flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Expertise pillars"
+          >
             {FEATURED_PILLARS.map((p) => {
               const active = openId === p.id
               return (
@@ -296,6 +304,8 @@ const Skills = () => {
                   type="button"
                   onClick={() => setOpenId(p.id)}
                   aria-pressed={active}
+                  role="tab"
+                  aria-selected={active}
                   className={cn(
                     'rounded-full border px-3 py-1 text-sm font-medium transition',
                     active
@@ -310,7 +320,6 @@ const Skills = () => {
             })}
           </div>
 
-          {/* Active pillar detail — single panel, not 3 cards */}
           {FEATURED_PILLARS.filter((p) => p.id === openId).map((p) => (
             <Card
               key={p.id}
@@ -338,41 +347,39 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* ---------- Skill categories ---------- */}
         <div className="mt-12">
           <div className="mb-4 flex items-baseline justify-between">
             <h3 className="text-lg font-semibold text-white">
-              Technical stack — grouped
+              Technical Stack — Grouped
             </h3>
             <span className="hidden text-xs text-slate-500 sm:block">
-              {stats.techCount} technologies · {cvData.technicalSkills.length}{' '}
+              {stats.techCount} technologies · {skillCategories.length}{' '}
               categories
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            {cvData.technicalSkills.map((cat) => (
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {skillCategories.map((cat) => (
               <CategoryPanel
                 key={cat.category}
                 category={cat.category}
-                items={cat.skills}
+                items={cat.items}
                 evidence={EVIDENCE[cat.category]}
               />
             ))}
           </div>
         </div>
 
-        {/* ---------- Administration + soft skills (quiet row) ---------- */}
         <div className="mt-12 rounded-2xl border border-slate-800 bg-slate-900/30 p-4">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h3 className="text-lg font-semibold text-white">
-                Administration & professional skills
+                Administration & Professional Skills
               </h3>
               <p className="mt-1 text-sm text-slate-400">
-                Proven across an administrative internship, lecturer role, and
-                research staff work — softer on the page because experience
-                speaks louder than a list.
+                Proven across IT procurement at BRI, administrative internship,
+                lecturer role, and research staff work — softer on the page
+                because experience speaks louder than a list.
               </p>
             </div>
             <Badge
@@ -385,18 +392,20 @@ const Skills = () => {
 
           <div className="flex flex-wrap gap-2">
             {[
+              'IT Procurement',
+              'Vendor Management',
+              'Contract Administration',
               'Project Coordination',
               'Data Management',
               'Office Operations',
               'Documentation',
               'Process Optimization',
               'Team Support',
-              'Client Relations',
+              'Stakeholder Communication',
               'Administrative Planning',
-              'Vendor Management',
-              'Meeting Coordination',
-              'Document Preparation',
               'Record Keeping',
+              'Compliance Reporting',
+              'Cross-functional Coordination',
             ].map((item) => (
               <SkillPill key={item} name={item} />
             ))}
@@ -404,7 +413,7 @@ const Skills = () => {
 
           <div className="mt-4 border-t border-slate-800 pt-3">
             <h3 className="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-              Soft skills
+              Soft Skills
             </h3>
             <div className="flex flex-wrap gap-2">
               {cvData.softSkills.map((s) => (
@@ -419,33 +428,30 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* ---------- Tools & platforms (dense cloud) ---------- */}
         <div className="mt-12">
           <h3 className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
-            Tools & platforms I work with
+            Tools & Platforms I Work With
           </h3>
           <div className="flex flex-wrap gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-3">
             {[
-              'React.js',
+              'React',
+              'TypeScript',
               'Node.js',
-              'JavaScript',
-              'Python',
-              'PHP',
-              'SQL',
+              'Express.js',
               'PostgreSQL',
-              'MySQL',
-              'HTML',
-              'CSS',
+              'Neon',
               'Git',
-              'Linux',
+              'GitHub',
+              'Docker',
+              'Vercel',
+              'Postman',
+              'VS Code',
               'Cisco IOS',
-              'Microsoft Office',
-              'Responsive Design',
-              'Database Design',
-              'Web Development',
-              'System Administration',
-              'Network Configuration',
-              'Cybersecurity',
+              'Linux',
+              'Tailwind CSS',
+              'Vite',
+              'Zod',
+              'JWT',
             ].map((t) => (
               <span
                 key={t}
@@ -460,5 +466,3 @@ const Skills = () => {
     </section>
   )
 }
-
-export default Skills

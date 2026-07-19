@@ -1,46 +1,32 @@
-/**
- * Sort array of objects by date field (descending)
- * @param {Array<Object>} items - Items to sort
- * @param {string} dateField - Field containing date string
- * @returns {Array<Object>} Sorted items
- */
-export function sortByDateDescending(items, dateField) {
+export const sortByDateDesc = (items, dateField = 'date') => {
   return [...items].sort((a, b) => {
-    const dateA = new Date(a[dateField])
-    const dateB = new Date(b[dateField])
+    const dateA = new Date(a[dateField] || a.startDate || 0)
+    const dateB = new Date(b[dateField] || b.startDate || 0)
     return dateB - dateA
   })
 }
 
-/**
- * Sort array of objects by string field (alphabetical)
- * @param {Array<Object>} items - Items to sort
- * @param {string} field - Field to sort by
- * @param {boolean} ascending - Sort order
- * @returns {Array<Object>} Sorted items
- */
-export function sortByString(items, field, ascending = true) {
+export const sortByDateAsc = (items, dateField = 'date') => {
   return [...items].sort((a, b) => {
-    const aVal = String(a[field] || '').toLowerCase()
-    const bVal = String(b[field] || '').toLowerCase()
-
-    if (aVal < bVal) return ascending ? -1 : 1
-    if (aVal > bVal) return ascending ? 1 : -1
-    return 0
+    const dateA = new Date(a[dateField] || a.startDate || 0)
+    const dateB = new Date(b[dateField] || b.startDate || 0)
+    return dateA - dateB
   })
 }
 
-/**
- * Sort array of objects by number field
- * @param {Array<Object>} items - Items to sort
- * @param {string} field - Field to sort by
- * @param {boolean} ascending - Sort order
- * @returns {Array<Object>} Sorted items
- */
-export function sortByNumber(items, field, ascending = true) {
+export const sortByPriority = (items, priorityField = 'priority') => {
+  const priorityOrder = { high: 3, medium: 2, low: 1 }
   return [...items].sort((a, b) => {
-    const aVal = Number(a[field]) || 0
-    const bVal = Number(b[field]) || 0
-    return ascending ? aVal - bVal : bVal - aVal
+    const priorityA = priorityOrder[a[priorityField]?.toLowerCase()] || 0
+    const priorityB = priorityOrder[b[priorityField]?.toLowerCase()] || 0
+    return priorityB - priorityA
+  })
+}
+
+export const sortAlphabetically = (items, field = 'title') => {
+  return [...items].sort((a, b) => {
+    const valA = (a[field] || '').toLowerCase()
+    const valB = (b[field] || '').toLowerCase()
+    return valA.localeCompare(valB)
   })
 }
