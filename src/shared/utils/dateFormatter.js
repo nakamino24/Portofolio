@@ -1,3 +1,7 @@
+/**
+ * Date formatting utilities for consistent date display across the application
+ */
+
 export const formatDate = (dateString) => {
   if (!dateString) return ''
   const date = new Date(dateString)

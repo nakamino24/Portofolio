@@ -146,6 +146,17 @@ export const cvData = {
     'Cisco Networking Academy — CCNA, CyberOps (8x certified)',
   ],
 
+  softSkills: [
+    'Communication',
+    'Teamwork',
+    'Problem Solving',
+    'Time Management',
+    'Critical Thinking',
+    'Adaptability',
+    'Leadership',
+    'Project Management',
+  ],
+
   projects: [
     {
       id: 'stokku',

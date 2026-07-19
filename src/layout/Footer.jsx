@@ -6,22 +6,19 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800"
+      className="border-t border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-950"
       role="contentinfo"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
               Muhammad Quways Al-Qarany
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
-              Software Engineer building production-quality web applications
-              with React, Node.js, TypeScript, and PostgreSQL. Passionate about
-              clean architecture, scalable systems, and great developer
-              experience.
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              Software Engineer specializing in React, Node.js, TypeScript, and PostgreSQL. Building production-quality applications with clean architecture.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <a
                 href={personalInfo.github}
                 target="_blank"
@@ -70,7 +67,7 @@ export default function Footer() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2v10a2 2 0 002 2z"
                   />
                 </svg>
               </a>
@@ -78,64 +75,33 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
-              Quick Links
+            <h4 className="font-semibold text-sm text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
+              Navigation
             </h4>
             <nav aria-label="Footer navigation">
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a
-                    href="#home"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#about"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
+                  <a href="#about" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#skills"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    Skills
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#projects"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    Projects
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#experience"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
+                  <a href="#experience" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     Experience
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#resume"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    Resume
+                  <a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    Projects
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#contact"
-                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
+                  <a href="#skills" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                    Skills
+                  </a>
+                </li>
+                <li>
+                  <a href="#contact" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                     Contact
                   </a>
                 </li>
@@ -144,25 +110,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+            <h4 className="font-semibold text-sm text-gray-900 dark:text-white mb-3 uppercase tracking-wider">
               Tech Stack
             </h4>
             <div className="flex flex-wrap gap-2">
-              {[
-                'React',
-                'TypeScript',
-                'Node.js',
-                'Express',
-                'PostgreSQL',
-                'Tailwind CSS',
-                'Vite',
-                'Git',
-                'Docker',
-                'Vercel',
-              ].map((tech) => (
+              {['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Vercel'].map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-full"
+                  className="px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-800 rounded-md"
                 >
                   {tech}
                 </span>
@@ -171,16 +126,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              &copy; {currentYear} Muhammad Quways Al-Qarany. Built with React,
-              TypeScript, and Tailwind CSS.
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Deployed on Vercel · Open source on GitHub
-            </p>
-          </div>
+        <div className="mt-10 pt-6 border-t border-gray-200 dark:border-neutral-800">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            © {currentYear} Muhammad Quways Al-Qarany. Built with React, TypeScript, and Tailwind CSS.
+          </p>
         </div>
       </div>
     </footer>

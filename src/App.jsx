@@ -6,9 +6,9 @@ import About from './features/about/About'
 import Skills from './features/skills/Skills'
 import Experience from './features/experience/Experience'
 import Projects from './features/projects/Projects'
+import StokkuCaseStudy from './features/projects/StokkuCaseStudy'
 import Education from './features/education/Education'
 import Certifications from './features/certifications/Certifications'
-import Resume from './features/resume/Resume'
 import Contact from './features/contact/Contact'
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
         <Skills />
         <Experience />
         <Projects />
+        <StokkuCaseStudy />
         <Education />
         <Certifications />
-        <Resume />
         <Contact />
       </MainLayout>
     </ThemeProvider>

@@ -3,14 +3,10 @@ import { useTheme } from '../shared/hooks/useTheme.jsx'
 import { cvData } from '../shared/data'
 
 const navItems = [
-  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
-  { href: '#education', label: 'Education' },
-  { href: '#certifications', label: 'Certifications' },
-  { href: '#resume', label: 'Resume' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -18,7 +14,7 @@ const Navbar = () => {
   const { darkMode, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,9 +45,9 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-md shadow-sm border-b border-gray-200/50 dark:border-gray-800/50'
+          ? 'bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-gray-200 dark:border-neutral-800'
           : 'bg-transparent'
       }`}
       role="banner"
@@ -60,11 +56,11 @@ const Navbar = () => {
         className="container mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between h-16 lg:h-14">
-          <div className="flex items-center gap-8 lg:gap-12">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center gap-8">
             <a
               href="#home"
-              className="font-bold text-xl text-gray-900 dark:text-white hover:opacity-80 transition-opacity"
+              className="font-semibold text-lg text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               aria-label={`${cvData.personalInfo.name} - Home`}
             >
               {cvData.personalInfo.name
@@ -73,32 +69,32 @@ const Navbar = () => {
                 .join('')}
             </a>
 
-            <div className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    activeSection === item.href.replace('#', '')
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
-                  }`}
-                  aria-current={
-                    activeSection === item.href.replace('#', '')
-                      ? 'page'
-                      : undefined
-                  }
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
+              <div className="hidden md:flex items-center gap-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeSection === item.href.replace('#', '')
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    }`}
+                    aria-current={
+                      activeSection === item.href.replace('#', '')
+                        ? 'page'
+                        : undefined
+                    }
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
               aria-label={
                 darkMode ? 'Switch to light mode' : 'Switch to dark mode'
               }
@@ -138,7 +134,7 @@ const Navbar = () => {
             </button>
 
             <button
-              className="lg:hidden p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
@@ -181,7 +177,9 @@ const Navbar = () => {
 
         <div
           id="mobile-menu"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'}`}
+          className={`md:hidden overflow-hidden transition-all duration-200 ${
+            mobileMenuOpen ? 'max-h-96 opacity-100 pb-4' : 'max-h-0 opacity-0'
+          }`}
           role="navigation"
           aria-label="Mobile navigation"
         >
@@ -190,10 +188,10 @@ const Navbar = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className={`block px-3 py-2.5 rounded-lg text-base font-medium transition-all duration-200 ${
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
                   activeSection === item.href.replace('#', '')
                     ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-800'
                 }`}
                 aria-current={
                   activeSection === item.href.replace('#', '')
@@ -205,6 +203,14 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false)
+              }}
+              className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+            >
+              Get In Touch
+            </button>
           </div>
         </div>
       </nav>
