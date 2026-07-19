@@ -4,9 +4,10 @@ import { Card, Badge, Button } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
 
 const FeaturedProjects = () => {
-  const { projects } = cvData
-  const featuredProjects = projects.filter((p) => p.isFeatured)
-  const otherProjects = projects.filter((p) => !p.isFeatured)
+  const { projects } = cvData || {}
+  const safeProjects = projects || []
+  const featuredProjects = safeProjects.filter((p) => p.isFeatured)
+  const otherProjects = safeProjects.filter((p) => !p.isFeatured)
   const [activeTab, setActiveTab] = useState('overview')
 
   const project = featuredProjects[0]
@@ -93,7 +94,7 @@ const FeaturedProjects = () => {
                     What This Demonstrates
                   </h3>
                   <ul className="space-y-2" role="list">
-                    {project.whatThisDemonstrates.map((item, i) => (
+                    {(project.whatThisDemonstrates ?? []).map((item, i) => (
                       <li
                         key={i}
                         className="text-gray-600 dark:text-gray-400 flex items-start gap-2"
@@ -232,7 +233,7 @@ const FeaturedProjects = () => {
                     Target Users
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {project.targetUsers.map((user, i) => (
+                    {(project.targetUsers ?? []).map((user, i) => (
                       <Badge key={i} variant="outline" className="text-xs">
                         {user}
                       </Badge>
@@ -261,14 +262,14 @@ const FeaturedProjects = () => {
                       Tech Stack
                     </h3>
                     <div className="space-y-4">
-                      {Object.entries(project.techStack).map(
+                      {Object.entries(project.techStack || {}).map(
                         ([category, techs]) => (
                           <div key={category}>
                             <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
                               {category}
                             </h4>
                             <div className="flex flex-wrap gap-2">
-                              {techs.map((tech, i) => (
+                              {(techs || []).map((tech, i) => (
                                 <Badge
                                   key={i}
                                   variant="outline"
@@ -289,7 +290,7 @@ const FeaturedProjects = () => {
                       Architecture Overview
                     </h3>
                     <dl className="space-y-3 text-sm">
-                      {Object.entries(project.architecture).map(
+                      {Object.entries(project.architecture || {}).map(
                         ([key, value]) => (
                           <div key={key} className="flex justify-between gap-4">
                             <dt className="text-gray-500 dark:text-gray-400 capitalize">
@@ -453,7 +454,7 @@ const FeaturedProjects = () => {
 
             <TabPanel id="challenges" label="Engineering Challenges">
               <div className="space-y-6">
-                {project.engineeringChallenges.map((challenge, i) => (
+                {(project.engineeringChallenges || []).map((challenge, i) => (
                   <Card key={i} className="border-l-4 border-blue-500">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
@@ -490,7 +491,7 @@ const FeaturedProjects = () => {
 
             <TabPanel id="features" label="Key Features">
               <div className="space-y-6">
-                {project.keyFeatures.map((featureGroup, i) => (
+                {(project.keyFeatures || []).map((featureGroup, i) => (
                   <Card key={i}>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                       <Badge variant="primary" className="text-xs">
@@ -498,7 +499,7 @@ const FeaturedProjects = () => {
                       </Badge>
                     </h3>
                     <div className="grid sm:grid-cols-2 gap-3">
-                      {featureGroup.features.map((feature, j) => (
+                      {(featureGroup.features || []).map((feature, j) => (
                         <div
                           key={j}
                           className="flex items-center gap-2 text-gray-600 dark:text-gray-400"
@@ -533,7 +534,7 @@ const FeaturedProjects = () => {
                   inventory management platform.
                 </p>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {project.roadmap.map((item, i) => (
+                  {(project.roadmap || []).map((item, i) => (
                     <Card key={i} variant="outlined">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
@@ -564,7 +565,7 @@ const FeaturedProjects = () => {
 
             <TabPanel id="metrics" label="Metrics">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {Object.entries(project.metrics).map(([key, value]) => (
+                {Object.entries(project.metrics || {}).map(([key, value]) => (
                   <Card key={key} className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       {value}

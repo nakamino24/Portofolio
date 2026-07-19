@@ -4,10 +4,11 @@ import { Card, Badge } from '../../shared/ui'
 import { cn } from '../../shared/utils/cn'
 
 const Certifications = () => {
-  const { certifications } = cvData
+  const { certifications } = cvData || {}
+  const safeCertifications = certifications || []
 
   const categoryOrder = ['Networking', 'Security', 'Development']
-  const groupedCerts = certifications.reduce((acc, cert) => {
+  const groupedCerts = safeCertifications.reduce((acc, cert) => {
     if (!acc[cert.category]) acc[cert.category] = []
     acc[cert.category].push(cert)
     return acc
@@ -98,8 +99,9 @@ const Certifications = () => {
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
             Industry-recognized credentials validating expertise across
             networking, security, and development domains.
-            {certifications.length} certifications from Cisco Networking Academy
-            and leading tech education providers.
+            {safeCertifications.length} certification
+            {safeCertifications.length !== 1 ? 's' : ''} from Cisco Networking
+            Academy and leading tech education providers.
           </p>
         </div>
 

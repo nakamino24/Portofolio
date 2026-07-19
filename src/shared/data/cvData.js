@@ -397,6 +397,19 @@ export const cvData = {
         'Small and medium businesses often track inventory using spreadsheets or paper, leading to stockouts, overstocking, data entry errors, and no historical audit trail. Existing SaaS solutions are either too expensive or overly complex for SMB needs.',
       solution:
         'Built a modern, responsive web application with role-ready authentication, real-time dashboard, comprehensive inventory CRUD, stock movement tracking, and a clean architecture designed for extensibility (RBAC, purchase orders, reporting, barcode scanning on roadmap).',
+      whatThisDemonstrates: [
+        'End-to-end full-stack ownership — dari desain schema database sampai UI production-ready',
+        'Praktik auth yang aman: JWT access + refresh token rotation, HTTP-only cookies, bcrypt hashing',
+        'Arsitektur backend berlapis (routes → controllers → services → data access) yang gampang di-maintain',
+        'Pemahaman deployment cloud-native: serverless functions, connection pooling, config berbasis environment',
+        'Perhatian ke detail UX yang sering kelewat di project portofolio: loading state, error boundary, empty state',
+      ],
+      targetUsers: [
+        'Pemilik UKM/toko',
+        'Staff gudang',
+        'Manajer inventory',
+        'Tim operasional',
+      ],
       status: 'Active Development',
       type: 'Personal Engineering Project',
       isFeatured: true,

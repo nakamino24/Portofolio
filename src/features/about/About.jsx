@@ -230,7 +230,8 @@ const Milestone = ({ item, type = 'work', isLast }) => {
 }
 
 export default function About() {
-  const { profile, experience, education } = cvData
+  const { personalInfo, experience, education } = cvData
+  const profile = personalInfo?.summary || ''
   const profileHighlight = profile.split('.')[0] + '.'
   const [showFullBio, setShowFullBio] = useState(false)
 

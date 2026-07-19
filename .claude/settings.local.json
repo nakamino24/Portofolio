@@ -32,7 +32,8 @@
       "Bash(grep -n \"^- \\\\\\\\[\" docs/superpowers/plans/2024-07-16-portfolio-redesign-plan.md)",
       "Bash(C-c *)",
       "Bash(npx eslint *)",
-      "Bash(git -c user.email=claude@anthropic.com -c user.name=Claude commit -m \"docs: add portfolio hardening + features design spec\")"
+      "Bash(git -c user.email=claude@anthropic.com -c user.name=Claude commit -m \"docs: add portfolio hardening + features design spec\")",
+      "mcp__plugin_ecc_chrome-devtools__navigate_page"
     ]
   }
 }
