@@ -1,7 +1,7 @@
 export const cvData = {
   personalInfo: {
     name: 'Muhammad Quways Al-Qarany',
-    title: 'Software Engineer / Full-Stack Developer',
+    title: 'Early-Career Software Engineer | Full-Stack',
     email: 'faiz.quways@gmail.com',
     phone: '+62 895-0327-9320',
     location: 'Bekasi, Indonesia',
@@ -9,7 +9,7 @@ export const cvData = {
     github: 'https://github.com/nakamino24',
     portfolio: 'https://myporto-lime.vercel.app',
     summary:
-      'Computer Engineering graduate with software engineering experience and a current enterprise IT procurement role. I build full-stack web applications and can demonstrate React, Node.js, TypeScript, PostgreSQL, API development, testing, and CI workflows through public project code.',
+      'I build full-stack web applications and can show the code behind my decisions. My strongest public project combines React, TypeScript, Node.js, PostgreSQL, testing, and CI, alongside previous professional software engineering experience.',
   },
 
   education: [
@@ -29,22 +29,6 @@ export const cvData = {
 
   experience: [
     {
-      title: 'IT Procurement Administrator',
-      company: 'PT Bank Rakyat Indonesia (Persero) Tbk',
-      location: 'Jakarta, Indonesia',
-      startDate: 'Sep 2025',
-      endDate: null,
-      current: true,
-      type: 'full-time',
-      focus: 'IT Procurement & Administration',
-      responsibilities: [
-        'Manage IT procurement documentation and coordinate timelines between vendors and internal stakeholders.',
-        'Translate requirements between technical users and vendors and track procurement follow-ups.',
-      ],
-      technologies: ['Procurement Administration', 'Vendor Coordination', 'Stakeholder Coordination'],
-      isEngineeringRole: false,
-    },
-    {
       title: 'Software Engineer',
       company: 'PT Wijaya Karya',
       location: 'Jakarta, Indonesia',
@@ -54,23 +38,26 @@ export const cvData = {
       type: 'full-time',
       focus: 'Software Development',
       responsibilities: [
-        'Contributed application features in an internal engineering environment.',
-        'Worked on an MRP workflow including document upload and status-tracking UI.',
+        'Implemented parts of an internal MRP workflow, including document-upload and status-tracking interactions in a web application.',
+        'Worked within an engineering team using JavaScript and Git to contribute application changes while keeping confidential implementation details private.',
       ],
-      technologies: ['JavaScript', 'Web Development', 'Git'],
+      technologies: ['JavaScript', 'Web Application Development', 'Git'],
       isEngineeringRole: true,
     },
     {
-      title: 'Administrative Staff Intern',
-      company: 'PT Compotec International',
+      title: 'IT Procurement Administrator',
+      company: 'PT Bank Rakyat Indonesia (Persero) Tbk',
       location: 'Jakarta, Indonesia',
-      startDate: 'May 2025',
-      endDate: 'Jun 2025',
-      current: false,
-      type: 'internship',
-      focus: 'Administration & Operations',
-      responsibilities: ['Managed operational data in Excel and Google Sheets and supported administrative workflow improvements.'],
-      technologies: ['Microsoft Office', 'Google Sheets', 'Document Management'],
+      startDate: 'Sep 2025',
+      endDate: null,
+      current: true,
+      type: 'full-time',
+      focus: 'IT Procurement & Administration',
+      responsibilities: [
+        'Coordinate IT procurement documentation and follow-ups across internal stakeholders and vendors, keeping technical requirements and administrative timelines aligned.',
+        'Translate requests between technical users and external vendors and maintain the operational records needed to move procurement work forward.',
+      ],
+      technologies: ['IT Procurement', 'Vendor Coordination', 'Stakeholder Coordination'],
       isEngineeringRole: false,
     },
     {
@@ -82,141 +69,141 @@ export const cvData = {
       current: false,
       type: 'part-time',
       focus: 'Computer Engineering Education',
-      responsibilities: ['Prepared course materials, delivered tutorials, and supported course administration.'],
-      technologies: ['C Programming', 'Data Structures', 'Microcontrollers', 'Embedded Systems'],
+      responsibilities: [
+        'Prepared tutorials and supported students across C programming, data structures, microcontrollers, and embedded-systems coursework.',
+      ],
+      technologies: ['C Programming', 'Data Structures', 'Microcontrollers'],
+      isEngineeringRole: false,
+    },
+    {
+      title: 'Administrative Staff Intern',
+      company: 'PT Compotec International',
+      location: 'Jakarta, Indonesia',
+      startDate: 'May 2025',
+      endDate: 'Jun 2025',
+      current: false,
+      type: 'internship',
+      focus: 'Administration & Operations',
+      responsibilities: [
+        'Maintained operational data in Excel and Google Sheets and supported routine administrative workflows.',
+      ],
+      technologies: ['Excel', 'Google Sheets', 'Document Management'],
       isEngineeringRole: false,
     },
   ],
 
   technicalSkills: {
-    languagesFrameworks: [
-      { name: 'JavaScript', evidence: 'React portfolio UI and application feature work' },
-      { name: 'React', evidence: 'Reusable portfolio components and Stokku web application' },
-      { name: 'Node.js / Express', evidence: 'Stokku API package with Express routes and middleware' },
-      { name: 'TypeScript', evidence: 'Stokku web/API packages with typecheck scripts' },
+    core: [
+      { name: 'JavaScript / TypeScript', evidence: 'Portfolio code plus Stokku web and API packages with TypeScript typecheck scripts' },
+      { name: 'React', evidence: 'Portfolio UI and Stokku web application' },
+      { name: 'Node.js / Express', evidence: 'Stokku API routes and middleware' },
+      { name: 'PostgreSQL / Prisma', evidence: 'Stokku relational schema for organizations, products, warehouses, stock levels, and movements' },
     ],
-    database: [
-      { name: 'PostgreSQL', evidence: 'Stokku Prisma schema models organizations, products, warehouses, stock levels, and movements' },
-    ],
-    security: [
-      { name: 'JWT Authentication', evidence: 'Stokku API verifies bearer access tokens in authentication middleware' },
-      { name: 'bcrypt', evidence: 'Stokku API includes bcryptjs for password handling' },
-      { name: 'Role Modeling', evidence: 'Stokku schema defines organization roles and role permissions' },
+    workingKnowledge: [
+      { name: 'JWT Authentication', evidence: 'Bearer-token verification and authenticated request context in Stokku API middleware' },
+      { name: 'Testing', evidence: 'Jest and Supertest in API/web packages; Playwright E2E scripts in the web package' },
+      { name: 'Schema Validation', evidence: 'Zod appears in Stokku application dependencies and validation flows' },
     ],
     tools: [
-      { name: 'Git / GitHub Actions', evidence: 'Stokku includes CI/CD workflow definitions' },
-      { name: 'Testing', evidence: 'Stokku API/web expose Jest tests; web also exposes Playwright E2E scripts' },
+      { name: 'Git / GitHub', evidence: 'Public project history and repository-based development workflow' },
+      { name: 'GitHub Actions', evidence: 'Committed CI/CD workflow definitions in Stokku and portfolio verification workflow' },
+      { name: 'Vercel', evidence: 'Public portfolio and Stokku demo deployments' },
+      { name: 'Turbo / pnpm workspaces', evidence: 'Stokku root scripts coordinate web, API, and database packages' },
     ],
   },
-
-  technicalTraining: ['Cisco Networking Academy coursework in networking and cybersecurity'],
-  softSkills: ['Communication', 'Stakeholder Coordination', 'Problem Solving', 'Documentation'],
 
   projects: [
     {
       id: 'stokku',
       title: 'Stokku',
-      tagline: 'Full-Stack Inventory Management Project',
+      tagline: 'Inventory management system — personal full-stack engineering project',
       description: 'A public TypeScript monorepo for inventory and operations workflows.',
-      longDescription:
-        'Stokku is the strongest public engineering sample in this portfolio. Its repository contains a Next.js web app, an Express API, a PostgreSQL/Prisma data model, automated test scripts, and GitHub Actions workflows.',
       problemStatement:
-        'Model inventory operations that need structured product, supplier, warehouse, stock-level, and stock-movement data instead of relying on disconnected records.',
-      solution:
-        'Use a typed monorepo with separate web, API, and database packages. The PostgreSQL schema models inventory relationships and the API protects authenticated routes with JWT verification.',
-      constraints: [
-        'Keep organization data scoped in the relational model.',
-        'Represent inventory across warehouses, bins, products, variants, and movements.',
-        'Keep web, API, and database concerns separated while sharing a monorepo workflow.',
-      ],
+        'Inventory data becomes difficult to reason about when products, suppliers, warehouse locations, stock quantities, and movement history are stored as disconnected records.',
+      whatIBuilt:
+        'I structured Stokku as a personal full-stack project with separate web, API, and database packages. I modeled the inventory domain in PostgreSQL/Prisma, implemented an Express authentication boundary, connected the project through a TypeScript monorepo workflow, and deployed a public web demo.',
       status: 'Active Development',
       type: 'Personal Engineering Project',
       isFeatured: true,
       liveUrl: 'https://stokku-nakamino24s-projects.vercel.app',
       githubUrl: 'https://github.com/nakamino24/stokku',
       screenshots: ['/stokku-dashboard.png', '/stokku-supplier.png', '/stokku-warehouse.png'],
-      architecture: {
-        pattern: 'Monorepo with separate web, API, and database packages',
-        frontend: 'Next.js 13 + React 18 + TypeScript',
-        backend: 'Node.js + Express + TypeScript',
-        database: 'PostgreSQL + Prisma',
-        auth: 'JWT bearer-token verification; role data is included in the authenticated user context',
-        deployment: 'Vercel configuration and deployment workflows are present in the repository',
-      },
-      techStack: {
-        frontend: ['Next.js 13', 'React 18', 'TypeScript', 'React Hook Form', 'Zod', 'SWR'],
-        backend: ['Node.js', 'Express', 'TypeScript', 'JWT', 'bcryptjs', 'Zod', 'Helmet', 'Rate Limiting'],
-        database: ['PostgreSQL', 'Prisma'],
-        quality: ['Jest', 'Supertest', 'Playwright', 'ESLint', 'GitHub Actions'],
-      },
-      engineeringChallenges: [
+      coreStack: ['TypeScript', 'React / Next.js', 'Node.js / Express', 'PostgreSQL', 'Prisma'],
+      engineeringDecisions: [
         {
-          title: 'Inventory domain modeling',
-          description: 'Inventory state spans organizations, products, variants, suppliers, warehouses, bins, and movement history.',
-          solution: 'The Prisma schema uses explicit relations, unique constraints, enums, and indexes for the main inventory entities.',
+          title: 'Relational inventory model with organization scoping',
+          context:
+            'Products, variants, suppliers, warehouses, bins, stock levels, and movement history need explicit relationships, while records also need an organization boundary.',
+          decision:
+            'I modeled the domain in PostgreSQL through Prisma with separate entities, foreign-key relations, organizationId fields, unique constraints, enums, and indexes.',
+          why:
+            'A relational model makes inventory relationships and ownership constraints visible in the schema instead of encoding them only in application code.',
+          tradeoff:
+            'The schema becomes larger and changes require more deliberate migrations as the domain evolves.',
+          implementation:
+            'packages/database/prisma/schema.prisma defines Organization, Product, ProductVariant, Supplier, Warehouse, WarehouseZone, WarehouseBin, StockLevel, StockMovement, roles, permissions, constraints, and indexes.',
         },
         {
-          title: 'Authentication boundary',
-          description: 'API routes need a consistent authenticated-user context.',
-          solution: 'Express middleware validates bearer JWTs and attaches identity, role, and organization fields to the request context.',
+          title: 'Single JWT authentication boundary for API requests',
+          context:
+            'Protected API handlers need a consistent way to reject unauthenticated requests and access the current user, role, and organization.',
+          decision:
+            'I used Express middleware to verify bearer JWTs before protected handlers and attach identity and organization context to the request.',
+          why:
+            'Centralizing token verification keeps authentication behavior out of individual route handlers and gives downstream code one request context to read.',
+          tradeoff:
+            'JWT-based auth requires careful token expiry and revocation handling; role changes are not automatically reflected in already-issued tokens.',
+          implementation:
+            'apps/api/src/middleware/auth.ts checks the Authorization header, verifies the token, and attaches id, email, name, role, organizationId, and organizationSlug to req.user.',
         },
         {
-          title: 'Monorepo quality checks',
-          description: 'Web, API, and database packages need repeatable verification.',
-          solution: 'Root scripts coordinate build, lint, typecheck, and tests through Turbo; GitHub workflow files are committed for CI/CD.',
+          title: 'Monorepo separation for web, API, and database packages',
+          context:
+            'The frontend, backend, and database tooling need separate responsibilities but still need repeatable commands for development and verification.',
+          decision:
+            'I organized Stokku as pnpm workspaces and use Turbo to coordinate build, lint, typecheck, test, and development commands across packages.',
+          why:
+            'The structure keeps package boundaries visible while allowing one root workflow to run checks across the project.',
+          tradeoff:
+            'A monorepo adds workspace and build-tool configuration that would be unnecessary for a very small single-package application.',
+          implementation:
+            'The root package.json declares apps/* and packages/* workspaces and routes build, lint, typecheck, test, and dev commands through Turbo.',
         },
       ],
-      keyFeatures: [
-        { category: 'Data Model', features: ['Products and variants', 'Suppliers', 'Warehouses, zones, and bins', 'Stock levels', 'Stock movements'] },
-        { category: 'Platform', features: ['Organization roles', 'JWT-protected API middleware', 'Web/API/database package separation'] },
-        { category: 'Verification', features: ['Typecheck scripts', 'Jest test scripts', 'Playwright E2E script', 'GitHub Actions workflows'] },
+      implemented: [
+        'Relational schema for organizations, products, variants, suppliers, warehouses, stock levels, and stock movements',
+        'JWT bearer-token authentication middleware with user, role, and organization request context',
+        'Separate web, API, and database packages with root build, lint, typecheck, and test scripts',
+        'Committed Jest/Supertest and Playwright test setup plus GitHub Actions workflow files',
+        'Public web demo and portfolio screenshots',
       ],
-      limitations: [
-        'Repository contents include generated build/cache artifacts that should be cleaned separately in the Stokku repository.',
-        'A committed schema or dependency does not by itself prove every modeled workflow is complete in the UI.',
-        'No verified Lighthouse or production performance score is claimed here.',
+      inProgress: [
+        'End-to-end UI coverage for all schema-backed inventory workflows',
+        'Repository cleanup for generated dist and Turbo cache artifacts in Stokku itself',
       ],
-      roadmap: [
-        'Add verified coverage reporting and publish test results.',
-        'Document which schema-backed workflows are complete end-to-end in the UI.',
-        'Clean generated dist and Turbo cache artifacts from the Stokku repository.',
+      planned: [
+        'Publish verified coverage results rather than only test configuration',
+        'Document completed user workflows against the data model as implementation grows',
       ],
-    },
-    {
-      id: 'professional-work',
-      title: 'Internal Software Engineering Work',
-      tagline: 'Sanitized Professional Case Study',
-      description:
-        'Contributed to internal application work during a Software Engineer role, including an MRP workflow with document upload and status tracking.',
-      longDescription:
-        'This entry is intentionally limited to non-confidential information. Internal source code, architecture, user counts, performance data, and deployment details are not presented as public evidence.',
-      problemStatement: 'Support an internal material-planning workflow with clearer document and status handling.',
-      solution: 'Contributed application features for document upload and status-tracking interactions within the team environment.',
-      status: 'Professional Experience',
-      type: 'Confidential Professional Work',
-      isFeatured: false,
-      liveUrl: null,
-      githubUrl: null,
-      screenshots: [],
-      techStack: { frontend: ['JavaScript', 'Web Application Development'] },
+      currentState:
+        'Stokku is an active personal project, not presented as a finished commercial product. The public repository demonstrates the domain model, auth middleware, package structure, quality scripts, tests, CI configuration, and a deployed web interface; some modeled workflows are still being completed end to end.',
     },
   ],
 
   certifications: [
-    { title: 'CCNA – Enterprise Networking, Security, and Automation', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Enterprise Networks', 'Network Security', 'Automation'], credentialId: null, url: null },
-    { title: 'CCNA – Switching, Routing, and Wireless Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Switching', 'Routing', 'Wireless'], credentialId: null, url: null },
-    { title: 'CCNA – Introduction to Networks', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Network Fundamentals', 'TCP/IP', 'IP Addressing'], credentialId: null, url: null },
-    { title: 'CyberOps Associate', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security', skills: ['Security Monitoring', 'Threat Detection', 'Incident Response'], credentialId: null, url: null },
-    { title: 'Cybersecurity Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security', skills: ['Security Fundamentals', 'Risk Assessment'], credentialId: null, url: null },
-    { title: 'Junior Web Developer', issuer: 'Digital Talent Scholarship (Kominfo)', date: '2023', category: 'Development', skills: ['Web Development'], credentialId: null, url: null },
-    { title: 'Fullstack Developer', issuer: 'ITBox', date: '2023', category: 'Development', skills: ['Frontend', 'Backend', 'Database'], credentialId: null, url: null },
-    { title: 'Web Development Professional', issuer: 'MySkill', date: '2023', category: 'Development', skills: ['HTML/CSS', 'JavaScript', 'Responsive Design'], credentialId: null, url: null },
+    { title: 'CCNA – Enterprise Networking, Security, and Automation', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking' },
+    { title: 'CCNA – Switching, Routing, and Wireless Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking' },
+    { title: 'CCNA – Introduction to Networks', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking' },
+    { title: 'CyberOps Associate', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security' },
+    { title: 'Cybersecurity Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security' },
+    { title: 'Junior Web Developer', issuer: 'Digital Talent Scholarship (Kominfo)', date: '2023', category: 'Development' },
+    { title: 'Fullstack Developer', issuer: 'ITBox', date: '2023', category: 'Development' },
+    { title: 'Web Development Professional', issuer: 'MySkill', date: '2023', category: 'Development' },
   ],
 
-  additionalExperience: [],
   seo: {
     title: 'Muhammad Quways Al-Qarany | Software Engineer Portfolio',
-    description: 'Software Engineer portfolio with public evidence from React, Node.js, TypeScript, PostgreSQL, testing, and CI projects.',
+    description: 'Early-career Software Engineer portfolio focused on verifiable full-stack project evidence and technical decisions.',
     ogImage: '/og-image.png',
     twitterHandle: '@muhammadquways',
     siteUrl: 'https://myporto-lime.vercel.app',
