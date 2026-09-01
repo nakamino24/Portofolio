@@ -1,7 +1,7 @@
 export const cvData = {
   personalInfo: {
     name: 'Muhammad Quways Al-Qarany',
-    title: 'Software Engineer | React · Node.js · TypeScript · PostgreSQL',
+    title: 'Software Engineer / Full-Stack Developer',
     email: 'faiz.quways@gmail.com',
     phone: '+62 895-0327-9320',
     location: 'Bekasi, Indonesia',
@@ -9,7 +9,7 @@ export const cvData = {
     github: 'https://github.com/nakamino24',
     portfolio: 'https://myporto-lime.vercel.app',
     summary:
-      'Computer Engineering graduate (IPB University, GPA 3.69/4.00) with hands-on full-stack development experience building production-grade web applications — from database schema design to deployment. Combines technical execution with strong cross-functional coordination skills gained through IT procurement and administrative roles at enterprise scale (Bank Rakyat Indonesia).',
+      'Computer Engineering graduate with software engineering experience and a current enterprise IT procurement role. I build full-stack web applications and can demonstrate React, Node.js, TypeScript, PostgreSQL, API development, testing, and CI workflows through public project code.',
   },
 
   education: [
@@ -23,7 +23,6 @@ export const cvData = {
       highlights: [
         'Focus: Software Engineering, Computer Networks, Embedded Systems',
         'Relevant coursework: Data Structures, Algorithms, Database Systems, Web Programming, Computer Networks, Operating Systems',
-        'Graduated with GPA 3.69/4.00',
       ],
     },
   ],
@@ -39,16 +38,10 @@ export const cvData = {
       type: 'full-time',
       focus: 'IT Procurement & Administration',
       responsibilities: [
-        'Manage end-to-end IT procurement documentation (PR, PO) and coordinate timelines between vendors and internal stakeholders at enterprise scale',
-        'Serve as liaison between technical users and vendors, ensuring requirement clarity and reducing miscommunication in procurement cycles',
+        'Manage IT procurement documentation and coordinate timelines between vendors and internal stakeholders.',
+        'Translate requirements between technical users and vendors and track procurement follow-ups.',
       ],
-      technologies: [
-        'Procurement Systems',
-        'Vendor Management',
-        'Contract Administration',
-        'Compliance Reporting',
-        'Stakeholder Coordination',
-      ],
+      technologies: ['Procurement Administration', 'Vendor Coordination', 'Stakeholder Coordination'],
       isEngineeringRole: false,
     },
     {
@@ -59,24 +52,12 @@ export const cvData = {
       endDate: 'Jan 2025',
       current: false,
       type: 'full-time',
-      focus: 'Full-Stack Web Development',
+      focus: 'Software Development',
       responsibilities: [
-        'Developed web and mobile application features using JavaScript, collaborating with engineering teams on scalable software architecture',
-        'Built a role-based MRP (Material Requirements Planning) module featuring document upload functionality and a dynamic status tracking table with automated color-coded indicators reflecting task completion state',
+        'Contributed application features in an internal engineering environment.',
+        'Worked on an MRP workflow including document upload and status-tracking UI.',
       ],
-      technologies: [
-        'React',
-        'Node.js',
-        'Express.js',
-        'PostgreSQL',
-        'JavaScript',
-        'TypeScript',
-        'Tailwind CSS',
-        'Git',
-        'REST API',
-        'JWT',
-        'Docker',
-      ],
+      technologies: ['JavaScript', 'Web Development', 'Git'],
       isEngineeringRole: true,
     },
     {
@@ -88,15 +69,8 @@ export const cvData = {
       current: false,
       type: 'internship',
       focus: 'Administration & Operations',
-      responsibilities: [
-        'Managed internal databases (Excel, Google Sheets) and identified process inefficiencies, contributing improvement suggestions to administrative workflow',
-      ],
-      technologies: [
-        'Microsoft Office',
-        'Document Management',
-        'Project Coordination',
-        'Data Entry',
-      ],
+      responsibilities: ['Managed operational data in Excel and Google Sheets and supported administrative workflow improvements.'],
+      technologies: ['Microsoft Office', 'Google Sheets', 'Document Management'],
       isEngineeringRole: false,
     },
     {
@@ -108,466 +82,141 @@ export const cvData = {
       current: false,
       type: 'part-time',
       focus: 'Computer Engineering Education',
-      responsibilities: [
-        'Prepared lecture materials and delivered tutorials; managed weekly data entry and end-of-semester reporting for course administration',
-      ],
-      technologies: [
-        'C Programming',
-        'Data Structures',
-        'Microcontrollers',
-        'Embedded Systems',
-        'Circuit Design',
-        'Teaching',
-      ],
+      responsibilities: ['Prepared course materials, delivered tutorials, and supported course administration.'],
+      technologies: ['C Programming', 'Data Structures', 'Microcontrollers', 'Embedded Systems'],
       isEngineeringRole: false,
     },
   ],
 
   technicalSkills: {
     languagesFrameworks: [
-      { name: 'JavaScript', proficiency: 'Advanced' },
-      { name: 'React', proficiency: 'Advanced' },
-      { name: 'Node.js', proficiency: 'Advanced' },
-      { name: 'TypeScript', proficiency: 'Advanced' },
+      { name: 'JavaScript', evidence: 'React portfolio UI and application feature work' },
+      { name: 'React', evidence: 'Reusable portfolio components and Stokku web application' },
+      { name: 'Node.js / Express', evidence: 'Stokku API package with Express routes and middleware' },
+      { name: 'TypeScript', evidence: 'Stokku web/API packages with typecheck scripts' },
     ],
-    database: [{ name: 'PostgreSQL', proficiency: 'Advanced' }],
+    database: [
+      { name: 'PostgreSQL', evidence: 'Stokku Prisma schema models organizations, products, warehouses, stock levels, and movements' },
+    ],
     security: [
-      { name: 'JWT Authentication', proficiency: 'Advanced' },
-      { name: 'bcrypt', proficiency: 'Intermediate' },
-      { name: 'RBAC Design', proficiency: 'Intermediate' },
+      { name: 'JWT Authentication', evidence: 'Stokku API verifies bearer access tokens in authentication middleware' },
+      { name: 'bcrypt', evidence: 'Stokku API includes bcryptjs for password handling' },
+      { name: 'Role Modeling', evidence: 'Stokku schema defines organization roles and role permissions' },
     ],
     tools: [
-      { name: 'Git', proficiency: 'Advanced' },
-      { name: 'Cloud Deployment (Serverless)', proficiency: 'Advanced' },
+      { name: 'Git / GitHub Actions', evidence: 'Stokku includes CI/CD workflow definitions' },
+      { name: 'Testing', evidence: 'Stokku API/web expose Jest tests; web also exposes Playwright E2E scripts' },
     ],
   },
 
-  technicalTraining: [
-    'Cisco Networking Academy — CCNA, CyberOps (8x certified)',
-  ],
-
-  softSkills: [
-    'Communication',
-    'Teamwork',
-    'Problem Solving',
-    'Time Management',
-    'Critical Thinking',
-    'Adaptability',
-    'Leadership',
-    'Project Management',
-  ],
+  technicalTraining: ['Cisco Networking Academy coursework in networking and cybersecurity'],
+  softSkills: ['Communication', 'Stakeholder Coordination', 'Problem Solving', 'Documentation'],
 
   projects: [
     {
       id: 'stokku',
       title: 'Stokku',
-      tagline: 'Production-Grade Inventory Management System',
-      description:
-        'A full-stack SaaS inventory management system built as a personal engineering project to demonstrate production-quality software architecture, clean code practices, and cloud deployment.',
+      tagline: 'Full-Stack Inventory Management Project',
+      description: 'A public TypeScript monorepo for inventory and operations workflows.',
       longDescription:
-        'Stokku solves real inventory management problems for SMBs: manual stock tracking, disorganized product catalogs, lack of supplier management, and no audit trail for stock movements. The system provides a complete workflow from product/category/supplier CRUD through stock-in/stock-out operations with full movement history.',
+        'Stokku is the strongest public engineering sample in this portfolio. Its repository contains a Next.js web app, an Express API, a PostgreSQL/Prisma data model, automated test scripts, and GitHub Actions workflows.',
       problemStatement:
-        'Small and medium businesses often track inventory using spreadsheets or paper, leading to stockouts, overstocking, data entry errors, and no historical audit trail. Existing SaaS solutions are either too expensive or overly complex for SMB needs.',
+        'Model inventory operations that need structured product, supplier, warehouse, stock-level, and stock-movement data instead of relying on disconnected records.',
       solution:
-        'Built a modern, responsive web application with role-ready authentication, real-time dashboard, comprehensive inventory CRUD, stock movement tracking, and a clean architecture designed for extensibility (RBAC, purchase orders, reporting, barcode scanning on roadmap).',
-      whatThisDemonstrates: [
-        'End-to-end full-stack ownership — dari desain schema database sampai UI production-ready',
-        'Praktik auth yang aman: JWT access + refresh token rotation, HTTP-only cookies, bcrypt hashing',
-        'Arsitektur backend berlapis (routes → controllers → services → data access) yang gampang di-maintain',
-        'Pemahaman deployment cloud-native: serverless functions, connection pooling, config berbasis environment',
-        'Perhatian ke detail UX yang sering kelewat di project portofolio: loading state, error boundary, empty state',
-      ],
-      resumeBullets: [
-        'Built a full-stack inventory management system for SMBs addressing stockouts, overstocking, and manual tracking errors, replacing spreadsheet-based workflows',
-        'Implemented secure authentication with JWT access/refresh token rotation, HTTP-only cookies, and bcrypt password hashing',
-        'Designed a layered backend architecture (routes → controllers → services → data access) for maintainability and extensibility',
-        'Deployed on cloud-native infrastructure using serverless functions with connection pooling and environment-based configuration',
-        'Delivered production-ready UX including loading states, error boundaries, and empty states — details commonly missed in portfolio projects',
-      ],
-      targetUsers: [
-        'Pemilik UKM/toko',
-        'Staff gudang',
-        'Manajer inventory',
-        'Tim operasional',
+        'Use a typed monorepo with separate web, API, and database packages. The PostgreSQL schema models inventory relationships and the API protects authenticated routes with JWT verification.',
+      constraints: [
+        'Keep organization data scoped in the relational model.',
+        'Represent inventory across warehouses, bins, products, variants, and movements.',
+        'Keep web, API, and database concerns separated while sharing a monorepo workflow.',
       ],
       status: 'Active Development',
       type: 'Personal Engineering Project',
       isFeatured: true,
       liveUrl: 'https://stokku-nakamino24s-projects.vercel.app',
       githubUrl: 'https://github.com/nakamino24/stokku',
-      screenshots: [
-        '/stokku-dashboard.png',
-        '/stokku-supplier.png',
-        '/stokku-warehouse.png',
-      ],
+      screenshots: ['/stokku-dashboard.png', '/stokku-supplier.png', '/stokku-warehouse.png'],
       architecture: {
-        pattern: 'Client-Server (REST API)',
-        frontend: 'React 18 + TypeScript + Vite + Tailwind CSS',
-        backend:
-          'Node.js + Express.js (modular: routes, controllers, services, middleware)',
-        database:
-          'PostgreSQL (Neon serverless) with normalized relational schema',
-        auth: 'JWT (access + refresh tokens) with bcrypt password hashing, HTTP-only cookies',
-        deployment:
-          'Vercel (frontend + serverless functions) with environment-based config',
-        structure:
-          'Monorepo with shared types; feature-based folder organization',
+        pattern: 'Monorepo with separate web, API, and database packages',
+        frontend: 'Next.js 13 + React 18 + TypeScript',
+        backend: 'Node.js + Express + TypeScript',
+        database: 'PostgreSQL + Prisma',
+        auth: 'JWT bearer-token verification; role data is included in the authenticated user context',
+        deployment: 'Vercel configuration and deployment workflows are present in the repository',
       },
       techStack: {
-        frontend: [
-          'React 18',
-          'TypeScript',
-          'Vite',
-          'Tailwind CSS',
-          'React Router',
-          'Axios',
-          'React Hook Form',
-          'Zod',
-          'Sonner (toasts)',
-          'Lucide React',
-        ],
-        backend: [
-          'Node.js',
-          'Express.js',
-          'TypeScript',
-          'JWT (jsonwebtoken)',
-          'bcryptjs',
-          'Zod',
-          'CORS',
-          'Helmet',
-          'Morgan',
-        ],
-        database: [
-          'PostgreSQL',
-          'Neon Serverless',
-          'pg (node-postgres)',
-          'Custom query builder',
-        ],
-        devops: [
-          'Vercel',
-          'GitHub Actions',
-          'Git',
-          'ESLint',
-          'Prettier',
-          'TypeScript strict mode',
-        ],
-        testing: [
-          'Vitest (planned)',
-          'React Testing Library (planned)',
-          'Supertest (planned)',
-        ],
+        frontend: ['Next.js 13', 'React 18', 'TypeScript', 'React Hook Form', 'Zod', 'SWR'],
+        backend: ['Node.js', 'Express', 'TypeScript', 'JWT', 'bcryptjs', 'Zod', 'Helmet', 'Rate Limiting'],
+        database: ['PostgreSQL', 'Prisma'],
+        quality: ['Jest', 'Supertest', 'Playwright', 'ESLint', 'GitHub Actions'],
       },
       engineeringChallenges: [
         {
-          title: 'Clean Architecture in a Monorepo',
-          description:
-            'Separated concerns into layers (routes → controllers → services → data access) while sharing TypeScript types between frontend and backend. Avoided circular dependencies using dependency inversion.',
-          solution:
-            'Created shared types package; backend uses service layer for business logic; controllers only handle HTTP concerns; repository pattern for data access.',
+          title: 'Inventory domain modeling',
+          description: 'Inventory state spans organizations, products, variants, suppliers, warehouses, bins, and movement history.',
+          solution: 'The Prisma schema uses explicit relations, unique constraints, enums, and indexes for the main inventory entities.',
         },
         {
-          title: 'JWT Authentication with Refresh Token Rotation',
-          description:
-            'Implemented secure auth with short-lived access tokens (15min) and rotating refresh tokens stored in HTTP-only cookies. Prevents token theft and enables silent re-authentication.',
-          solution:
-            'Custom middleware for token verification; refresh endpoint rotates tokens and revokes old ones; bcrypt for password hashing (12 rounds); protected route wrapper on frontend.',
+          title: 'Authentication boundary',
+          description: 'API routes need a consistent authenticated-user context.',
+          solution: 'Express middleware validates bearer JWTs and attaches identity, role, and organization fields to the request context.',
         },
         {
-          title: 'Database Schema Design for Inventory Domain',
-          description:
-            'Designed normalized schema supporting products, categories, suppliers, stock movements, and users with proper constraints, indexes, and audit fields.',
-          solution:
-            'PostgreSQL with UUID PKs, foreign keys, check constraints, partial indexes for active records, triggers for updated_at, and movement log with direction enum (IN/OUT).',
-        },
-        {
-          title: 'Serverless Deployment on Vercel',
-          description:
-            'Adapted Express backend to run as Vercel serverless functions while maintaining connection pooling to Neon PostgreSQL.',
-          solution:
-            'Used @vercel/node adapter; configured Neon connection pooling; optimized cold starts with module-level connection reuse; environment-based config for local vs production.',
-        },
-        {
-          title: 'Responsive Dashboard with Complex State',
-          description:
-            'Built dashboard with real-time stats, recent activity feed, and quick actions while managing loading, error, and empty states across multiple API calls.',
-          solution:
-            'Custom hooks for data fetching (useQuery pattern); optimistic UI updates for stock movements; skeleton loaders; error boundaries; toast notifications.',
+          title: 'Monorepo quality checks',
+          description: 'Web, API, and database packages need repeatable verification.',
+          solution: 'Root scripts coordinate build, lint, typecheck, and tests through Turbo; GitHub workflow files are committed for CI/CD.',
         },
       ],
       keyFeatures: [
-        {
-          category: 'Authentication',
-          features: [
-            'User Registration',
-            'User Login',
-            'JWT Access + Refresh Tokens',
-            'HTTP-only Cookie Storage',
-            'Protected Routes',
-            'Auto Token Refresh',
-          ],
-        },
-        {
-          category: 'Dashboard',
-          features: [
-            'Inventory Summary Cards',
-            'Low Stock Alerts',
-            'Recent Stock Movements',
-            'Quick Action Buttons',
-            'Responsive Grid Layout',
-          ],
-        },
-        {
-          category: 'Inventory Management',
-          features: [
-            'Product CRUD',
-            'Category CRUD',
-            'Supplier CRUD',
-            'Search & Filter',
-            'Pagination',
-            'Image Upload (planned)',
-          ],
-        },
-        {
-          category: 'Stock Operations',
-          features: [
-            'Stock In (Receive)',
-            'Stock Out (Issue/Transfer)',
-            'Movement History Log',
-            'Quantity Validation',
-            'Reference Number Tracking',
-          ],
-        },
-        {
-          category: 'UX / Quality',
-          features: [
-            'Mobile-First Responsive',
-            'Loading Skeletons',
-            'Error Boundaries',
-            'Toast Notifications',
-            'Form Validation (Zod)',
-            'Keyboard Navigation',
-            'Focus Management',
-          ],
-        },
+        { category: 'Data Model', features: ['Products and variants', 'Suppliers', 'Warehouses, zones, and bins', 'Stock levels', 'Stock movements'] },
+        { category: 'Platform', features: ['Organization roles', 'JWT-protected API middleware', 'Web/API/database package separation'] },
+        { category: 'Verification', features: ['Typecheck scripts', 'Jest test scripts', 'Playwright E2E script', 'GitHub Actions workflows'] },
+      ],
+      limitations: [
+        'Repository contents include generated build/cache artifacts that should be cleaned separately in the Stokku repository.',
+        'A committed schema or dependency does not by itself prove every modeled workflow is complete in the UI.',
+        'No verified Lighthouse or production performance score is claimed here.',
       ],
       roadmap: [
-        'Role-Based Access Control (Admin / Manager / Staff)',
-        'Purchase Order Module',
-        'Sales / Order Management',
-        'Multi-Warehouse Support',
-        'Barcode / QR Code Scanner',
-        'Advanced Reporting & Analytics',
-        'Audit Logging',
-        'Excel / PDF Export',
-        'Email Notifications (Low Stock, PO Status)',
-        'API Rate Limiting & Documentation (OpenAPI)',
-        'Automated Testing Suite (Unit + Integration + E2E)',
+        'Add verified coverage reporting and publish test results.',
+        'Document which schema-backed workflows are complete end-to-end in the UI.',
+        'Clean generated dist and Turbo cache artifacts from the Stokku repository.',
       ],
-      metrics: {
-        linesOfCode: '~8,500 (frontend + backend)',
-        testCoverage: 'Planned',
-        lighthouseScore: '95+ (target)',
-        deploymentFrequency: 'On push to main',
-        uptime: '99.9% (Vercel SLA)',
-      },
     },
     {
-      id: 'manpower-management',
-      title: 'Manpower Management Center',
-      tagline: 'Enterprise Internal Web Application',
+      id: 'professional-work',
+      title: 'Internal Software Engineering Work',
+      tagline: 'Sanitized Professional Case Study',
       description:
-        'Web-based internal system for managing company manpower operations, built during Software Engineer role at PT Wijaya Karya.',
+        'Contributed to internal application work during a Software Engineer role, including an MRP workflow with document upload and status tracking.',
       longDescription:
-        "Developed as part of a team building internal tooling for one of Indonesia's largest state-owned construction companies. The system handles employee data, project assignments, attendance tracking, and reporting for 500+ users.",
-      problemStatement:
-        'Manual spreadsheet-based manpower tracking caused data inconsistency, delayed reporting, and lack of real-time visibility across project sites.',
-      solution:
-        'Built a centralized web portal with role-based access, real-time dashboard, data import/export, and automated reporting replacing manual processes.',
-      status: 'Completed',
-      type: 'Professional Work (PT Wijaya Karya)',
+        'This entry is intentionally limited to non-confidential information. Internal source code, architecture, user counts, performance data, and deployment details are not presented as public evidence.',
+      problemStatement: 'Support an internal material-planning workflow with clearer document and status handling.',
+      solution: 'Contributed application features for document upload and status-tracking interactions within the team environment.',
+      status: 'Professional Experience',
+      type: 'Confidential Professional Work',
       isFeatured: false,
       liveUrl: null,
-      githubUrl: 'https://github.com/nakamino24/manpower-management',
+      githubUrl: null,
       screenshots: [],
-      architecture: {
-        pattern: 'Client-Server (REST API)',
-        frontend: 'React + JavaScript + HTML/CSS',
-        backend: 'Node.js + Express + SQL',
-        database: 'SQL (PostgreSQL/MySQL)',
-        auth: 'Session-based / JWT',
-        deployment: 'On-premise / Internal network',
-      },
-      techStack: {
-        frontend: ['React', 'JavaScript', 'HTML5', 'CSS3'],
-        backend: ['Node.js', 'Express.js', 'SQL'],
-        database: ['PostgreSQL', 'MySQL'],
-        devops: ['Git', 'Linux'],
-      },
-      engineeringChallenges: [
-        {
-          title: 'Scaling for 500+ Concurrent Users',
-          description:
-            'Internal system needed to handle peak usage during shift changes across multiple project sites.',
-          solution:
-            'Optimized database queries with proper indexing; implemented connection pooling; added Redis caching for frequent dashboard queries; load tested with artillery.',
-        },
-        {
-          title: 'Role-Based Access Control',
-          description:
-            'Different user types (HR, Project Managers, Site Supervisors, Employees) required different data visibility and actions.',
-          solution:
-            'Designed RBAC middleware with permission matrix; frontend route guards; API-level authorization checks.',
-        },
-      ],
-      keyFeatures: [
-        {
-          category: 'Core',
-          features: [
-            'Employee Management',
-            'Project Assignment',
-            'Attendance Tracking',
-            'Role-Based Access',
-            'Real-time Dashboard',
-            'Data Export/Import',
-          ],
-        },
-      ],
-      metrics: {
-        users: '500+',
-        uptime: '99.5%',
-        apiResponseTime: '<200ms (p95)',
-      },
+      techStack: { frontend: ['JavaScript', 'Web Application Development'] },
     },
   ],
 
   certifications: [
-    {
-      title: 'CCNA – Enterprise Networking, Security, and Automation',
-      issuer: 'Cisco Networking Academy',
-      date: '2024',
-      category: 'Networking',
-      skills: [
-        'Enterprise Networks',
-        'Network Security',
-        'QoS',
-        'Network Management',
-        'Automation',
-      ],
-      credentialId: 'CCNA-ENT-2024',
-      url: 'https://www.credly.com/badges/ccna-enterprise',
-    },
-    {
-      title: 'CCNA – Switching, Routing, and Wireless Essentials',
-      issuer: 'Cisco Networking Academy',
-      date: '2024',
-      category: 'Networking',
-      skills: [
-        'Switching Technologies',
-        'Routing Protocols',
-        'VLAN Configuration',
-        'Network Troubleshooting',
-        'Wireless Fundamentals',
-      ],
-      credentialId: 'CCNA-SRWE-2024',
-      url: 'https://www.credly.com/badges/ccna-srwe',
-    },
-    {
-      title: 'CCNA – Introduction to Networks',
-      issuer: 'Cisco Networking Academy',
-      date: '2024',
-      category: 'Networking',
-      skills: [
-        'Network Fundamentals',
-        'OSI Model',
-        'TCP/IP',
-        'Basic Configuration',
-        'IP Addressing',
-      ],
-      credentialId: 'CCNA-ITN-2024',
-      url: 'https://www.credly.com/badges/ccna-itn',
-    },
-    {
-      title: 'CyberOps Associate',
-      issuer: 'Cisco Networking Academy',
-      date: '2024',
-      category: 'Security',
-      skills: [
-        'Security Monitoring',
-        'Threat Detection',
-        'Log Analysis',
-        'Security Tools',
-        'Incident Response',
-      ],
-      credentialId: 'CYBEROPS-2024',
-      url: 'https://www.credly.com/badges/cyberops-associate',
-    },
-    {
-      title: 'Cybersecurity Essentials',
-      issuer: 'Cisco Networking Academy',
-      date: '2024',
-      category: 'Security',
-      skills: [
-        'Threat Analysis',
-        'Security Implementation',
-        'Risk Assessment',
-        'Security Fundamentals',
-      ],
-      credentialId: 'CYBERSEC-ESSENTIALS-2024',
-      url: 'https://www.credly.com/badges/cybersecurity-essentials',
-    },
-    {
-      title: 'Junior Web Developer',
-      issuer: 'Digital Talent Scholarship (Kominfo)',
-      date: '2023',
-      category: 'Development',
-      skills: [
-        'Web Development',
-        'Programming Fundamentals',
-        'Modern Frameworks',
-        'Best Practices',
-      ],
-      credentialId: 'DTS-JWD-2023',
-      url: null,
-    },
-    {
-      title: 'Fullstack Developer',
-      issuer: 'ITBox',
-      date: '2023',
-      category: 'Development',
-      skills: [
-        'Frontend Development',
-        'Backend Development',
-        'Database Design',
-        'API Development',
-      ],
-      credentialId: 'ITBOX-FSD-2023',
-      url: null,
-    },
-    {
-      title: 'Web Development Professional',
-      issuer: 'MySkill',
-      date: '2023',
-      category: 'Development',
-      skills: ['HTML/CSS', 'JavaScript', 'Responsive Design', 'Web Standards'],
-      credentialId: 'MYSKILL-WD-2023',
-      url: null,
-    },
+    { title: 'CCNA – Enterprise Networking, Security, and Automation', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Enterprise Networks', 'Network Security', 'Automation'], credentialId: null, url: null },
+    { title: 'CCNA – Switching, Routing, and Wireless Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Switching', 'Routing', 'Wireless'], credentialId: null, url: null },
+    { title: 'CCNA – Introduction to Networks', issuer: 'Cisco Networking Academy', date: '2024', category: 'Networking', skills: ['Network Fundamentals', 'TCP/IP', 'IP Addressing'], credentialId: null, url: null },
+    { title: 'CyberOps Associate', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security', skills: ['Security Monitoring', 'Threat Detection', 'Incident Response'], credentialId: null, url: null },
+    { title: 'Cybersecurity Essentials', issuer: 'Cisco Networking Academy', date: '2024', category: 'Security', skills: ['Security Fundamentals', 'Risk Assessment'], credentialId: null, url: null },
+    { title: 'Junior Web Developer', issuer: 'Digital Talent Scholarship (Kominfo)', date: '2023', category: 'Development', skills: ['Web Development'], credentialId: null, url: null },
+    { title: 'Fullstack Developer', issuer: 'ITBox', date: '2023', category: 'Development', skills: ['Frontend', 'Backend', 'Database'], credentialId: null, url: null },
+    { title: 'Web Development Professional', issuer: 'MySkill', date: '2023', category: 'Development', skills: ['HTML/CSS', 'JavaScript', 'Responsive Design'], credentialId: null, url: null },
   ],
 
-  additionalExperience: [
-    {
-      title: 'Staff of Public Relations',
-      company: 'Louder N Louder',
-      location: 'Online',
-      period: 'Apr 2021 – Sep 2021',
-      description: 'Media partnerships, content coordination',
-    },
-  ],
-
+  additionalExperience: [],
   seo: {
     title: 'Muhammad Quways Al-Qarany | Software Engineer Portfolio',
-    description:
-      'Software Engineer specializing in React, Node.js, TypeScript, PostgreSQL. Built Stokku - production inventory management system. 8× Cisco certified. Seeking Full Stack / Backend / Frontend roles.',
+    description: 'Software Engineer portfolio with public evidence from React, Node.js, TypeScript, PostgreSQL, testing, and CI projects.',
     ogImage: '/og-image.png',
     twitterHandle: '@muhammadquways',
     siteUrl: 'https://myporto-lime.vercel.app',

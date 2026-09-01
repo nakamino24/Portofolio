@@ -1,203 +1,92 @@
 # Muhammad Quways Al-Qarany — Software Engineer Portfolio
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fnakamino24%2Fportfolio)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-7+-646cff.svg)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3+-38bdf8.svg)](https://tailwindcss.com/)
+Portfolio for Junior / Associate Software Engineer, Full-Stack Developer, Backend Developer, and Frontend Developer roles.
 
-> A production-quality, accessible, and performant portfolio website built to demonstrate software engineering competency for Full Stack, Backend, and Frontend Developer roles.
+**Live portfolio:** https://myporto-lime.vercel.app  
+**GitHub:** https://github.com/nakamino24  
+**LinkedIn:** https://www.linkedin.com/in/muhammadquways
 
-## 🎯 Purpose
+## About
 
-This portfolio is **not** designed to impress designers. It's built to **convince technical recruiters and engineering managers** that I can build production-quality software. Every design decision supports that objective.
+I am a Computer Engineering graduate with prior software engineering experience and current enterprise IT procurement experience. This portfolio focuses on code and project evidence rather than proficiency ratings or unverified performance claims.
 
-## ✨ Features
+## Strongest Engineering Sample — Stokku
 
-### Engineering-First Architecture
+**Source:** https://github.com/nakamino24/stokku  
+**Live project:** https://stokku-nakamino24s-projects.vercel.app
 
-- **Feature-based folder structure** — Clear separation of concerns
-- **Custom UI component library** — Button, Card, Badge, Input, Textarea, Carousel
-- **Theme system** — Dark/light mode with localStorage persistence
-- **Responsive design** — Mobile-first, tested at 375px, 768px, 1440px
+Stokku is a public TypeScript monorepo for inventory and operations workflows. Repository evidence includes:
 
-### Content Sections
+- Next.js 13 + React 18 web application
+- Node.js + Express API written in TypeScript
+- PostgreSQL data model managed with Prisma
+- inventory entities for products, variants, suppliers, warehouses, bins, stock levels, and stock movements
+- JWT authentication middleware that validates bearer access tokens
+- organization-role and permission modeling in the database schema
+- Jest test scripts for web/API packages and Playwright E2E scripts for the web package
+- root build, lint, typecheck, and test commands coordinated with Turbo
+- committed GitHub Actions workflow definitions
 
-| Section            | Purpose                                                   |
-| ------------------ | --------------------------------------------------------- |
-| **Hero**           | Professional summary with clear CTAs                        |
-| **About**          | Education + quick facts                                   |
-| **Skills**         | Categorized technical skills                                |
-| **Projects**       | **Stokku** as engineering case study + other projects       |
-| **Experience**     | Work history with responsibilities                          |
-| **Education**      | Academic background                                         |
-| **Certifications** | Professional credentials                                    |
-| **Contact**        | Accessible form with validation                             |
+The portfolio case study separates implemented repository evidence from limitations and next improvements.
 
-### Technical Excellence
+## This Portfolio Repository
 
-- **WCAG AA** — Semantic HTML, ARIA labels, focus management, color contrast
-- **Performance** — Code splitting, lazy loading, optimized bundles
-- **Clean Architecture** — No dead code, no unused dependencies, consistent patterns
+The portfolio itself is intentionally smaller than Stokku. It demonstrates:
 
-## 🛠 Tech Stack
+- React 18 components organized by feature
+- reusable UI primitives under `src/shared/ui`
+- dark/light theme state with React Context
+- Tailwind CSS styling
+- ESLint and Prettier configuration
+- Vite build tooling
+- direct email, LinkedIn, and GitHub contact actions
 
-| Category      | Technologies                                         |
-| ------------- | ---------------------------------------------------- |
-| **Frontend**  | React 18, Vite 7, Tailwind CSS                       |
-| **State**     | React Context + Hooks                                |
-| **UI**        | Custom component primitives                            |
-| **Build**     | Vite, ESLint, Prettier, Husky                         |
-| **Deploy**    | Vercel                                               |
+This repository is JavaScript/JSX, not TypeScript. It does not claim verified Lighthouse scores, WCAG conformance, test coverage, bundle-size targets, or production-readiness without supporting reports.
 
-## 📁 Project Structure
+## Professional Work
 
-```
-src/
-├── App.jsx                    # Root component
-├── main.jsx                   # Entry point
-├── index.css                  # Global styles + Tailwind
-├── layout/
-│   ├── MainLayout.jsx         # Layout wrapper
-│   ├── Navbar.jsx             # Navigation with scroll spy
-│   └── Footer.jsx
-├── features/
-│   ├── hero/Hero.jsx
-│   ├── about/About.jsx
-│   ├── skills/Skills.jsx
-│   ├── projects/
-│   │   ├── Projects.jsx       # Stokku showcase
-│   │   └── StokkuCaseStudy.jsx # Engineering case study
-│   ├── experience/Experience.jsx
-│   ├── education/Education.jsx
-│   ├── certifications/Certifications.jsx
-│   └── contact/Contact.jsx
-├── shared/
-│   ├── ui/                    # Button, Card, Badge, Input, Textarea, Carousel
-│   ├── hooks/useTheme.jsx     # Theme context hook
-│   ├── context/ThemeContext.jsx
-│   ├── data/
-│   │   └── cvData.js          # Single source of truth
-│   └── utils/cn.js            # Classname utility
-└── api/
-    └── contact.js             # Serverless contact endpoint
-```
+Professional project descriptions are sanitized. Internal source code, proprietary architecture, user counts, performance metrics, credentials, and private deployment details are not published as portfolio evidence.
 
-## 🚀 Quick Start
+## Run Locally
 
-### Prerequisites
-
-- Node.js 20+
-- npm 10+
-
-### Installation
+Requirements: Node.js 20+ and npm.
 
 ```bash
-# Clone repository
-git clone https://github.com/nakamino24/portfolio.git
-cd portfolio
-
-# Install dependencies
+git clone https://github.com/nakamino24/Portofolio.git
+cd Portofolio
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Visit `http://localhost:3000`
-
-### Available Scripts
+Useful checks:
 
 ```bash
-npm run dev          # Start dev server
-npm run build        # Production build to dist/
-npm run preview      # Preview production build
-npm run lint         # Run ESLint
-npm run format       # Format with Prettier
-```
-
-## 📦 Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import at [vercel.com/new](https://vercel.com/new)
-3. Deploy — zero config needed
-
-## 🎨 Customization
-
-### Personal Data
-
-Edit `src/shared/data/cvData.js` — single source of truth for all content:
-
-- Personal info, summary
-- Education, experience, certifications
-- Technical skills with evidence
-- Projects (Stokku + others)
-
-### Styling
-
-- **Colors**: `tailwind.config.js` → `theme.extend.colors`
-- **Fonts**: `index.html` → Google Fonts import (Inter)
-- **Components**: `src/shared/ui/` — modify primitives
-
-## 📊 Performance Budgets
-
-| Metric                   | Target   | Actual |
-| ------------------------ | -------- | ------ |
-| JS Bundle (gzipped)      | < 100 KB | ~67 KB |
-| CSS Bundle (gzipped)     | < 15 KB  | ~6 KB  |
-| Lighthouse Performance   | ≥ 90     | 95+    |
-| Lighthouse Accessibility | ≥ 95     | 100    |
-| First Contentful Paint   | < 1.5s   | ~0.8s  |
-| Time to Interactive      | < 3.5s   | ~2.1s  |
-
-## ♿ Accessibility Checklist
-
-- [x] Semantic HTML5 landmarks (`header`, `nav`, `main`, `section`, `footer`)
-- [x] Heading hierarchy (h1 → h2 → h3)
-- [x] Focus visible states on all interactive elements
-- [x] ARIA labels on icon-only buttons
-- [x] Color contrast ratios ≥ 4.5:1 (AA)
-- [x] Keyboard navigation for all components
-- [x] Reduced motion support
-- [x] Alt text for meaningful images
-- [x] Form labels associated with inputs
-- [x] Error announcements via `role="alert"`
-
-## 🔍 SEO Implementation
-
-- **Meta tags** — Title, description, keywords, author
-- **Open Graph** — `og:title`, `og:description`, `og:image`, `og:url`, `og:type`
-- **Twitter Cards** — `summary_large_image`
-- **JSON-LD** — Person, WebSite schemas
-- **Canonical URLs** — Self-referencing
-
-## 🧪 Testing
-
-```bash
-# Linting
 npm run lint
-
-# Build verification
-npm run build && npm run preview
+npm run build
 ```
 
-## 📄 License
+## Repository Structure
 
-MIT License — see [LICENSE](LICENSE) for details.
+```text
+src/
+├── features/        # Hero, skills, projects, experience, contact, etc.
+├── layout/          # Navbar, footer, page layout
+├── shared/
+│   ├── context/     # Theme context
+│   ├── data/        # Portfolio content
+│   ├── hooks/       # Shared hooks
+│   ├── ui/          # Reusable UI primitives
+│   └── utils/       # Small utilities
+├── App.jsx
+└── main.jsx
+```
 
-## 👤 Author
+## Verification Notes
 
-**Muhammad Quways Al-Qarany**
+The previous README contained claims for Husky, code splitting/lazy loading, WCAG AA, Lighthouse scores, measured bundle sizes, and production readiness. Those claims were removed because this repository did not contain sufficient evidence to support them.
 
-- Software Engineer
-- 📍 Bekasi, Indonesia
-- 📧 faiz.quways@gmail.com
-- 💼 [LinkedIn](https://www.linkedin.com/in/muhammadquways)
-- 💻 [GitHub](https://github.com/nakamino24)
-- 🌐 [Portfolio](https://myporto-lime.vercel.app)
+Testing and performance reporting remain worthwhile future improvements, but they should only be presented as completed when reproducible checks and reports exist.
 
----
+## License
 
-**Built with engineering rigor, not design flair.** If you're a hiring manager reading this: the codebase demonstrates clean architecture, type safety, accessibility, and production-readiness — exactly what you'd expect from a software engineer.
+MIT — see `LICENSE`.
