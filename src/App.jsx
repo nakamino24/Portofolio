@@ -6,8 +6,6 @@ import About from './features/about/About'
 import Skills from './features/skills/Skills'
 import Experience from './features/experience/Experience'
 import Projects from './features/projects/Projects'
-import StokkuCaseStudy from './features/projects/StokkuCaseStudy'
-import Education from './features/education/Education'
 import Certifications from './features/certifications/Certifications'
 import Contact from './features/contact/Contact'
 
@@ -16,12 +14,10 @@ function App() {
     <ThemeProvider>
       <MainLayout>
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
         <Projects />
-        <StokkuCaseStudy />
-        <Education />
+        <Experience />
+        <Skills />
+        <About />
         <Certifications />
         <Contact />
       </MainLayout>

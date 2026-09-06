@@ -1,44 +1,122 @@
 import { cvData } from '../../shared/data'
-import { Button } from '../../shared/ui/Button'
-import Carousel from '../../shared/ui/Carousel'
 import PageContainer from '../../shared/ui/PageContainer'
 
-const Projects = () => {
-  const { projects } = cvData
-  const featured = projects.find((project) => project.isFeatured)
-  const others = projects.filter((project) => !project.isFeatured)
-  if (!featured) return null
+const ExternalIcon = () => (
+  <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5h5v5m0-5L10 14M5 7v12h12v-5" />
+  </svg>
+)
+
+const ProjectVisual = ({ project }) => {
+  if (project.image) {
+    return (
+      <div className="project-visual bg-slate-950">
+        <img className="h-full w-full object-cover object-top" src={project.image} alt={project.imageAlt} loading="lazy" />
+      </div>
+    )
+  }
 
   return (
-    <section id="projects" className="py-16 lg:py-24 bg-white dark:bg-neutral-950" aria-labelledby="projects-heading">
-      <PageContainer>
-        <div className="max-w-3xl mb-12">
-          <span className="section-label">Projects</span>
-          <h2 id="projects-heading" className="section-title">Engineering Work</h2>
-          <p className="section-description">Public projects are described from repository evidence; professional work is intentionally sanitized.</p>
+    <div className="project-visual wallume-visual" role="img" aria-label={project.imageAlt}>
+      <div className="wallume-orbit wallume-orbit-large" />
+      <div className="wallume-orbit wallume-orbit-small" />
+      <div className="relative z-10 flex h-full flex-col justify-between p-7 sm:p-9">
+        <div className="flex items-center gap-3">
+          <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/20 bg-white/10">
+            <img src="/wallume-mark.svg" alt="" className="h-8 w-8" />
+          </span>
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-teal-100">Internal preview</span>
         </div>
-
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          <Carousel images={featured.screenshots || []} altPrefix={`${featured.title} app`} />
-          <div className="space-y-6">
-            <div><h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{featured.title}</h3><p className="text-lg text-blue-600 dark:text-blue-400 font-medium">{featured.tagline}</p></div>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{featured.longDescription}</p>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="p-4 bg-gray-50 dark:bg-neutral-900 rounded-lg border border-gray-200 dark:border-neutral-800"><h4 className="text-xs font-semibold mb-1 uppercase tracking-wider">Problem</h4><p className="text-sm text-gray-700 dark:text-gray-300">{featured.problemStatement}</p></div>
-              <div className="p-4 bg-gray-50 dark:bg-neutral-900 rounded-lg border border-gray-200 dark:border-neutral-800"><h4 className="text-xs font-semibold mb-1 uppercase tracking-wider">Approach</h4><p className="text-sm text-gray-700 dark:text-gray-300">{featured.solution}</p></div>
-            </div>
-            <div className="flex flex-wrap gap-2">{Object.values(featured.techStack).flat().map((tech) => <span key={tech} className="px-2.5 py-1 text-xs font-medium border border-gray-200 dark:border-neutral-700 rounded-md">{tech}</span>)}</div>
-            <div className="flex flex-wrap gap-3">
-              {featured.liveUrl && <a href={featured.liveUrl} target="_blank" rel="noopener noreferrer"><Button size="sm">Live Demo</Button></a>}
-              {featured.githubUrl && <a href={featured.githubUrl} target="_blank" rel="noopener noreferrer"><Button variant="secondary" size="sm">Source Code</Button></a>}
-            </div>
-          </div>
+        <div>
+          <p className="text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">Wallume</p>
+          <p className="mt-2 max-w-sm text-base leading-7 text-teal-50/75">Wallets, plans, and financial health in one mobile workspace.</p>
         </div>
-
-        {others.length > 0 && <div className="mt-24"><h3 className="text-2xl font-semibold mb-8">Professional Work</h3>{others.map((project) => <article key={project.id} className="max-w-3xl p-6 bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-200 dark:border-neutral-800"><h4 className="font-semibold mb-1">{project.title}</h4><p className="text-sm text-blue-600 dark:text-blue-400 mb-3">{project.tagline}</p><p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{project.longDescription}</p></article>)}</div>}
-      </PageContainer>
-    </section>
+      </div>
+    </div>
   )
 }
+
+const ProjectCard = ({ project, index }) => (
+  <article className="project-card">
+    <ProjectVisual project={project} />
+
+    <div className="flex flex-1 flex-col p-6 sm:p-8">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-teal-700 dark:text-teal-300">0{index + 1} / Featured</span>
+        <span className="status-chip">{project.status}</span>
+      </div>
+
+      <h3 className="mt-6 text-3xl font-semibold tracking-[-0.035em] text-slate-950 dark:text-white">{project.name}</h3>
+      <p className="mt-3 text-lg leading-7 text-slate-600 dark:text-slate-300">{project.description}</p>
+      <p className="mt-3 text-sm font-medium text-slate-500 dark:text-slate-400">{project.type}</p>
+
+      <dl className="mt-7 grid gap-5 border-y border-slate-200 py-6 dark:border-slate-800 sm:grid-cols-2">
+        <div>
+          <dt className="eyebrow">Problem</dt>
+          <dd className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.problem}</dd>
+        </div>
+        <div>
+          <dt className="eyebrow">Engineering approach</dt>
+          <dd className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.approach}</dd>
+        </div>
+      </dl>
+
+      <div className="mt-6">
+        <p className="eyebrow">My contribution</p>
+        <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.contribution}</p>
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
+        {project.technologies.map((technology) => <span className="tech-chip" key={technology}>{technology}</span>)}
+      </div>
+
+      <ul className="mt-7 space-y-3">
+        {project.highlights.map((highlight) => (
+          <li className="flex gap-3 text-sm leading-6 text-slate-600 dark:text-slate-300" key={highlight}>
+            <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600 dark:bg-teal-400" />
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+
+      <details className="group mt-7 border-t border-slate-200 pt-5 dark:border-slate-800">
+        <summary className="cursor-pointer select-none text-sm font-semibold text-slate-900 marker:text-teal-600 hover:text-teal-700 dark:text-white dark:marker:text-teal-400 dark:hover:text-teal-300">
+          Technical details
+        </summary>
+        <p className="mt-4 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.detail}</p>
+        {project.gallery ? (
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {project.gallery.map((image) => (
+              <img className="w-full rounded-lg border border-slate-200 dark:border-slate-700" src={image.src} alt={image.alt} loading="lazy" key={image.src} />
+            ))}
+          </div>
+        ) : null}
+      </details>
+
+      <div className="mt-auto flex flex-wrap gap-3 pt-8">
+        <a className="button-primary" href={project.githubUrl} target="_blank" rel="noopener noreferrer">Source Code <ExternalIcon /></a>
+        {project.liveUrl ? (
+          <a className="button-secondary" href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo <ExternalIcon /></a>
+        ) : null}
+      </div>
+    </div>
+  </article>
+)
+
+const Projects = () => (
+  <section id="projects" className="section-shell bg-white dark:bg-slate-950" aria-labelledby="projects-heading">
+    <PageContainer>
+      <div className="section-intro">
+        <span className="section-label">Selected work</span>
+        <h2 id="projects-heading" className="section-title">Featured projects, backed by source.</h2>
+        <p className="section-description">Two products across web and mobile. Every claim below was checked against the current public repositories.</p>
+      </div>
+
+      <div className="grid items-stretch gap-7 lg:grid-cols-2">
+        {cvData.projects.map((project, index) => <ProjectCard project={project} index={index} key={project.id} />)}
+      </div>
+    </PageContainer>
+  </section>
+)
 
 export default Projects

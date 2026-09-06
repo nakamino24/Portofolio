@@ -4,88 +4,28 @@ import PageContainer from '../../shared/ui/PageContainer'
 
 const About = () => {
   const { personalInfo, education } = cvData
-
   return (
-    <section
-      id="about"
-      className="py-16 lg:py-24 bg-white dark:bg-neutral-950"
-      aria-labelledby="about-heading"
-    >
+    <section id="about" className="section-shell border-y border-slate-200 bg-slate-100/70 dark:border-slate-800 dark:bg-slate-900/40" aria-labelledby="about-heading">
       <PageContainer>
-        <div className="max-w-3xl mb-12">
-          <span className="section-label">About</span>
-          <h2 id="about-heading" className="section-title">
-            Background
-          </h2>
-          <p className="section-description">
-            {personalInfo.summary}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Education
-            </h3>
-            <div className="space-y-4">
-              {education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="p-6 bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-200 dark:border-neutral-800"
-                >
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    {edu.degree}
-                  </h4>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
-                    {edu.institution}
-                  </p>
-                  <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-                    <span>{edu.location}</span>
-                    <span>•</span>
-                    <span>{formatPeriod(edu.startDate, edu.endDate, edu.current)}</span>
-                  </div>
-                  {edu.gpa && (
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                      GPA: {edu.gpa}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
+            <span className="section-label">About</span>
+            <h2 id="about-heading" className="section-title">Grounded in systems, curious about people.</h2>
           </div>
-
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">
-              Quick Facts
-            </h3>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
+            <p className="text-xl leading-9 text-slate-700 dark:text-slate-200">{personalInfo.about}</p>
+            <div className="mt-10 border-t border-slate-300 pt-7 dark:border-slate-700">
+              <p className="eyebrow">Education</p>
+              <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Computer Engineering Graduate</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">IPB University, GPA 3.69/4.00</p>
+                  <h3 className="text-lg font-semibold text-slate-950 dark:text-white">{education.degree}</h3>
+                  <p className="mt-1 text-slate-600 dark:text-slate-300">{education.institution} · {education.location}</p>
                 </div>
+                <p className="shrink-0 text-sm text-slate-500 dark:text-slate-400">{formatPeriod(education.startDate, education.endDate)}</p>
               </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Full-Stack Engineer</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">React, Node.js, TypeScript, PostgreSQL</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">8× Cisco Certified</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">CCNA, CyberOps Associate, Security Essentials</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
-                <div>
-                  <p className="text-sm font-medium text-gray-900 dark:text-white">Production Experience</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Enterprise IT procurement + full-stack development</p>
-                </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <span className="tech-chip">GPA {education.gpa}</span>
+                {education.highlights.map((item) => <span className="tech-chip" key={item}>{item}</span>)}
               </div>
             </div>
           </div>

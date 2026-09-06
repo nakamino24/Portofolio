@@ -1,6 +1,4 @@
-/* eslint-disable-next-line no-unused-vars */
-import React, { createContext, useState, useEffect, useContext } from 'react'
-import PropTypes from 'prop-types'
+import { createContext, useState, useEffect, useContext, useMemo } from 'react'
 
 const ThemeContext = createContext()
 
@@ -24,17 +22,16 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem('darkMode', darkMode)
   }, [darkMode])
 
-  const toggleDarkMode = () => setDarkMode(!darkMode)
+  const value = useMemo(
+    () => ({ darkMode, toggleTheme: () => setDarkMode((current) => !current) }),
+    [darkMode]
+  )
 
   return (
-    <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   )
-}
-
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export const useTheme = () => {

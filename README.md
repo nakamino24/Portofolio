@@ -1,60 +1,40 @@
-# Muhammad Quways Al-Qarany — Software Engineer Portfolio
+# Muhammad Quways Al-Qarany — Full-Stack Developer
 
-Portfolio for Junior / Associate Software Engineer, Full-Stack Developer, Backend Developer, and Frontend Developer roles.
+Recruiter-facing portfolio for Muhammad Quways Al-Qarany, a Computer Engineering graduate building reliable web and mobile products.
 
-**Live portfolio:** https://myporto-lime.vercel.app  
-**GitHub:** https://github.com/nakamino24  
+**Live portfolio:** https://portofolio-eight-liart.vercel.app
+**GitHub:** https://github.com/nakamino24
 **LinkedIn:** https://www.linkedin.com/in/muhammadquways
 
-## About
+## Featured projects
 
-I am a Computer Engineering graduate with prior software engineering experience and current enterprise IT procurement experience. This portfolio focuses on code and project evidence rather than proficiency ratings or unverified performance claims.
+### Stokku
 
-## Strongest Engineering Sample — Stokku
+Source: https://github.com/nakamino24/stokku
+Live application: https://stokku-nakamino24s-projects.vercel.app
 
-**Source:** https://github.com/nakamino24/stokku  
-**Live project:** https://stokku-nakamino24s-projects.vercel.app
+An inventory and operations platform for products, suppliers, warehouses, stock levels, and stock movements. The public repository contains a TypeScript monorepo with a Next.js/React web app, Node.js/Express API, PostgreSQL/Prisma data layer, organization-aware modeling, authentication, validation, automated tests, and GitHub Actions checks.
 
-Stokku is a public TypeScript monorepo for inventory and operations workflows. Repository evidence includes:
+### Wallume
 
-- Next.js 13 + React 18 web application
-- Node.js + Express API written in TypeScript
-- PostgreSQL data model managed with Prisma
-- inventory entities for products, variants, suppliers, warehouses, bins, stock levels, and stock movements
-- JWT authentication middleware that validates bearer access tokens
-- organization-role and permission modeling in the database schema
-- Jest test scripts for web/API packages and Playwright E2E scripts for the web package
-- root build, lint, typecheck, and test commands coordinated with Turbo
-- committed GitHub Actions workflow definitions
+Source: https://github.com/nakamino24/Wallume
 
-The portfolio case study separates implemented repository evidence from limitations and next improvements.
+A personal finance mobile platform for wallets, transactions, budgets, goals, recurring bills, investments, and financial health. The repository combines an Expo SDK 54 / React Native client with a Python/FastAPI backend and MongoDB. It currently targets an internal preview; no public demo or current APK is advertised.
 
-## This Portfolio Repository
+## Portfolio architecture
 
-The portfolio itself is intentionally smaller than Stokku. It demonstrates:
+This site is a small React 18 + Vite application using feature-oriented components, reusable UI helpers, Tailwind CSS, and a React Context theme switcher. Portfolio content is kept in `src/shared/data/cvData.js`; project cards are rendered from that data rather than separate hardcoded case-study components.
 
-- React 18 components organized by feature
-- reusable UI primitives under `src/shared/ui`
-- dark/light theme state with React Context
-- Tailwind CSS styling
-- ESLint and Prettier configuration
-- Vite build tooling
-- direct email, LinkedIn, and GitHub contact actions
+The portfolio itself is JavaScript/JSX. It demonstrates responsive UI composition, accessible navigation, semantic sections, light/dark themes, and direct links to public source code and contact channels.
 
-This repository is JavaScript/JSX, not TypeScript. It does not claim verified Lighthouse scores, WCAG conformance, test coverage, bundle-size targets, or production-readiness without supporting reports.
-
-## Professional Work
-
-Professional project descriptions are sanitized. Internal source code, proprietary architecture, user counts, performance metrics, credentials, and private deployment details are not published as portfolio evidence.
-
-## Run Locally
+## Run locally
 
 Requirements: Node.js 20+ and npm.
 
 ```bash
 git clone https://github.com/nakamino24/Portofolio.git
 cd Portofolio
-npm install
+npm ci
 npm run dev
 ```
 
@@ -65,28 +45,21 @@ npm run lint
 npm run build
 ```
 
-## Repository Structure
+## Repository structure
 
 ```text
 src/
-├── features/        # Hero, skills, projects, experience, contact, etc.
-├── layout/          # Navbar, footer, page layout
-├── shared/
-│   ├── context/     # Theme context
-│   ├── data/        # Portfolio content
-│   ├── hooks/       # Shared hooks
-│   ├── ui/          # Reusable UI primitives
-│   └── utils/       # Small utilities
-├── App.jsx
-└── main.jsx
+├── features/        # page sections
+├── layout/          # navbar, page shell, footer
+├── shared/context/  # theme state
+├── shared/data/     # evidence-based portfolio content
+├── shared/ui/       # reusable primitives
+└── shared/utils/    # small helpers
+public/              # favicon, project screenshots, social image
 ```
 
-## Verification Notes
-
-The previous README contained claims for Husky, code splitting/lazy loading, WCAG AA, Lighthouse scores, measured bundle sizes, and production readiness. Those claims were removed because this repository did not contain sufficient evidence to support them.
-
-Testing and performance reporting remain worthwhile future improvements, but they should only be presented as completed when reproducible checks and reports exist.
+Claims in this README and on the site are intentionally limited to evidence visible in the portfolio, Stokku, and Wallume repositories. No performance score, user count, coverage percentage, accessibility certification, revenue impact, or production scale is claimed.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).

@@ -2,82 +2,42 @@ import { cvData } from '../../shared/data'
 import { formatPeriod } from '../../shared/utils/dateFormatter'
 import PageContainer from '../../shared/ui/PageContainer'
 
-const Experience = () => {
-  const { experience } = cvData
-
-  return (
-    <section
-      id="experience"
-      className="py-16 lg:py-24 bg-white dark:bg-neutral-950"
-      aria-labelledby="experience-heading"
-    >
-      <PageContainer>
-        <div className="max-w-3xl mb-12">
+const Experience = () => (
+  <section id="experience" className="section-shell border-y border-slate-200 bg-slate-100/70 dark:border-slate-800 dark:bg-slate-900/40" aria-labelledby="experience-heading">
+    <PageContainer>
+      <div className="section-intro lg:grid lg:grid-cols-[0.7fr_1.3fr] lg:gap-12">
+        <div>
           <span className="section-label">Experience</span>
-          <h2 id="experience-heading" className="section-title">
-            Work History
-          </h2>
-          <p className="section-description">
-            From enterprise IT procurement to full-stack engineering — roles that built technical depth and operational excellence.
-          </p>
+          <h2 id="experience-heading" className="section-title">Engineering context meets operational discipline.</h2>
         </div>
+        <p className="section-description lg:pt-8">Software delivery, technical communication, and structured coordination—presented as distinct strengths, without recasting procurement work as engineering.</p>
+      </div>
 
-        <div className="max-w-3xl space-y-6">
-          {experience.map((role, index) => (
-            <div
-              key={index}
-              className="p-6 bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-200 dark:border-neutral-800"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    {role.title}
-                  </h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium">
-                    {role.company}
-                  </p>
-                </div>
-                <span className="text-sm text-gray-600 dark:text-gray-400 shrink-0">
-                  {formatPeriod(role.startDate, role.endDate, role.current)}
-                </span>
-              </div>
-
-              {role.location && (
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                  {role.location}
-                </p>
-              )}
-
-              <ul className="space-y-2 mb-4">
-                {role.responsibilities.map((resp, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed"
-                  >
-                    <span className="mt-1.5 w-1 h-1 shrink-0 rounded-full bg-blue-600 dark:bg-blue-400" />
-                    <span>{resp}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {role.technologies && role.technologies.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {role.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2.5 py-1 text-xs font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
+      <ol className="border-t border-slate-300 dark:border-slate-700">
+        {cvData.experience.map((role, index) => (
+          <li className="grid gap-5 border-b border-slate-300 py-8 dark:border-slate-700 md:grid-cols-[11rem_minmax(0,1fr)] lg:grid-cols-[13rem_minmax(0,1fr)_17rem]" key={`${role.company}-${role.title}`}>
+            <div>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-teal-700 dark:text-teal-300">0{index + 1}</p>
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{formatPeriod(role.startDate, role.endDate, role.current)}</p>
             </div>
-          ))}
-        </div>
-      </PageContainer>
-    </section>
-  )
-}
+            <div>
+              <h3 className="text-xl font-semibold tracking-tight text-slate-950 dark:text-white">{role.title}</h3>
+              <p className="mt-1 font-medium text-slate-600 dark:text-slate-300">{role.company} · {role.location}</p>
+              <ul className="mt-5 space-y-2">
+                {role.responsibilities.map((item) => <li className="text-base leading-7 text-slate-600 dark:text-slate-300" key={item}>{item}</li>)}
+              </ul>
+            </div>
+            <div>
+              <p className="eyebrow">{role.label}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {role.technologies.map((item) => <span className="tech-chip" key={item}>{item}</span>)}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </PageContainer>
+  </section>
+)
 
 export default Experience

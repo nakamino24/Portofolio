@@ -1,25 +1,16 @@
-import { forwardRef } from 'react'
-import { useTheme } from '../shared/hooks/useTheme.jsx'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-const MainLayout = forwardRef(({ children }, ref) => {
-  const { darkMode } = useTheme()
-
+const MainLayout = ({ children }) => {
   return (
-    <div
-      ref={ref}
-      className={`min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 ${darkMode ? 'dark' : ''}`}
-    >
+    <div className="min-h-screen bg-stone-50 text-slate-950 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-50">
       <Navbar />
-      <div className="flex-1 flex flex-col">
-        <main className="flex-1 w-full">{children}</main>
+      <div className="flex min-h-screen flex-col">
+        <main className="w-full flex-1">{children}</main>
         <Footer />
       </div>
     </div>
   )
-})
-
-MainLayout.displayName = 'MainLayout'
+}
 
 export default MainLayout
