@@ -4,6 +4,7 @@
 
 export const formatDate = (dateString) => {
   if (!dateString) return ''
+  if (/^[A-Za-z]{3,9}\s+\d{4}$/.test(dateString)) return dateString
   const date = new Date(dateString)
   if (isNaN(date.getTime())) return dateString
   return date.toLocaleDateString('en-US', {

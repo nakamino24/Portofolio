@@ -1,44 +1,27 @@
 import { cvData } from '../../shared/data'
 import PageContainer from '../../shared/ui/PageContainer'
 
-const Skills = () => {
-  const { technicalSkills } = cvData
-  const categories = [
-    ['Languages & Frameworks', technicalSkills.languagesFrameworks],
-    ['Database', technicalSkills.database],
-    ['Security & Auth', technicalSkills.security],
-    ['Quality & Tooling', technicalSkills.tools],
-  ]
-
-  return (
-    <section id="skills" className="py-16 lg:py-24 bg-white dark:bg-neutral-950" aria-labelledby="skills-heading">
-      <PageContainer>
-        <div className="max-w-3xl mb-12">
-          <span className="section-label">Skills</span>
-          <h2 id="skills-heading" className="section-title">Technical Evidence</h2>
-          <p className="section-description">
-            Technologies are listed with repository evidence instead of self-assigned proficiency levels.
-          </p>
-        </div>
-
-        <div className="max-w-5xl grid md:grid-cols-2 gap-6">
-          {categories.map(([title, skills]) => (
-            <div key={title} className="p-6 bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-200 dark:border-neutral-800">
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-5 uppercase tracking-wider">{title}</h3>
-              <dl className="space-y-4">
-                {skills.map((skill) => (
-                  <div key={skill.name}>
-                    <dt className="font-medium text-gray-900 dark:text-white">{skill.name}</dt>
-                    <dd className="mt-1 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{skill.evidence}</dd>
-                  </div>
-                ))}
-              </dl>
+const Skills = () => (
+  <section id="skills" className="section-shell bg-white dark:bg-slate-950" aria-labelledby="skills-heading">
+    <PageContainer>
+      <div className="section-intro max-w-3xl">
+        <span className="section-label">Technical skills</span>
+        <h2 id="skills-heading" className="section-title">A stack you can trace back to shipped work.</h2>
+        <p className="section-description">No proficiency bars. Each group points to a repository, this portfolio, or documented engineering work.</p>
+      </div>
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 dark:border-slate-800 dark:bg-slate-800 sm:grid-cols-2 lg:grid-cols-3">
+        {cvData.technicalSkills.map((group) => (
+          <article className="bg-stone-50 p-6 dark:bg-slate-950" key={group.category}>
+            <h3 className="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">{group.category}</h3>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {group.skills.map((skill) => <span className="tech-chip" key={skill}>{skill}</span>)}
             </div>
-          ))}
-        </div>
-      </PageContainer>
-    </section>
-  )
-}
+            <p className="mt-5 text-sm leading-6 text-slate-500 dark:text-slate-400">{group.evidence}</p>
+          </article>
+        ))}
+      </div>
+    </PageContainer>
+  </section>
+)
 
 export default Skills
